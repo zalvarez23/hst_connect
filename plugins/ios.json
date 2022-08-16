@@ -1,0 +1,98 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "appd-plugin-eum-mobile": {
+      "APP_KEY": "EUM-AAB-BAW",
+      "COLLECTOR_URL": "https://appd-prod-eum.multiplan.com",
+      "SCREENSHOT_URL": "https://image.eum-appdynamics.com",
+      "SCREENSHOTS_ENABLED": "false",
+      "LOGGING_LEVEL": "1",
+      "REACHABILITY_HOST": "www.google.com",
+      "INTERACTION_CAPTURE_MODE": "0",
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-app-preferences": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-compat": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-datepicker": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-googlemaps": {
+      "LOCATION_WHEN_IN_USE_DESCRIPTION": "This app wants to get your location while this app runs only.",
+      "LOCATION_ALWAYS_USAGE_DESCRIPTION": "This app wants to get your location always, even this app runs in background.",
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-ionic-webview": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-themeablebrowser": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova.plugins.diagnostic": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+      "LOCATION_USAGE_DESCRIPTION": "This app requires access to your location for navigation purposes",
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    },
+    "cordova-android-support-gradle-release": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    }
+  },
+  "dependent_plugins": {
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "com.hst.hstmobile"
+    }
+  }
+}

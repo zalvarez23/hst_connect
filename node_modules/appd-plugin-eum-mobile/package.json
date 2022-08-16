@@ -1,0 +1,39 @@
+{
+  "_from": "appd-plugin-eum-mobile",
+  "_id": "appd-plugin-eum-mobile@21.5.0",
+  "_inBundle": false,
+  "_integrity": "sha512-GmLfTOdTcM8GaJ6LodHYZgfMvkN6iyb+TiValTTRwAqS0Fp/pZVeX2tlI5ibcfTRMiZqyVWBBKmMZkLxeIT1JQ==",
+  "_location": "/appd-plugin-eum-mobile",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "appd-plugin-eum-mobile",
+    "name": "appd-plugin-eum-mobile",
+    "escapedName": "appd-plugin-eum-mobile",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/appd-plugin-eum-mobile/-/appd-plugin-eum-mobile-21.5.0.tgz",
+  "_shasum": "ee5e7f924df9a1ba642d2aa628995039e8c2ecb9",
+  "_spec": "appd-plugin-eum-mobile",
+  "_where": "/Users/kevin/Desktop/IonicProject/hst_test/hst_source_bak",
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "appd-plugin-eum-mobile",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "AppDynamics mobile agent plugin",
+  "license": "SEE LICENSE IN LICENSE",
+  "name": "appd-plugin-eum-mobile",
+  "version": "21.5.0"
+}

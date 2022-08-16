@@ -1,0 +1,62 @@
+<ion-view hide-nav-bar="true" title="{{ 'LOGIN' | translate}}" id="page6" hide-back-button="true" cache-view="false">
+	<div class='bannerTop' id='bannerTop'>
+		{{'BANER_TEXT' | translate}}
+	</div>
+	<div class='bannerTop' id='bannerTopPrice'>
+		{{'BANER_TEXT_PRICE' | translate}}
+	</div>
+	<div class="header-figma-arrow">
+		<h1 ng-bind="'LOGIN' | translate"></h1>
+	</div>
+	<ion-content style="padding:0px 9px" padding="true" class="has-header content2-figma"
+		ng-controller="loginCtrl as ctrl" has-bouncing="false">
+		<div class="list list-inset text-center">
+			<span ng-bind="selectedLanguage"></span>
+			<span class="dark-blue-text " ui-sref="changeLanguage">{{ " > " + ('CHANGE' | translate) }}</span>
+		</div>
+		<form class="list" name="loginForm" novalidate>
+			<div class="list list-inset">
+				<label class="item item-input border-radius-10"
+					ng-class="{ 'has-error': loginForm.$submitted && loginForm.username.$invalid }">
+					<i class="ion icon ion-custom-person placeholder-icon stable"></i>
+					<input type="text" name="username" placeholder="{{'USERNAME' | translate}}" ng-model="username"
+						ng-required="true">
+				</label>
+			</div>
+			<!--<a ui-sref="forgotUsername({isUsername : true})" ng-click="changePageForgot({isUsername : true})" class="forget-User-Pass"><small>{{'FORGOT_USERNAME' | translate}}?</small></a>-->
+			<a ng-click="ctrl.changePageForgot(true)" class="forget-User-Pass"><small>{{'FORGOT_USERNAME' |
+					translate}}?</small></a>
+			<div class="list list-inset">
+				<label class="item item-input border-radius-10"
+					ng-class="{ 'has-error': loginForm.$submitted && loginForm.password.$invalid }">
+					<i class="ion icon ion-custom-locked placeholder-icon stable"></i>
+					<input type="password" name="password" placeholder="{{'PASSWORD' | translate}}" ng-model="password"
+						ng-required="true">
+				</label>
+			</div>
+			<!--<a ui-sref="forgotPassword({isUsername : false})" ng-click="changePageForgot({isUsername : false})" class="forget-User-Pass"><small>{{'FORGOT_PASSWORD' | translate}}?</small></a>-->
+			<a ng-click="ctrl.changePageForgot(false)" class="forget-User-Pass"><small>{{'FORGOT_PASSWORD' |
+					translate}}?</small></a>
+			<div class="spacer" style="height: 40px;"></div>
+			<div class="row">
+				<div class="col col-offset-5">
+					<button type="submit" class="button button-block button-stable border-radius-10 button-next-figma"
+						ng-click="ctrl.validateAndLogin()">{{'LOGIN_CAPS' | translate}}</button>
+				</div>
+				<div ng-if="(firstTime)" class="col col-offset-5" ng-if="canShowRegisterButton == 'true'">
+					<button ui-sref="registration"
+						class="button button-block button-calm register-custom-button border-radius-10 button-next-figma">{{'REGISTER_CAPS'
+						| translate}}</button>
+				</div>
+			</div>
+		</form>
+		<center>
+			<footer style="margin-top: 55%;
+				bottom: -70%;">
+				<small style="font-weight: 100">{{'VERSION_REAL' | translate}}</small>
+			</footer>
+		</center>
+
+	</ion-content>
+
+</ion-view>

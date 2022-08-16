@@ -1,0 +1,78 @@
+<ion-view hide-nav-bar="true" class="viewInsuranceCard" title="{{ 'YOUR_DOCTOR' | translate }}" home-icon
+	hide-back-button="true" cache-view="false">
+
+
+	<div class="header-figma-arrow">
+		<svg width="19" height="19" ui-sref="landingPage" viewBox="0 0 19 19" fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+				fill="white" />
+		</svg>
+		<h1 ng-bind="'YOUR_DOCTOR' | translate"></h1>
+	</div>
+
+	<ion-content padding="true" class="has-header insurance-card  content2-figma backgroundWhite " has-bouncing="false"
+		ng-controller="yourDoctorCtrl">
+
+
+		<div class="" style="text-align:center">
+			<img src='img/figma/find_doctor.png' id="photo" class="insurance-card-photo">
+		</div>
+
+		<div class="infoInsurance" style="    height: 100%;">
+			<div class="item" style="    height: 100%;">
+
+				<h2 class="row titleInsuranceCard"> <b><span ng-bind="'CONTACT_INFORMATION' | translate"></span> </b>
+				</h2>
+				<div class="row">
+					<div class="col col-50 border-bottom"><span ng-bind="'NAME' | translate"></span></b></div>
+					<div class="col col-50 border-bottom">{{ pcpinfo.FirstName + ' ' + pcpinfo.LastName }}</div>
+				</div>
+
+				<div class="row">
+					<div class="col col-50 border-bottom"><span ng-bind="'EMAIL' | translate"></span></b></div>
+					<div class="col col-50 border-bottom">{{ pcpinfo.Email }}</div>
+				</div>
+
+				<div class="row">
+					<div class="col col-50 border-bottom"><span ng-bind="'PHONE_NUMBER' | translate"></span></b></div>
+					<div class="col col-50 border-bottom">{{pcpinfo.Phone | tel}}</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col col-50 border-bottom"><span ng-bind="'ADDRESS' | translate"></span></b></div>
+					<div class="col col-50 border-bottom">
+						{{ pcpinfo.formattedaddress}} <br>
+						{{pcpinfo.citystateZip}}
+
+						<span class="dark-blue-text bold-text"
+							ng-class="{ 'hide' : !pcpinfo.formattedaddress || pcpinfo.formattedaddress.length == 0 }">
+							<p class="dark-blue-text" ng-click="openGoogleDirection()"><span
+									ng-bind="'DIRECTIONS_TO_PROVIDER' | translate"></span></p>
+						</span>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col col-50 border-bottom"><span ng-bind="'OFFICE_HOURS' | translate"></span></b></div>
+					<div class="col col-50 border-bottom">{{pcpinfo.WorkingHrs}}</div>
+				</div>
+
+
+
+				<div class="row">
+					<div class="col col-50 border-bottom"><span ng-bind="'OTHERS_NOTES' | translate"></span></b></div>
+					<div class="col col-50 border-bottom">{{pcpinfo.OtherNotes}}</div>
+				</div>
+
+
+
+			</div>
+		</div>
+
+	
+	</ion-content>
+</ion-view>

@@ -1,0 +1,59 @@
+<ion-view hide-nav-bar="true" title="{{ 'PROVIDER_LOCATION' | translate }}" ng-controller="mapShowLocationCtrl">
+
+	<div class="header-figma-arrow">
+		<svg width="19" height="19" ng-click="goToBack()" viewBox="0 0 19 19" fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+				fill="white" />
+		</svg>
+		<h1 ng-bind="'PROVIDER_LOCATION' | translate"></h1>
+	</div>
+
+	<ion-content has-bouncing="false" class="map-content content2-figma-map">
+		<div class="legend-overlay">
+
+			<!-- <div class="map-legend" ng-if="providerType == 'Doctor'">
+				<h4 class="roboto-bold white-text">VBP Acceptance</h4>
+				<div>
+					<i class="icon icon-green ion-record col-50">VBP Accepted</i>
+					<i class="icon icon-yellow ion-record col-50">Partial Acceptance</i>
+				</div>
+				<div>
+					<i class="icon icon-red ion-record col-50">Emergency Use Only</i>
+					<i class="icon icon-blue ion-record col-50">Limited Experience</i>
+				</div>
+			</div> -->
+
+			<!-- <div class="map-legend" ng-if="providerType != 'Doctor'"> -->
+			<div class="map-legend">
+				<h4 class="roboto-bold white-text">VBP Acceptance Rate</h4>
+				<div>
+					<i class="icon icon-green ion-record col-50 px12"> >90% VBP Acceptance </i>
+					<i class="icon icon-yellow ion-record col-50 px12"> 75-90% VBP Acceptance</i>
+				</div>
+				<div>
+					<i class="icon icon-network ion-record col-50 px12 " ng-if="providerType == 'Doctor'">In-Network</i>
+					<i class="icon icon-red ion-record col-50 px12"> Below 75% or Above 250% of Medicare
+						Allowed </i>
+					<br ng-if="providerType == 'Doctor'">
+					<i class="icon icon-blue ion-record col-50 px12">Limited Experience
+					</i>
+					<i class="inline-deep">
+						<img src="../../img/icons/anchor.png" style="margin-right: 2px; width: 15px;position: relative;
+						bottom: -2px;">
+						<span style="margin-left: 2px" class="px12">HST
+							Anchor</span>
+						<img src="../../img/icons/star.png" style="margin-left: 20px; margin-right: 4px;position: relative;
+						bottom: -2px;">
+						<span style="margin-left: 2px" class="px12">
+							Contracted</span>
+					</i>
+				</div>
+			</div>
+		</div>
+
+		<map-show-location width="100%" height="100%"></map-show-location>
+		<div id="location_map" data-tap-disabled="true"></div>
+	</ion-content>
+</ion-view>

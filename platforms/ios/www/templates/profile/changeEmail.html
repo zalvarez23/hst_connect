@@ -1,0 +1,48 @@
+<ion-view hide-nav-bar="true" title="{{ 'CHANGE_EMAIL' | translate }}">
+  <div class="header-figma-arrow">
+    <svg width="19" height="19" ui-sref="tabsController.myProfile" viewBox="0 0 19 19" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+        fill="white" />
+    </svg>
+    <h1 ng-bind="'CHANGE_EMAIL' | translate"></h1>
+  </div>
+  <ion-content has-bouncing="false" class="content2-figma backgroundWhite" ng-controller="changeEmailCtrl">
+
+    <!-- Title -->
+    <h3 class="dark-blue-text list list-inset transparent titlePageProfiles" style="margin: 23px;"><span
+        ng-bind="'CHANGE_EMAIL' | translate"></span></h3>
+    <form class="list light-gray-text reg-form" name="changeEmailForm" novalidate>
+
+      <div class="list list-inset transparent">
+        <label class="item item-input">
+          <!-- Icon -->
+          <i class="icon ion-shield placeholder-icon"></i>
+          <!-- Input -->
+          <input type="email" name="Email" placeholder="{{ 'EMAIL_ADDRESS' | translate}}" ng-model="profile.Email"
+            ng-required="true">
+        </label>
+      </div>
+
+      <div class="row">
+
+        <div class="col">
+          <!-- Cancel Button -->
+          <button type="button" ui-sref="tabsController.myProfile"
+            class="button button-stable button-cancel button-block  button-cancel-figma">{{'CANCEL' | translate}}</button>
+        </div>
+
+        <div class="col">
+          <!-- Save Button -->
+          <button type="submit" class="button button-stable button-next button-block  button-next-figma"
+            ng-click="saveEmail()">{{ 'SAVE' | translate }}</button>
+        </div>
+
+      </div>
+
+    </form>
+
+  </ion-content>
+
+</ion-view>

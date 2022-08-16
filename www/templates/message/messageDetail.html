@@ -1,0 +1,196 @@
+<!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- MESSAGE DETAIL                                -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<ion-view hide-nav-bar="true" title="{{ 'MESSAGE_DETAILS' | translate }}" ng-controller="messageDetailCtrl" >
+  <div class="header-figma-arrow">
+    <svg width="19" height="19" ng-click="goToBack()" viewBox="0 0 19 19" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+        fill="white" />
+    </svg>
+    <h1 ng-bind="'MESSAGES' | translate"></h1>
+  </div>
+  <ion-content has-bouncing="false"  class="content2-figma backgroundWhite" data-ng-init="init()">
+
+    <!--message ID: {{ message.ID }}<br>-->
+    <div class="list">
+
+      <!--messageList length: {{messageList.length}}<br>-->
+
+
+      <!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+      <!-- THE MESSAGES (Repeat)                         -->
+      <!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+
+      <div class="item marginB20 contentMessageList" ng-repeat="message in messageListDetail">
+
+
+
+
+        <!--ID: {{message.ID}}<br>-->
+        <!--MemberId: {{message.MemberId}}<br>-->
+        <!--GroupId: {{message.GroupId}}<br>-->
+        <!--MessageText: {{message.MessageText}}<br>-->
+        <!--Created: {{message.Created}}<br>-->
+        <!--ReadDate: {{message.ReadDate}}<br>-->
+        <!--DeletedDate: {{message.DeletedDate}}<br>-->
+        <!--IsDeleted: {{message.IsDeleted}}<br>-->
+        <!--IsRead: {{message.IsRead}}<br>-->
+        <!--$$hashKey: {{message.$$hashKey}}<br>-->
+
+        <div class="row">
+
+          <div class="col">
+            <!-- Dot Icon -->
+            <!-- Date -->
+            <span class=" font13"
+              style="margin-left:7px;">{{ message.messagelist.Created | date : 'MMMM dd, yyyy h:mm a' }}</span>
+
+            <span class="item-note" ng-click="showModalMessage();">
+              <i class="icon ion-reply size30Icon"></i>
+            </span>
+            <span class="item-note marginR20" ng-click="showModalMessageDelete(message.messagelist);">
+              <i class="icon ion-trash-a size30Icon"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="row item-icon-right">
+          <div class="col  ellipsis message-text top-message">
+            <!-- Message Text -->
+            <span class="font13 dark-blue-text">Sender : </span>
+            <span class="font13" style="font-weight: normal">{{message.messagelist.CreatedBy}}</span>
+
+            <div class="listAttachmentsD" ng-repeat="itemAttach in message.attachmentlist">
+              <span class="font13" style="margin-left:17px;">
+                {{itemAttach.FileName}}
+              </span>
+              <span class="item-note">
+                <i class="icon ion-paperclip size30Icon"></i>
+              </span>
+            </div>
+            <br>
+            <span class="whitespaceNormal font13">{{ message.messagelist.MessageText }}</span>
+
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row" ng-class="{ 'hide' : messageListDetail.length > 0 }">
+        <div class="col step-txt dark-green-text">
+          <p>No messages available</p>
+        </div>
+      </div>
+
+    </div>
+    <!--<div class="item">
+
+      <div class="row">
+        <div class="col">
+          <!-- Dot Icon (Hidden since you are reading it) -->
+    <!--<i class="icon ion-record dot-icon"></i>-->
+    <!-- Date -->
+    <!--<span class="light-gray-text font13">{{ message.Created | date : 'MMMM dd, yyyy h:mm a' }}</span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!-- Message Text -->
+    <!--<span class="item-text-wrap dark-blue-text" ng-bind-html="messageHTML"></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <!-- Delete Message -->
+    <!--<button class="button button-stable button-next button-block" ng-click="deleteMessage()">{{'DELETE' | translate}}</button>
+        </div>
+      </div>
+
+    </div>-->
+    <div class="row">
+      <div class="col">
+        <!-- Delete Message -->
+        <button class="button button-stable button-next button-block button-cancel-figma"
+          ng-click="showModalMessageDeleteAll()">{{'DELETEALL' | translate}}</button>
+      </div>
+    </div>
+
+    <script id="my-modal-message.html" type="text/ng-template">
+  <ion-modal-view >
+
+    <ion-header-bar class="bar-balanced">
+    <button class="button button-icon button-clear ion-android-arrow-back" menu-toggle="right" ng-click="closeModal();"></button>
+      <h1 class="title">Message</h1>
+      
+    </ion-header-bar>
+
+    <ion-content>
+      <div class="messageText">
+      <div class="listAttachments">
+        <ul ng-repeat="item in listDraftAttachments">
+          <li >
+            <i class="icon ion-paperclip"></i>
+            {{item.FileName}}
+            <i class="icon ion-close delete" ng-click="deleteFile(item.Id)"></i>
+          </li>  
+        </ul>
+        
+      </div>      
+      <label class="item item-input">
+          <textarea ng-model="params.textMessage" placeholder="{{'MESSAGETEXT' | translate}}"></textarea>
+        </label>
+      
+          <!-- Delete Message -->
+          <div clasS="contentButton">
+          <button class="button button-stable button-next button-block" ng-click="openModalattachment()">{{'ADD_ATTACHMENT' | translate}}</button>          
+           <button class="button button-stable button-next button-block" ng-click="addUserMessage()">{{'SEND' | translate}}</button>
+   
+          <!-- Cancel Message -->
+          <button class="button button-stable button-next button-block" ng-click="closeModal()">{{'CANCEL' | translate}}</button>
+          </div>
+         
+        
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+    <script id="my-modal-attachment.html" type="text/ng-template">
+  <ion-modal-view >
+
+    <ion-header-bar class="bar-balanced">
+    <button class="button button-icon button-clear ion-android-arrow-back" menu-toggle="right" ng-click="closeModalattachment();"></button>
+      <h1 class="title">Attach File</h1>
+      
+    </ion-header-bar>
+
+    <ion-content>
+      <div class="messageText">
+          <br>
+          <center>
+          <img  id="imagePhoto" ng-src="{{uriImg}}">
+          </center>
+          
+          <!-- Delete Message -->
+          <div class="contentButton">
+          <button class="button button-stable button-next button-block" ng-click="uploadPhoto()">{{'UPLOAD_PHOTO' | translate}}</button>           
+           <button class="button button-stable button-next button-block" ng-click="takePhoto(1)">{{'TAKE_PHOTO' | translate}}</button>
+   
+          <!-- Cancel Message -->
+          <button class="button button-stable button-next button-block" ng-click="takePhoto(2)">{{'SELECT_PHOTO' | translate}}</button>
+          </div>
+         
+        
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+  </ion-content>
+
+</ion-view>

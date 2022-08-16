@@ -1,0 +1,8 @@
+*.swp
+nohup.out
+node_modules
+platforms
+tmp
+*.log
+gh-pages
+.idea/

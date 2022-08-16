@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">HST</string>
+    <string name="launcher_name">@string/app_name</string>
+    <string name="activity_name">@string/launcher_name</string>
+    <string name="adeum_app_key">EUM-AAB-BAW</string>
+    <string name="adeum_collector_url">https://appd-prod-eum.multiplan.com</string>
+    <string name="adeum_screenshot_url">https://image.eum-appdynamics.com</string>
+    <string name="adeum_screenshots_enabled">false</string>
+    <string name="adeum_logging_level">1</string>
+    <string name="adeum_interaction_capture_mode">0</string>
+</resources>

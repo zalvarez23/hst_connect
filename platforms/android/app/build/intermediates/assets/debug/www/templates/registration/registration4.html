@@ -1,0 +1,85 @@
+<ion-view hide-nav-bar="true" title="{{'REGISTRATION' | translate}}" id="page11" hide-back-button="true">
+    <div class="header-figma">
+        <h1>Registration</h1>
+    </div>
+    <ion-content has-bouncing="false" class="content2-figma" ng-controller="registration4Ctrl">
+
+        <div class="step-txt dark-blueRight-text">
+            <p style="line-height: 30px;
+                margin-top: 18px;">{{'STEP' | translate}} 3 of 4</p>
+        </div>
+        <!-- <div id="registration3-markdown14" class="sub-title">
+                <p>{{'REVIEW_INFO' | translate}}</p>
+            </div> -->
+        <!-- <hr> -->
+
+        <div class="padding-horizontal contentStep3">
+            <div class="row">
+                <div class="col sub-title dark-green-text" style="font-weight: bold;">{{'STEP' | translate}} 1: {{'PERSONAL' | translate}}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'MEMBERID' | translate}}:</div>
+                <div class="col">{{ reg.MemberId }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'FIRSTNAME' | translate}}:</div>
+                <div class="col">{{ reg.FirstName }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'LASTNAME' | translate}}:</div>
+                <div class="col">{{ reg.LastName }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'BIRTH_DATE' | translate}}:</div>
+                <div class="col">{{ reg.DOB }}</div>
+            </div>
+            <p></p>
+            <!-- <hr> -->
+            <div class="row">
+                <div class="col sub-title dark-green-text" style="font-weight: bold;">Step 2: {{ 'UNAME_AND_PASSWD' | translate }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'USERNAME' | translate}}:</div>
+                <div class="col">{{ reg.Username }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'PASSWORD' | translate}}:</div>
+                <div class="col">{{ reg.Password }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'QUESTION' | translate}} 1:</div>
+                <div class="col">{{ reg.SecurityQ1 }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'ANSWER' | translate}} 1:</div>
+                <div class="col">{{ reg.Ans1 }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'QUESTION' | translate}} 2:</div>
+                <div class="col">{{ reg.SecurityQ2 }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'ANSWER' | translate}} 2:</div>
+                <div class="col">{{ reg.Ans2 }}</div>
+            </div>
+            <div class="row">
+                <div class="col">{{'EMAIL_ADDRESS' | translate}}:</div>
+                <div class="col">{{ reg.Email }}</div>
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <button type="button" class="button button-stable button-cancel button-block button-cancel-figma"
+                    ng-click="cancel()">{{'CANCEL' | translate}}</button>
+            </div>
+            <div class="col">
+                <button class="button button-stable button-next button-block button-next-figma"
+                    ng-click="SubmitForm()">{{'SUBMIT' | translate}}</button>
+            </div>
+
+        </div>
+
+    </ion-content>
+</ion-view>

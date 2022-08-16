@@ -1,0 +1,26 @@
+<ion-view ng-controller="tabCtrl as ctrl">
+    <!-- Tab controller -->
+    <ion-tabs class="tabs-white tabs-icon-top">
+        <ion-tab icon="price-procedure" class="borderTabTopLeft borderTabBottomLeft" on-select="setTab('tabsController.priceAProcedure')" ui-sref="tabsController.priceAProcedure" class="dark-blue-text item-text-wrap">
+            <ion-nav-view name="tab1"></ion-nav-view> <!-- ui-sref="tabsController.priceAProcedure"-->
+        </ion-tab>
+        <ion-tab icon="find-provider" on-select="setTab('tabsController.findAProvider')" ui-sref="tabsController.findAProvider" class="dark-blue-text item-text-wrap">
+            <ion-nav-view name="tab2"></ion-nav-view>
+        </ion-tab>
+        <ion-tab  icon="my-benefits" on-select="setTab('tabsController.myBenefits')" ui-sref="tabsController.myBenefits" class="dark-blue-text item-text-wrap">
+            <ion-nav-view name="tab3"></ion-nav-view>
+        </ion-tab>
+        <ion-tab  icon="call-insurance" class="borderTabTop borderTabBottom" on-select="setTab('tabsController.callInsurance')" ui-sref="tabsController.callInsurance" class="dark-blue-text item-text-wrap">
+            <ion-nav-view name="tab4"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="My Profile" icon="call-insurance" ui-sref="tabsController.myProfile" class="hide">
+            <ion-nav-view name="tab5"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Messages" icon="call-insurance" ui-sref="tabsController.messages" class="hide">
+            <ion-nav-view name="tab6"></ion-nav-view>
+        </ion-tab>
+        <ion-tab title="Your Doctor" icon="call-insurance" ui-sref="tabsController.yourdoctor" class="hide">
+            <ion-nav-view name="tab7"></ion-nav-view>
+        </ion-tab>
+    </ion-tabs>
+</ion-view>

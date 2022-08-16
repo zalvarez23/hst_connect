@@ -1,0 +1,308 @@
+<ion-view hide-nav-bar="true" title="{{ 'DETAILS' | translate }}">
+
+  <div class="header-figma-arrow">
+    <svg width="19" height="19" ui-sref="tabsController.PAPsearchResult" viewBox="0 0 19 19" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+        fill="white" />
+    </svg>
+    <h1 ng-bind="'DETAILS' | translate"></h1>
+  </div>
+
+  <ion-content has-bouncing="false" class="content2-figma" style="padding: 0px 9px;" padding="true"
+    ng-controller="searchDetailsCtrl">
+    <form class="list form-group search-details padding0" name="searchForm" novalidate>
+      <div class="knee-replace"> <b class="green-color"> <span ng-bind="procedurDetail.Medical_GroupName"></span> </b>
+        <i style="text-align: right" ng-click="showInfo()"
+          class="icon ion-information-circled stable price-range-info"></i>
+      </div>
+
+      <!-- last change ng-if="!newProject" -->
+      <div class="row" style="margin-top: 10px;">
+        <span>VBP Acceptance: </span>
+        <div class="acceptance acceptance-{{procedurDetail.FacilityAcceptanceID}}"></div>
+        <span class="padded-left roboto-bold dark-blue-text" ng-bind="procedurDetail.FacilityAcceptanceText"></span>
+      </div>
+      <div class="list">
+        <div class="item item-text-wrap cardFigmaResult">
+          <div class="row search-detail-hint align-start">
+            <div class="col col-25"> <b> <span ng-bind="'ADDRESS' | translate"></span>: </b> </div>
+            <div class="col col-75 detailed-info">
+              <span ng-if="procedurDetail.Address1" class="capitalize">{{procedurDetail.Address1}}</span>
+              <n ng-if="procedurDetail.Address2">, </n>
+              <span ng-if="procedurDetail.Address2" class="capitalize">{{procedurDetail.Address2+","}}</span><br>
+              <span ng-if="procedurDetail.City" class="capitalize">{{procedurDetail.City+", "}}</span> <span
+                ng-if="procedurDetail.State">{{procedurDetail.State+" "}}</span>
+              <span ng-bind="procedurDetail.Zip"></span>
+              <div class="font12"> <a ng-click="openUrl()" style="color: #327FCF;font-weight: bold;">{{ 'GET_DIRECTIONS'
+                  | translate }}</a>
+                <span class="float-right" ng-if="procedurDetail.DistanceFromBase">{{procedurDetail.DistanceFromBase.toFixed(2) + "
+                  " + ('MILES_2' | translate)}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list">
+        <div class="item item-text-wrap cardFigmaResult">
+          <div class="row search-detail-hint">
+            <div class="col col-25"> <b> <span ng-bind="'PHONE' | translate"></span> : </b> </div>
+            <div class="col col-75 detailed-info stable text-right forget-User-Pass">
+              <a ng-href="{{'tel:' + procedurDetail.Phone}}" class="forget-User-Pass"> {{procedurDetail.Phone | tel}}
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list">
+        <div class="item item-text-wrap cardFigmaResult">
+          <div class="row search-detail-hint">
+            <div class="col col-50"> <b> <span ng-bind="'QUALITY_RATING' | translate"></span> : </b> </div>
+            <div class="col col-50 detailed-info stable text-right">
+              <div class="" ng-init="quality_ratings_data = getRating(procedurDetail.QualityRating)">
+                <div class="" ng-if="procedurDetail.QualityRating != ''">
+                  <ionic-ratings ratingsobj='quality_ratings_data'></ionic-ratings>
+                </div>
+                <div class="col" ng-if="procedurDetail.QualityRating == ''">
+                  <div class="step-txt dark-green-text font12">
+                    <span ng-bind="'NO_QUALITY_RATINGS' | translate"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="list">
+        <div class="item item-text-wrap cardFigmaResult">
+          <div class="row detailed-info">
+            <div class="col col-67"> <b> {{localStorageFactory.data.selectedProcedure+" Charge:"}} </b> </div>
+            <div class="col col-33 green-color text-right">
+              <div ng-if="procedurDetail.AverageCharge != ''">{{procedurDetail.AverageCharge | currency:"$":0}} </div>
+              <div class="step-txt font12" ng-if="procedurDetail.AverageCharge == ''"><span class="step-txt font12"
+                  ng-if="!procedurDetail.AverageCharge" ng-bind="'NOT_PROVIDED' | translate"></span></div>
+            </div>
+          </div>
+          <div class="row detailed-info">
+            <div class="col col-75"> <span ng-bind="'PATIENTS_TREATED' | translate"></span>: </div>
+            <div class="col col-25 text-right"> <span ng-bind="procedurDetail.NumberOfCases"></span><span
+                class="step-txt font12" ng-if="!procedurDetail.NumberOfCases"
+                ng-bind="'NOT_PROVIDED' | translate"></span> </div>
+          </div>
+          <div class="row detailed-info">
+            <div class="col col-75"> <span ng-bind="'AVERAGE_LENGTH_OF_STAY' | translate"></span>: </div>
+            <div class="col col-25 text-right"> <span
+                ng-if="procedurDetail.AverageLengthOfStay">{{procedurDetail.AverageLengthOfStay+" Days"}}</span><span
+                class="step-txt font12" ng-if="!procedurDetail.AverageLengthOfStay"
+                ng-bind="'NOT_PROVIDED' | translate"></span> </div>
+          </div>
+        </div>
+      </div>
+      <div class="list" ng-if="!newProject">
+        <div class="item item-text-wrap cardFigmaResult"
+          data-ng-if="procedurDetail.MinOutOfPocketCost && procedurDetail.MinOutOfPocketCost >= 0 && procedurDetail.MaxOutOfPocketCost && procedurDetail.MaxOutOfPocketCost >= 0">
+          <h3 class="price-range roboto-bold"> <span class="color-green"
+              ng-bind="'AVERAGE_COST_AT_THIS_FACILITY' | translate"></span> </h3>
+          <div class="range-indicatior">
+            <div class="arrow-indicator" data-ng-if="procedurDetail.MemberTotalCost">
+              <span
+                class="arrow-down color-{{getAverageRang(procedurDetail.MinOutOfPocketCost,procedurDetail.MaxOutOfPocketCost).cost}}"
+                style="left: {{getAverageRang(procedurDetail.MinOutOfPocketCost,procedurDetail.MaxOutOfPocketCost).left}}"></span>
+            </div>
+            <div class="prograss-wrapper"><span class="green"></span><span class="yellow"></span><span
+                class="red"></span></div>
+            <div class="price-range-value"><span class="min">{{procedurDetail.MinOutOfPocketCost |
+                currency:"$":0}}</span> <span class="max">{{procedurDetail.MaxOutOfPocketCost | currency:"$":0}}</span>
+            </div>
+          </div>
+        </div>
+        <div class="item item-text-wrap cardFigmaResult">
+          <div class="row search-detail-hint">
+            <div class="col col-90"> <b> <span ng-bind="'TOTAL_OUT_OF_POCKET_COSTS' | translate"></span>: </b> </div>
+          </div>
+          <div class="row detailed-info">
+            <div class="col col-75"> <span ng-bind="'CO_PAY' | translate"></span> : </div>
+            <div class="col col-25 text-right">
+              <!-- <div ng-if="procedurDetail.Deductible != ''"> {{procedurDetail.CoPay | currency:"$":0}} </div>
+              <div class="step-txt font12" ng-if="procedurDetail.CoPay == ''"><span ng-bind="'NOT_PROVIDED' | translate"></span></div> -->
+              <div ng-if="procedurDetail.Deductible != ''"> {{procedurDetail.CoPay | currency:"$":0}} </div>
+              <div ng-if="procedurDetail.Deductible == ''"> {{procedurDetail.CoPay}} </div>
+            </div>
+          </div>
+          <div class="row detailed-info">
+            <div class="col col-75"> <span ng-bind="'DEDUCTIBLE' | translate"></span> <span class="font12"
+                ng-bind="'IF_NOT_MET_YET' | translate"></span>: </div>
+            <div class="col col-25 text-right">
+              <!-- <div ng-if="procedurDetail.Deductible != ''"> {{procedurDetail.Deductible | currency:"$":0}} </div>
+              <div class="step-txt font12" ng-if="procedurDetail.Deductible == ''"><span ng-bind="'NOT_PROVIDED' | translate"></span></div> -->
+              <div ng-if="procedurDetail.Deductible != ''"> {{procedurDetail.Deductible | currency:"$":0}} </div>
+              <div ng-if="procedurDetail.Deductible == ''"> {{procedurDetail.Deductible}} </div>
+            </div>
+          </div>
+          <div class="row detailed-info">
+            <div class="col col-75"> <span ng-bind="'CO_INSURANCE' | translate"></span> <span class="font12"
+                ng-bind="'YOUR_ESTIMATED_SHARE_OF_COSTS' | translate"></span>: </div>
+            <div class="col col-25 text-right">
+              <!-- <div ng-if="procedurDetail.CoInsurance != ''"> {{procedurDetail.CoInsurance | currency:"$":0}} </div>
+              <div class="step-txt font12" ng-if="procedurDetail.CoInsurance == ''"><span ng-bind="'NOT_AVAILABLE' | translate"></span></div> -->
+              <div ng-if="procedurDetail.CoInsurance != ''"> {{procedurDetail.CoInsurance | currency:"$":0}} </div>
+              <div ng-if="procedurDetail.CoInsurance == ''"> {{procedurDetail.CoInsurance}} </div>
+
+            </div>
+          </div>
+          <div class="row detailed-info up-strip">
+            <div class="col col-50"> <b> <span ng-bind="'YOUR_COST' | translate"></span>: </b> </div>
+            <div
+              class="col col-50 roboto-bold font16 text-right color-{{getAverageCost(procedurDetail.MinOutOfPocketCost,procedurDetail.MaxOutOfPocketCost)}}">
+              <div ng-if="procedurDetail.MemberTotalCost != ''">{{procedurDetail.MemberTotalCost | currency:"$":0}}
+              </div>
+              <div class="step-txt font12" ng-if="procedurDetail.MemberTotalCost == ''"><span
+                  ng-bind="'NOT_PROVIDED' | translate"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <a ng-if="k" class="button button-block button-stable call-button upper-case"
+        ng-href="{{'tel:' + procedurDetail.InsurancePhoneNumber}}">
+        <span ng-bind="'CALL_NOW' | translate"></span>
+      </a>
+    </form>
+
+    <!--Modal For More Information-->
+    <script id="more-info.html" type="text/ng-template">
+          <ion-modal-view class="border-radius-10 filter-color">
+              <ion-header-bar class="modal-title-bg" style="flex-flow: row-reverse;">
+                  <div class="title">Info</div>
+                  <i ng-click="closeInfo()" class="icon ion-close flex-end closeInfo"></i> 
+              </ion-header-bar>
+              <ion-content style= "margin-right: 8px; margin-left: 8px">
+                  <div>
+                      <h4><span ng-bind="'QUALITY' | translate"></span></h4>     
+                      <div style="color: rgb(233,203,60)">                       
+                      <i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i>
+                      </div>
+                      <p>
+                          The hospital's overall rating shows the quality of care based on 60 measures reported to Centers for Medicare &
+                          Medicaid (CMS) for hospital provided services. The average rating for hospitals is a three-star rating.                             
+                      </p>
+                  </div>
+                  <br>
+                  <div>
+                      <h4>Cost</h4>   
+                      <div style="color: rgb(233,203,60)">                           
+                          <i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i>
+                      </div>
+                      <p>
+                          Price rating is based on the hospital's average charge for a specified procedure. 
+                          If no procedure is identified the price rating is based on the hospitals overall cost-of-charge.                                
+                      </p>
+                      <div style="color: rgb(158, 158, 158)">                           
+                          <i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i>
+                      </div>
+                      <p>
+                        Price rating not available                                
+                      </p>                      
+                  </div>
+                  <br>
+                  <!-- Las change newProject-->
+                  <!-- <div>
+                      <h4><span ng-bind="'VBP_ACCEPTANCE' | translate"></span></h4>
+                      <div>
+                          <div class="inline-deep">
+                              <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-1"></div>
+                              <span style="margin-left: 2px" class="dark-blue-text roboto-bold">  VBP Accepted</span>
+                               - Facility has accepted VBP.
+                          </div>
+                      </div>
+                      <div>
+                          <div class="inline-deep">
+                              <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-2"></div>
+                              <span style="margin-left: 2px" class="dark-blue-text roboto-bold"> Emergency Use Only</span>
+                              - Facility has not accepted VBP and has given pushback.                                   
+                          </div>
+                      </div>
+                      <div>
+                          <div class="inline-deep">
+                              <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-3"></div>
+                              <span style="margin-left: 2px" class="dark-blue-text roboto-bold"> Partial Acceptance</span>
+                              - Facility has experience with VBP and has given pushback on certain procedures.
+                          </div>
+                      </div>
+                      <div>
+                          <div class="inline-deep">
+                              <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-4"></div>
+                              <span style="margin-left: 2px" class="dark-blue-text roboto-bold"> Limited Experience</span>
+                              - Not enough experience with VBP to determine acceptance rate.                              
+                          </div>
+                      </div>
+                  </div> -->
+
+
+                  <div >
+                    <h4><span ng-bind="'VBP_ACCEPTANCE' | translate"></span></h4>
+                    <div>
+                      <div class="inline-deep flex-center" style="margin-bottom : 5px">
+                          <img  src="../../img/icons/anchor.png" style="margin-right: 2px;">
+                          <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text">HST Anchor</span>
+                          <!-- - Facility has accepted VBP. -->
+                      </div>
+                  </div>
+                  <div>
+                      <div class="inline-deep flex-center" style="margin-bottom : 5px">
+                          <img  src="../../img/icons/star.png" style="margin-right: 8px;">
+                          <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Contracted</span>
+                          <!-- - Facility has accepted VBP. -->
+                      </div>
+                  </div>
+                    <div>
+                        <div class="inline-deep">
+                            <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-1"></div>
+                            <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> >90% VBP Acceptance</span>
+                             <!-- - Facility has accepted VBP. -->
+                        </div>
+                    </div>
+            
+                    <div>
+                        <div class="inline-deep">
+                            <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-3"></div>
+                            <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> 75-90% VBP Acceptance </span>
+                            <!-- - Facility has experience with VBP and has given pushback on certain procedures.                                 -->
+                        </div>
+                    </div>
+
+                    <div>
+                      <div class="inline-deep">
+                          <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-2"></div>
+                          <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Below 75% or Above 250% of Medicare
+                            Allowed </span>
+                          <!-- - Facility has not accepted VBP and has given pushback.                                                          -->
+                      </div>
+                  </div>
+
+                  
+                    <div>
+                        <div class="inline-deep">
+                            <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-4"></div>
+                            <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Limited Experience</span>
+                            - Not enough experience with VBP to determine acceptance rate.                             
+                        </div>
+                    </div>
+                </div>
+                  <br>
+                
+
+                  <div ng-if="!newProject">
+                      <h4><span ng-bind="'YOUR_EST_COST' | translate"></span></h4>
+                      <p>
+                          This amount combines your copay, deductible and coinsurance and estimates 
+                          what your out-pocket expense might be for a specified procedure.
+                      </p>    
+                  </div>
+                  <br>
+              </ion-content>
+          </ion-modal-view>
+      </script>
+
+  </ion-content>
+</ion-view>

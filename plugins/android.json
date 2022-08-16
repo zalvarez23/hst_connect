@@ -1,0 +1,101 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "appd-plugin-eum-mobile": {
+      "APP_KEY": "EUM-AAB-BAW",
+      "COLLECTOR_URL": "https://appd-prod-eum.multiplan.com",
+      "SCREENSHOT_URL": "https://image.eum-appdynamics.com",
+      "SCREENSHOTS_ENABLED": "false",
+      "LOGGING_LEVEL": "1",
+      "REACHABILITY_HOST": "www.google.com",
+      "INTERACTION_CAPTURE_MODE": "0",
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-actionsheet": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-app-preferences": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-app-version": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-background-mode": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-camera": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-console": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-datepicker": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-googlemaps": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-inappbrowser": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-themeablebrowser": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova.plugins.diagnostic": {
+      "ANDROID_SUPPORT_VERSION": "28.+",
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "ionic-plugin-keyboard": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "uk.co.workingedge.phonegap.plugin.launchnavigator": {
+      "GOOGLE_API_KEY_FOR_ANDROID": "AIzaSyBK69imbUEWzCSkpPFC_VW1CVK30bLu1bw",
+      "OKHTTP_VERSION": "3.12.0",
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    },
+    "cordova-android-support-gradle-release": {
+      "ANDROID_SUPPORT_VERSION": "27.+",
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    }
+  },
+  "dependent_plugins": {
+    "com.googlemaps.ios": {
+      "PACKAGE_NAME": "com.hst.hstmobile2"
+    }
+  }
+}

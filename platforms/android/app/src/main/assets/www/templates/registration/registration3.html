@@ -1,0 +1,27 @@
+<ion-view hide-nav-bar="true" title="{{'REGISTRATION' | translate}}" id="page12" hide-back-button="true">
+    <div class="header-figma">
+        <h1>Registration</h1>
+    </div>
+    <ion-content has-bouncing="false" class="content2-figma" id="contentFigmaLicence" ng-controller="registration3Ctrl">
+        <div class="step-txt dark-blueRight-text">
+            <p style="line-height: 30px;
+            margin-top: 18px;">{{'STEP' | translate}} 3 of 4</p>
+        </div>
+        <div>
+            <div ng-bind-html="licenceAgreement" class="padding-horizontal"></div>
+        </div>
+        <ion-checkbox style="border-radius: 60px; font-size: 14px;margin: 0px 10px;" ng-model="reg.agreeToContinue">
+            {{'AGREE_TO_CONTINUE' | translate}}</ion-checkbox>
+        <div class="row" style="    padding-bottom: 90px;">
+            <div class="col ">
+                <button type="button" class="button button-stable button-cancel button-block button-cancel-figma"
+                    ng-click="cancel()">{{'CANCEL' | translate}}</button>
+            </div>
+            <div class="col">
+                <button ui-sref="registration4" class="button button-stable button-next button-block button-next-figma"
+                    ng-disabled="!reg.agreeToContinue">{{'NEXT' | translate}}</button>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

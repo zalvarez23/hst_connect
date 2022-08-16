@@ -1,0 +1,115 @@
+<ion-view hide-nav-bar="true" title="{{'REGISTRATION' | translate}}" hide-back-button="true" cache-view="false">
+    <div class="header-figma">
+        <h1>Registration</h1>
+    </div>
+    <ion-content has-bouncing="false" class="content2-figma" ng-controller="registration2Ctrl">
+        <form class="list light-gray-text reg-form" name="regForm" novalidate>
+            <div class="step-txt dark-blueRight-text">
+                <p style="line-height: 45px;">{{'STEP' | translate}} 2 of 4</p>
+            </div>
+            <!-- <h5 class="dark-gray-text">{{'UNAME_AND_PASSWD' | translate}}</h5> -->
+            <label class="item item-input padding-horizontal"
+                ng-class="{ 'has-error': regForm.$submitted && regForm.Username.$invalid }">
+                <!-- <i class="ion icon ion-custom-person placeholder-icon"></i> -->
+                <input type="text" placeholder="{{'USERNAME' | translate}}" ng-model="reg.Username" name="Username"
+                    ng-minlength="6" ng-required="true" ng-pattern="/^\S*$/">
+            </label>
+
+            <div class="padding-horizontal">
+                <small class="block-text">{{'STRICT_MUST_6_CHAR' | translate}}</small>
+                <small class="block-text">{{'CANNOT_CONTAIN_SPACE' | translate}}</small>
+            </div>
+
+            <label class="item item-input padding-horizontal"
+                ng-class="{ 'has-error': regForm.$submitted && regForm.Password.$invalid }">
+                <!-- <i class="ion icon ion-custom-locked placeholder-icon"></i> -->
+                <input type="password" placeholder="{{'CREATE_PASSWORD' | translate}}" ng-model="reg.Password"
+                    name="Password" ng-required="true" ng-minlength="6">
+            </label>
+
+            <div class="padding-horizontal">
+                <small class="block-text">{{'MUST_6_CHAR' | translate}}</small>
+            </div>
+            <label class="item item-input padding-horizontal"
+                ng-class="{ 'has-error': regForm.$submitted && regForm.confirmPassword.$invalid }">
+                <!-- <i class="ion icon ion-custom-locked placeholder-icon"></i> -->
+                <input type="password" placeholder="{{'CONFIRM_PASSWORD' | translate}}" ng-model="confirmPassword"
+                    name="confirmPassword" ng-required="true">
+            </label>
+            <div class="padding-horizontal">
+                <h5 class="dark-gray-text" style="font-size: 12px;">{{'SECURITY_QUESTION' | translate}} 1:</h5>
+            </div>
+
+            <div class="list list-inset">
+
+                <label class="item item-input item-select"
+                    ng-class="{ 'has-error': regForm.$submitted && regForm.SecurityQ1.$invalid }">
+                    <div class="input-label">
+                        &nbsp;
+                    </div>
+                    <select ng-model="reg.SecurityQ1" name="SecurityQ1" ng-required="true">
+                        <option value="">{{ 'PLEASE_SELECT' | translate }}</option>
+                        <option ng-repeat="question in securityQuestion1" value="{{ question }}">{{ question }}
+                        </option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="list list-inset">
+                <label class="item item-input" ng-class="{ 'has-error': regForm.$submitted && regForm.Ans1.$invalid }">
+                    <!-- <i class="ion icon ion-shield placeholder-icon"></i> -->
+                    <input type="text" placeholder="{{'ANSWER' | translate}}" ng-model="reg.Ans1" name="Ans1"
+                        ng-required="true">
+                </label>
+            </div>
+
+            <div class="padding-horizontal">
+                <h5 class="dark-gray-text" style="font-size: 12px;">{{'SECURITY_QUESTION' | translate}} 2:</h5>
+            </div>
+
+            <div class="list list-inset">
+
+                <label class="item item-input item-select"
+                    ng-class="{ 'has-error': regForm.$submitted && regForm.SecurityQ2.$invalid }">
+                    <div class="input-label">
+                        &nbsp;
+                    </div>
+                    <select ng-model="reg.SecurityQ2" name="SecurityQ2" ng-required="true">
+                        <option value="">{{ 'PLEASE_SELECT' | translate }}</option>
+                        <option ng-repeat="question in securityQuestion2" value="{{ question }}">{{ question }}
+                        </option>
+                    </select>
+                </label>
+            </div>
+            <div class="list list-inset">
+                <label class="item item-input" ng-class="{ 'has-error': regForm.$submitted && regForm.Ans2.$invalid }">
+                    <!-- <i class="ion icon ion-shield placeholder-icon"></i> -->
+                    <input type="text" placeholder="{{'ANSWER' | translate}}" ng-model="reg.Ans2" name="Ans2"
+                        ng-required="true">
+                </label>
+            </div>
+
+            <div class="list list-inset">
+                <label class="item item-input" ng-class="{ 'has-error': regForm.$submitted && regForm.Email.$invalid }">
+                    <!-- <i class="ion icon ion-shield placeholder-icon"></i> -->
+                    <input type="email" placeholder="{{'EMAIL_ADDRESS' | translate}}" ng-model="reg.Email" name="Email"
+                        ng-required="true">
+                </label>
+            </div>
+
+            <div class="row">
+                <div class="col ">
+                    <button type="button" class="button button-stable button-cancel button-block button-cancel-figma"
+                        ng-click="cancel()">{{'CANCEL' | translate}}</button>
+                </div>
+                <div class="col">
+                    <button type="submit" class="button button-stable button-next button-block button-next-figma"
+                        ng-click="gotoNextPage()">{{'NEXT' | translate}}</button>
+                </div>
+
+            </div>
+
+        </form>
+    </ion-content>
+
+</ion-view>

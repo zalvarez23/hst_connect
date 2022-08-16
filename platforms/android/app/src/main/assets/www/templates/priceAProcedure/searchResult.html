@@ -1,0 +1,464 @@
+<ion-view hide-nav-bar="true" title="{{ 'SEARCH_RESULTS' | translate }}">
+
+    <div class="header-figma-arrow">
+        <svg width="19" height="19" ui-sref="tabsController.priceAProcedure" viewBox="0 0 19 19" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+                fill="white" />
+        </svg>
+        <h1 ng-bind="'SEARCH_RESULTS' | translate"></h1>
+    </div>
+    <ion-content has-bouncing="false" class="search-result padding0 content2-figma " style="padding:0px 9px"
+        padding="true" ng-controller="searchResultCtrl">
+        <div class="list knee-replace">
+            <p ng-click="searchInfoByDescription();" class="color-green roboto-bold"
+                style="font-size:18px;width: 70%;text-decoration: underline;">
+                {{localStorageFactory.data.selectedProcedure}}</p>
+
+            <!-- <p ng-click="searchInfoByDescription();" style=" font-size:18px;width: 70%;text-decoration: underline;" class="color-green roboto-bold">CArdiac Angioplasty - w/drug eluting
+                stent</p> -->
+
+            <!--Info Button Items-->
+
+
+            <div ng-click="searchInfoByDescription();"
+                class=" button button-small button-stable proc-information contentProcInfo button-cancel-figma"
+                ng-click="showPopSend()">
+                <p>Procedure Information</p>
+            </div>
+            <!-- <i style="    text-align: right;
+            color: #8bbf1c;
+            position: absolute;
+            right: 6px;
+            top: 4px;" ng-click="searchInfoByDescription()"
+                class="icon ion-information-circled stable price-range-info"></i> -->
+
+        </div>
+
+        <div class="list contentFilterButton">
+            <button class="filter-but  button-small  button button-cancel-figma" ng-click="showAllOnMap()">
+                <span ng-bind="'MAP_RESULTS' | translate"></span>
+            </button>
+
+            <button class="filter-but button button-small button-cancel-figma" ui-sref="tabsController.priceAProcedure">
+                <span ng-bind="'REFINE_RESULTS' | translate"></span>
+            </button>
+
+            <button class="filter-but button button-small button-cancel-figma" ng-click="showFilters()">
+                <span ng-bind="'FILTER' | translate"></span>
+            </button>
+        </div>
+
+        <div class="row sorting">
+            <div class="col">
+                <span class="roboto-bold" ng-bind="'SORT_BY' | translate"></span>:
+                <span class="dark-blue-text roboto-bold">
+                    <select ng-model="sortKey" class="no-border dark-blue-text bold-text">
+                        <option ng-repeat="(key, value) in sortOptions" value="{{ value }}">{{ key | translate }}
+                        </option>
+                    </select>
+                </span>
+            </div>
+
+            <div class="col col-33 text-right">
+                <i style="position: absolute;right: 15px;color: #AFC95F;" ng-click="showInfo()"
+                    class="icon ion-information-circled stable price-range-info"></i>
+                <span class="dark-blue-text bold-text" style="margin-right: 29px;font-size: 12px;"
+                    ng-if="filteredData.length > 0">
+                    <span ng-bind="'FOUND' | translate"></span> : {{ filteredData.length }}
+                </span>
+            </div>
+
+        </div>
+
+        <div class="list" ng-hide="filteredData.length == 0">
+            <div class="item item-text-wrap cardFigmaResult">
+                <b class="green-color price-range"> <span ng-bind="'ESTIMATED_CHARGE_RANGE' | translate"></span> </b>
+
+                <div class="range-indicatior">
+                    <div class="arrow-indicator">
+                        <!-- <span class="arrow-down "></span> -->
+                    </div>
+                    <div class="prograss-wrapper">
+                        <span class="all"></span>
+                        <!-- <span class="yellow"></span> -->
+                        <!-- <span class="red"></span> -->
+                    </div>
+                    <div class="price-range-value"><span class="min">{{totalResults.minPrice | currency:'$'}}</span>
+                        <span class="max">{{totalResults.maxPrice | currency:'$'}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div ng-class="{ 'hide' : filteredData.length > 0 }">
+            <div class="step-txt dark-green-text text-center">
+                <span ng-bind="'NO_PROVIDERS_FOUND' | translate"></span>
+            </div>
+        </div>
+
+        <div class="list" ng-repeat="result in filteredData = (view.message | filter: filterData | orderBy: sortKey)">
+
+            <div class="item item-text-wrap cardFigmaResult">
+                <div class="search-detail-hint ">
+                    <b class="stable medical-group" style="color:#2B4C6E" ng-click="searchResult(result.Doctor_Id)">
+                        {{result.Medical_GroupName}}</b>
+                    <span class="measure"> {{result.DistanceFromBase.toFixed(2) + " " + ('MILES_2' | translate)}}</span>
+                </div>
+
+                <div class="row detailed-info">
+                    <div class="col col-40"> <span ng-bind="'QUALITY_RATING' | translate"></span>: </div>
+                    <div class="col col-60">
+                        <div class="" ng-init="quality_ratings_data = getRating(result.QualityRating)">
+                            <div class="" ng-if="result.QualityRating">
+                                <ionic-ratings ratingsobj='quality_ratings_data'></ionic-ratings>
+                            </div>
+                            <div class="col" ng-if="!result.QualityRating">
+                                <div class="step-txt light-gray-text font12 text-right">
+                                    </span><span ng-bind="'NOT_AVAILABLE' | translate"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- <div class="row detailed-info">
+              <div class="col col-40">  <span ng-bind="'PATIENTS_TREATED' | translate"></span>:  </div>
+              <div class="col col-60"> {{result.NumberOfCases}} </div>              
+            </div> -->
+
+                <div class="row detailed-info">
+                    <div class="col col-40"> <span ng-bind="'YOUR_ESTIMATED_COST' | translate"></span>: </div>
+                    <div class="col col-30">
+                        <div ng-if="result.AverageCharge != ''">
+                            {{ result.AverageCharge | currency:"$":0 }}
+                        </div>
+                        <div class="step-txt font12" ng-if="result.AverageCharge == ''"><span
+                                ng-bind="'NOT_PROVIDED' | translate"></span></div>
+                    </div>
+                    <div class="col col-30">
+                        <div class="" ng-init="quality_priceratings_data = getPriceRating(result.PriceRating)">
+                            <div class="" ng-if="result.PriceRating < 6">
+                                <ionic-ratings ratingsobj='quality_priceratings_data'></ionic-ratings>
+                            </div>
+                            <div class="col" ng-if="result.PriceRating >= 6">
+                                <div class="step-txt light-gray-text font12 text-right">
+                                    <!-- <span ng-bind="'NOT_AVAILABLE' | translate"></span> -->
+                                    <div style="color: rgb(158, 158, 158)">
+                                        <i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i
+                                            class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i
+                                            class="icon ion-social-usd"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- last change ng-if="!newProject" -->
+                <div class="row detailed-info">
+                    <div class="col col-40"> <span ng-bind="'VBP_ACCEPTANCE' | translate"></span>: </div>
+                    <div class="col col-60">
+                        <div class="" ng-init="facility_acceptance_data = getRating(result.FacilityAcceptanceText)">
+                            <div class="row flex-end" ng-if="result.FacilityAcceptanceText">
+                                <span class="dark-blue-text roboto-bold">{{result.FacilityAcceptanceText}}</span>
+                                <div ng-if="result.FacilityAcceptanceID != 5 &&
+                                 result.FacilityAcceptanceID != 6 && 
+                                 result.FacilityAcceptanceID != 7"
+                                    class="acceptance acceptance-{{result.FacilityAcceptanceID}}"></div>
+                                <img ng-if="result.FacilityAcceptanceID == 5" style="margin-left: 5px;width: 20px"
+                                    src="../../img/icons/star.png">
+                                <img ng-if="result.FacilityAcceptanceID == 6 || result.FacilityAcceptanceID == 7"
+                                    style="margin-left: 5px;" src="../../img/icons/anchor.png">
+
+                            </div>
+                            <div class="col" ng-if="!result.FacilityAcceptanceText">
+                                <div class="step-txt light-gray-text font12 text-right">
+                                    </span><span ng-bind="'NOT_AVAILABLE' | translate"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row detailed-info">
+                    <div class="col col-100 stable detailed-info" ng-click="searchResult(result.Doctor_Id)"><b><span
+                                class="roboto-bold" ng-bind="'DETAILS' | translate"></span></b></div>
+                </div>
+            </div>
+        </div>
+        <!--Modal For More Information-->
+        <script id="more-info.html" type="text/ng-template">
+
+                <ion-modal-view class="border-radius-10 filter-color">
+                    <ion-header-bar class="modal-title-bg" style="flex-flow: row-reverse;">
+                        <div class="title">Info</div>
+                        <i ng-click="closeInfo()" class="icon ion-close flex-end closeInfo"></i> 
+                    </ion-header-bar>
+                    <ion-content style= "margin-right: 8px; margin-left: 8px">
+                        <div>
+                            <h4><span ng-bind="'QUALITY' | translate"></span></h4>     
+                            <div style="color: rgb(233,203,60)">                       
+                            <i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i>
+                            </div>
+                            <p>
+                                The hospital's overall rating shows the quality of care based on 60 measures reported to Centers for Medicare &
+                                Medicaid (CMS) for hospital provided services. The average rating for hospitals is a three-star rating. Rating updated on {{view.message[0].QualityRatingUpdatedOn | date :  "MM/dd/y" }}.
+                            </p>
+                        </div>
+                        <br>
+                        <div>
+                            <h4>Cost</h4>   
+                            <div style="color: rgb(233,203,60)">                           
+                                <i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i>
+                            </div>
+                            <p>
+                                Price rating is based on the hospital's average charge for a specified procedure. 
+                                If no procedure is identified the price rating is based on the hospitals overall cost-of-charge.                                
+                            </p>
+
+                            <div style="color: rgb(158, 158, 158)">                           
+                                <i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i>
+                            </div>
+                            <p>
+                                Price rating not available                                
+                            </p>
+                        </div>
+                        <br>
+                        
+                        <!-- last change ng-if="!newProject" -->
+                        <!-- <div>
+                            <h4><span ng-bind="'VBP_ACCEPTANCE' | translate"></span></h4>
+                            <div>
+                                <div class="inline-deep">
+                                    <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-1"></div>
+                                    <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> VBP Accepted</span>
+                                     - Facility has accepted VBP.
+                                </div>
+                            </div>
+                            <div>
+                                <div class="inline-deep">
+                                    <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-2"></div>
+                                    <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text">Emergency Use Only</span>
+                                    - Facility has not accepted VBP and has given pushback.                                            
+                                </div>
+                            </div>
+                            <div>
+                                <div class="inline-deep">
+                                    <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-3"></div>
+                                    <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Partial Acceptance</span>
+                                    - Facility has experience with VBP and has given pushback on certain procedures.
+                                </div>
+                            </div>
+                            <div>
+                                <div class="inline-deep">
+                                    <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-4"></div>
+                                    <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Limited Experience</span>
+                                    - Not enough experience with VBP to determine acceptance rate.                                
+                                </div>
+                            </div>
+                        </div> -->
+                    <div >
+                        <h4><span ng-bind="'VBP_ACCEPTANCE' | translate"></span></h4>
+                        <div >
+                            <div class="inline-deep flex-center" style="margin-bottom : 5px">
+                                <img  src="../../img/icons/anchor.png" style="margin-right: 2px;">
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text">HST Anchor</span>
+                                <!-- - Facility has accepted VBP. -->
+                            </div>
+                        </div>
+                        <div>
+                            <div class="inline-deep flex-center" style="margin-bottom : 5px">
+                                <img  src="../../img/icons/star.png" style="margin-right: 8px;">
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Contracted</span>
+                                <!-- - Facility has accepted VBP. -->
+                            </div>
+                        </div>
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-1"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> >90% VBP Acceptance</span>
+                                 <!-- - Facility has accepted VBP. -->
+                            </div>
+                        </div>
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-3"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> 75-90% VBP Acceptance </span>
+                                <!-- - Facility has experience with VBP and has given pushback on certain procedures.                                 -->
+                            </div>
+                        </div>
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-2"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Below 75% or Above 250% of Medicare
+                                    Allowed </span>
+                                <!-- - Facility has not accepted VBP and has given pushback.                                                          -->
+                            </div>
+                        </div>
+                  
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-4"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Limited Experience</span>
+                                - Not enough experience with VBP to determine acceptance rate.                             
+                            </div>
+                        </div>
+                    </div>
+                        <br>
+                        <div ng-if="!newProject">
+                            <h4><span ng-bind="'YOUR_EST_COST' | translate"></span></h4>
+                            <p>
+                                This amount combines your copay, deductible and coinsurance and estimates 
+                                what your out-pocket expense might be for a specified procedure.
+                            </p>    
+                        </div>
+                        <br>
+                    </ion-content>
+                </ion-modal-view>
+            </script>
+        <script id="more-info-new.html" type="text/ng-template">
+                <ion-modal-view class="border-radius-10 filter-color">
+                    <ion-header-bar class="modal-title-bg" style="flex-flow: row-reverse;">
+                        <div class="title">Synopsis</div>
+                        <i ng-click="closeInfoNew()" class="icon ion-close flex-end closeInfo"></i> 
+                    </ion-header-bar>
+                    <ion-content style= "margin-right: 8px; margin-left: 8px">
+      
+                      <p class="fromMedlinePlusText">From MedlinePlus.gov:</p>
+                      <div style="padding-bottom:20px;">
+                        <div class="contentTextNewInfo" ng-repeat="item in groupCategories">  
+                            <div ng-bind-html = "item.title" style='font-weight: bold'></div>
+                            <div ng-bind-html = "item.fullsumary"></div>
+                         <ul ng-repeat = "categories in item.categoriesPrint" style="list-style-type:initial;margin-left: 21px;">
+                            <li>{{categories.category}}</li>
+                            <ul ng-repeat = "detail in categories.details" style="list-style-type:circle;margin-left: 21px;">
+                                <li class="hrefClass" ng-click="goToLink(detail.url)">{{detail.title}}</li>
+                              </ul>
+                          </ul>
+                     </div>
+                      </div>
+                     
+                    </ion-content>
+                </ion-modal-view>
+            </script>
+        <!--Modal For the Filters-->
+        <script id="pap-filters.html" type="text/ng-template">
+            <ion-modal-view class="border-radius-10 filter-color">
+
+                
+                <div class="header-figma-arrow">
+                    <svg width="19" height="19" ng-click="hideFilters()" viewBox="0 0 19 19" fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+                        fill="white" />
+                    </svg>
+                    <h1 ng-bind="'FILTER_BY' | translate"></h1>
+                </div>
+                <!-- <ion-header-bar class="modal-title-bg">
+                    <span class="title"><span ng-bind="'FILTER_BY' | translate"></span></span>
+                </ion-header-bar> -->
+                <ion-content class="content2-figma" style="padding:10px 10px">
+                    <div class="list list-inset listFilterFigma">
+                        <span class="textFilter" ng-bind="'PRICE' | translate"></span>
+                        <div class="row hor-center-align">
+                            <div class="col">
+                                <button class="button button-outline button-small button-stable btn-filter button-next-figma" ng-click="setPriceFilter('ANY')" ng-class="{ 'button-balanced' : (filter.Price.indexOf('ANY') != -1) }"><span ng-bind="'ANY' | translate"></span></button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setPriceFilter('1')" ng-class="{ 'button-balanced' : (filter.Price.indexOf('1') != -1) }">$</button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setPriceFilter('2')" ng-class="{ 'button-balanced' : (filter.Price.indexOf('2') != -1) }">$$</button>
+                            </div>
+                        </div>
+                        <div class="row hor-center-align">
+                            <div class="col">
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setPriceFilter('3')" ng-class="{ 'button-balanced' : (filter.Price.indexOf('3') != -1) }">$$$</button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setPriceFilter('4')" ng-class="{ 'button-balanced' : (filter.Price.indexOf('4') != -1)}">$$$$</button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setPriceFilter('5')" ng-class="{ 'button-balanced' : (filter.Price.indexOf('5') != -1) }">$$$$$</button>
+                            </div>
+                        </div>
+                    </div>
+
+                     <div class="list list-inset">
+                        <span class="textFilter" ng-bind="'QUALITY' | translate"></span>
+                        <div class="row hor-center-align">
+                            <div class="col">
+                                <button class="button button-outline button-small button-stable btn-filter button-next-figma" ng-click="setQualityFilter('ANY')" ng-class="{ 'button-balanced' : (filter.Quality.indexOf('ANY') != -1) }"><span ng-bind="'ANY' | translate"></span></button> 
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setQualityFilter('1')" ng-class="{ 'button-balanced' : (filter.Quality.indexOf('1') != -1) }">
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star-outline"></i>
+                                    <i class="icon ion-ios-star-outline"></i>
+                                    <i class="icon ion-ios-star-outline"></i>
+                                    <i class="icon ion-ios-star-outline"></i>
+                                </button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setQualityFilter('2')" ng-class="{ 'button-balanced' : (filter.Quality.indexOf('2') != -1) }">
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star-outline"></i>
+                                    <i class="icon ion-ios-star-outline"></i>
+                                    <i class="icon ion-ios-star-outline"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row hor-center-align">
+                            <div class="col">
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setQualityFilter('3')" ng-class="{ 'button-balanced' : (filter.Quality.indexOf('3') != -1)}">
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star-outline"></i>
+                                    <i class="icon ion-ios-star-outline"></i>
+                                </button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setQualityFilter('4')" ng-class="{ 'button-balanced' : (filter.Quality.indexOf('4') != -1) }">
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star-outline"></i>
+                                </button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setQualityFilter('5')" ng-class="{ 'button-balanced' : (filter.Quality.indexOf('5') != -1) }">
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star"></i>
+                                    <i class="icon ion-ios-star"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                        <!-- last change ng-if="!newProject" -->
+
+                    <div class="list list-inset vbpAcceptanceButtons">
+                        <span class="textFilter" ng-bind="'FACILITY_ACCEPTANCE' | translate"></span>
+                        <div class="row hor-center-align">
+                            <div class="col">
+                                <button class="button button-outline button-small button-stable btn-filter button-next-figma" ng-click="setAcceptanceFilter('ANY')" ng-class="{ 'button-balanced' : (filter.Acceptance === 'ANY') }"  ><span ng-bind="'ANY' | translate"></span></button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setAcceptanceFilter('1')" ng-class="{ 'button-balanced' : (filter.Acceptance === '1') }" 
+                                style="font-size: 11px !important;max-width: 100px;line-height: 12px;"> >90% VBP Acceptance</button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setAcceptanceFilter('2')" ng-class="{ 'button-balanced' : (filter.Acceptance === '2') }" style="max-width: 100px;line-height: 10px;font-size: 8px !important;">Below 75% or Above 250% of Medicare Allowed</button>
+                            </div>
+                        </div>
+                        <div class="row hor-center-align">
+                            <div class="col colPad">
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setAcceptanceFilter('3')" ng-class="{ 'button-balanced' : (filter.Acceptance === '3') }" style="font-size: 11px !important;max-width: 100px;line-height: 10px;">75-90% VBP Acceptance</button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setAcceptanceFilter('4')" ng-class="{ 'button-balanced' : (filter.Acceptance === '4') }" style="font-size: 11px !important; max-width: 100px; line-height:12px" >Limited Experience</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    
+                     <div class="list list-inset hor-center-align vbpAcceptanceButtons">
+                        <div class="row">
+                            <div class="col">
+                                <button class="button button-stable btn-filter button-next-figma" ng-click="applyFilter()"><span ng-bind="'APPLY_FILTER' | translate"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+
+    </ion-content>
+</ion-view>

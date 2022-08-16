@@ -1,0 +1,291 @@
+<!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- MESSAGES LIST                                 -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<ion-view hide-nav-bar="true" home-icon hide-back-button="true" ng-controller="messagesCtrl-option">
+
+  <div ng-if="!showMessage1">
+    <div class="header-figma-arrow">
+      <svg width="19" height="19" ng-click="cancelMessage()" viewBox="0 0 19 19" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+          fill="white" />
+      </svg>
+      <h1 ng-bind="'SEND_US_MESSAGE' | translate"></h1>
+    </div>
+  </div>
+  <ion-content has-bouncing="false"  class="contentMessageFigma backgroundWhite" ng-class="{ 'content2-figma': !showMessage1}">
+    <div ng-if="showMessage1">
+      <div class="leftGreen">
+      </div>
+      <svg class="borderLeftFigma" width="91" height="640" viewBox="0 0 91 640" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M18.0031 -69C10.4018 -65.4719 5.801 -59.7263 2.50043 -52.5694C0.80014 -48.8397 0 -45.11 0 -40.9772C0 188.145 0.100014 417.367 0 646.489C0 651.832 2.3004 656.267 4.90085 660.601C7.90137 665.642 12.1021 669.573 17.6031 673C17.6031 669.774 17.7031 666.851 17.6031 664.029C17.6031 662.718 17.103 661.408 17.103 660.097C17.103 652.336 16.9029 644.473 17.103 636.711C17.203 630.663 17.103 624.515 18.2032 618.668C20.8036 605.665 26.3046 594.173 38.7067 587.823C43.4075 585.404 48.4084 583.589 53.9093 583.69C64.9113 583.891 73.7128 579.154 81.014 571.493C85.0147 567.259 87.6152 562.118 89.4155 556.373C91.3158 550.325 91.3158 544.176 90.4157 538.228C89.2155 530.164 85.4148 522.806 79.1137 517.362C75.9132 514.641 72.5126 512.121 68.7119 510.306C65.2113 508.694 61.2106 507.887 57.3099 507.182C49.8086 505.871 41.8072 506.274 35.3061 501.234C31.2054 498.009 27.9048 494.178 25.6044 489.44C24.1042 486.416 22.5039 483.292 21.5037 480.066C20.1035 475.53 18.7032 470.893 18.3032 466.256C17.7031 457.587 17.7031 448.817 17.7031 440.149C17.7031 424.927 18.0031 409.606 18.0031 394.385C18.0031 247.92 18.0031 101.455 18.1031 -45.11C18.0031 -52.8718 18.0031 -60.7343 18.0031 -69ZM52.209 572.098C50.1087 571.695 47.0081 571.392 44.2077 570.384C38.1066 568.368 33.4058 564.336 30.4053 558.49C29.2051 556.171 28.805 553.449 27.7048 551.03C25.4044 546.091 26.9047 541.353 28.5049 536.918C31.2054 529.257 36.4063 524.015 44.1076 521.193C48.6084 519.58 53.2092 518.975 57.81 520.084C63.311 521.294 68.0118 524.015 72.0125 528.249C78.0135 534.801 79.9138 542.664 78.3136 551.03C76.5133 560.304 70.4122 566.654 62.1108 571.09C59.2103 572.703 56.2097 571.19 52.209 572.098Z"
+          fill="#AFC95F" />
+      </svg>
+
+
+      <div class="removeIcon" ui-sref="landingPage">
+        <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M19.1384 21.0253L13.3879 15.2748L7.63744 21.0253L5.75056 19.1384L11.5011 13.3879L5.75056 7.63738L7.63744 5.7505L13.3879 11.501L19.1384 5.7505L21.0253 7.63738L15.2748 13.3879L21.0253 19.1384L19.1384 21.0253Z"
+            fill="#AFC95F" />
+        </svg>
+
+      </div>
+    </div>
+
+
+    <div ng-if="showMessage1" class="header headerIos">
+
+      <div class="">
+        <img src="img/figma/messageHeader.png" style="width: 80%;">
+      </div>
+
+    </div>
+
+
+    <div class="content">
+      <svg ng-if="showMessage1" class="borderRecLeft" width="22" height="42" viewBox="0 0 22 42" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M2.38295 37.715C6.6987 21.2923 17.2592 17.5048 22 17.664L2.38295 0C0.584721 19.4145 -1.9328 54.1378 2.38295 37.715Z"
+          fill="#AFC95F" />
+
+      </svg>
+      <div class="loaderMessage" ng-if="showLoaderMessage">
+        <ion-spinner icon="android"></ion-spinner>
+
+      </div>
+      <div class="contentMessages" ng-if="showMessage1">
+        <div style="margin-left: 20px;">
+          <h1>{{ 'MESSAGES_HELP' | translate }}</h1>
+          <!-- <p class="messageBody">{{ 'MESSAGES_BODY' | translate }}</p> -->
+
+          <div class="itemMessageSelect" ng-click="showMessage(1);">
+            <p class="textOption">{{ 'MESSAGES_BILL' | translate }}</p>
+            <img src="img/figma/next.png">
+          </div>
+
+          <div class="itemMessageSelect" ng-click="showMessage(2);">
+            <p class="textOption">{{ 'MESSAGES_CONCERN' | translate }}</p>
+            <img src="img/figma/next.png">
+          </div>
+
+          <div class="itemMessageSelect" ui-sref="tabsController.messages">
+            <p class="textOption">{{ 'MESSAGES_HISTORY' | translate }}</p>
+            <img src="img/figma/next.png">
+          </div>
+        </div>
+
+
+      </div>
+      <div class="contentMessages" ng-if="showMessage2 && typeMessage == 1">
+        <img src="img/figma/messageIllus.png">
+
+        <div class="contentText">
+          <h2>{{ 'MESSAGE_BILL1' | translate }}</h2>
+          <p class="text">1. {{ 'MESSAGE_BILL2' | translate }}</p>
+          <p class="text">2. {{ 'MESSAGE_BILL3' | translate }}</p>
+          <p class="text">3. {{ 'MESSAGE_BILL4' | translate }}</p>
+          <p class="text">4. {{ 'MESSAGE_BILL5' | translate }}</p>
+        </div>
+
+        <br>
+        <button class="button button-stable button-next button-block button-next-figma"
+          ng-click="openModalattachment()">{{'WRITE_MESSAGE' | translate}}</button>
+
+      </div>
+
+      <div class="contentMessages" ng-if="showMessage2 && typeMessage == 2">
+        <img src="img/figma/messageIllus.png">
+
+        <div class="contentText">
+          <h1>{{ 'MESSAGE_BILL1' | translate }}</h1>
+
+          <p class="text">1. {{ 'MESSAGE_BILL6' | translate }}</p>
+          <p class="text">2. {{ 'MESSAGE_BILL7' | translate }}</p>
+          <p class="text">3. {{ 'MESSAGE_BILL8' | translate }}</p>
+          <p class="text">4. {{ 'MESSAGE_BILL5' | translate }}</p>
+
+        </div>
+
+        <br>
+        <button class="button button-stable button-next button-block button-next-figma"
+          ng-click="openNext()">{{'WRITE_MESSAGE' | translate}}</button>
+
+      </div>
+    </div>
+
+
+
+  </ion-content>
+  <script id="my-modal-message.html" type="text/ng-template">
+  <ion-modal-view >
+    <div class="header-figma-arrow">
+      <svg width="19" height="19" ng-click="gotoMain();" viewBox="0 0 19 19" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+              d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+              fill="white" />
+      </svg>
+      <h1 ng-bind="'Message' | translate"></h1>
+    </div>
+    <ion-content class="content2-figma backgroundWhite" >
+      <div  class="contentFinalMessage" ng-if="showFinalMessage">
+        <p ng-if="typeMessage == 1">{{'MESSAGE_FINAL' | translate}}</p>
+        <div ng-if="typeMessage == 1">
+        <p ng-click='goToVideo()' ng-if="typeMessage == 1" style='text-decoration: underline; color: #5896b4;'>{{'MESSAGE_FUNALLINK' | translate}}</p>
+        </div>
+        <p ng-if="typeMessage == 2">{{'MESSAGE_FINAL4' | translate}}</p>
+
+        <p>{{'MESSAGE_FINAL2' | translate}}</p>
+        <br><br><br>
+        <button class="button button-stable button-next button-block button-next-figma" ng-click="gotoMain()">{{'MESSAGE_FINAL3' | translate}}</button>
+      </div>
+      <div class="messageTextFigma" ng-if="showContentMessage" style="padding:0px 10px">
+      <div class="listAttachments">
+        <div class="contentFile" ng-repeat="item in listDraftAttachments">
+          <div class="circleFile">
+            <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.98438 0.984375L10 3H18.0156C18.5469 3 19 3.20312 19.375 3.60938C19.7812 4.01562 19.9844 4.48438 19.9844 5.01562V15C19.9844 15.5312 19.7812 16 19.375 16.4062C19 16.8125 18.5469 17.0156 18.0156 17.0156H1.98438C1.45312 17.0156 0.984375 16.8125 0.578125 16.4062C0.203125 16 0.015625 15.5312 0.015625 15V3C0.015625 2.46875 0.203125 2 0.578125 1.59375C0.984375 1.1875 1.45312 0.984375 1.98438 0.984375H7.98438Z" fill="white"/>
+              </svg>
+          </div>
+          <div class="contentText">
+            <p class="textAttach">
+            {{item.FileName}}
+            </p>
+          </div>
+          <div class="contentRemove">
+            <i class="icon ion-close delete" ng-click="deleteFile(item.Id)"></i>
+          </div>
+        </div>
+      </div>      
+       <label class="item item-input">
+          <textarea ng-model="params.textMessage" placeholder="{{'MESSAGETEXT' | translate}}"></textarea>
+        </label>
+
+          <div class="row">
+            <div class="col ">
+                <button type="button" ng-click="openModalattachment()"
+                    class="button button-stable button-cancel button-block  button-cancel-figma">{{'ADD_ATTACHMENT' | translate}}</button>
+            </div>
+            <div class="col">
+                <button type="submit" class="button button-stable button-next button-block  button-next-figma"
+                    ng-click="addUserMessage()">{{ 'SEND' | translate }}</button>
+            </div>
+        </div>
+         <div class="">
+           <h1 class="textAttach">{{'NOTE' | translate}}</h1>
+           <p class="textAttach">{{'MESSAGE_NOTE' | translate}}</p>
+         </div>
+        
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+  <script id="my-modal-attachment.html" type="text/ng-template">
+  <ion-modal-view >
+    <div class="header-figma-arrow">
+      <svg width="19" height="19" ng-click="gotoMain();" viewBox="0 0 19 19" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+              d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+              fill="white" />
+      </svg>
+      <h1> Attach File</h1>
+    </div>
+    <ion-content class="content2-figma backgroundWhite">
+      <div class="messageText">
+      <div class="contentMessages" style="    padding-top: 25px;">
+         <center ng-if="showLoaderAttach">
+          <br>
+          <ion-spinner icon="android"></ion-spinner>
+        </center>
+          <p class="textAttach" ng-if="showAttach1 && typeMessage == 1">{{ 'MESSAGE_ATTACH1' | translate }}</p>
+          <p class="textAttach" ng-if="showAttach1 && typeMessage == 2">{{ 'MESSAGE_ATTACH3' | translate }}</p>
+          <br>
+          <div class="contentFiles" ng-if="showAttach1">
+            <p class="textAttach">{{ 'MESSAGE_FILE' | translate }}</p>  
+        <div class="listAttachments">
+          <!-- <ul ng-repeat="item in listDraftAttachments"> -->
+
+          <div class="contentFile" ng-repeat="item in listDraftAttachments">
+            <div class="circleFile">
+              <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7.98438 0.984375L10 3H18.0156C18.5469 3 19 3.20312 19.375 3.60938C19.7812 4.01562 19.9844 4.48438 19.9844 5.01562V15C19.9844 15.5312 19.7812 16 19.375 16.4062C19 16.8125 18.5469 17.0156 18.0156 17.0156H1.98438C1.45312 17.0156 0.984375 16.8125 0.578125 16.4062C0.203125 16 0.015625 15.5312 0.015625 15V3C0.015625 2.46875 0.203125 2 0.578125 1.59375C0.984375 1.1875 1.45312 0.984375 1.98438 0.984375H7.98438Z" fill="white"/>
+                </svg>
+            </div>
+            <div class="contentText">
+              <p class="textAttach">
+              {{item.FileName}}
+              </p>
+            </div>
+            <div class="contentRemove">
+              <i class="icon ion-close delete" ng-click="deleteFile(item.Id)"></i>
+            </div>
+          </div>
+          <!-- <ul >
+            <li >
+              <i class="icon ion-paperclip"></i>
+              {{item.FileName}}
+              test
+              <i class="icon ion-close delete" ng-click="deleteFile(item.Id)"></i>
+            </li>  
+          </ul> -->
+          
+        </div>                
+          </div>
+          
+
+     
+      </div>      
+
+          <br>
+          <center ng-if="showAttach2">
+          <img  id="imagePhoto" ng-src="{{uriImg}}">
+          </center>
+          
+          <!-- Delete Message -->
+          <div class="contentButton">
+          
+          <div ng-if="showAttach1" class="contentActionsPhoto">
+            <div class="flex-center">
+              <img  src="img/figma/takePhoto.png" ng-click="takePhoto(1)">
+              <p>Take a Photo</p>
+            </div>
+            <div class="flex-center" ng-click="takePhoto(2)">
+              <img  src="img/figma/selectPhoto.png">
+              <p>Select Photo</p>
+            </div>
+          </div>
+          <br>
+          <!-- <button class="button button-stable button-next button-block" ng-if="showAttach1" ng-click="takePhoto(1)">{{'TAKE_PHOTO' | translate}}</button> -->
+          <!-- <button class="button button-stable button-next button-block" ng-if="showAttach1" ng-click="takePhoto(2)">{{'SELECT_PHOTO' | translate}}</button> -->
+          <button class="button button-stable button-next button-block button-next-figma" ng-if="showAttach1" ng-click="completeAttach();">{{'COMPLETE_ATTACHMENT' | translate}}</button>
+<!--          
+          <button class="button button-stable button-next button-block"  ng-if="showAttach2" ng-click="uploadPhoto()">{{'MESSAGE_ATTACH2' | translate}}</button>
+          <button class="button button-stable button-next button-block" ng-if="showAttach2" ng-click="cancelAttach()">{{'CANCEL' | translate}}</button>
+           -->
+          <div class="row" ng-if="showAttach2">
+            <div class="col ">
+              <button type="submit" class="button button-stable button-next button-block  button-cancel-figma"
+              ng-click="cancelAttach()">{{ 'CANCEL' | translate }}</button>
+              
+            </div>
+            <div class="col">
+              <button type="button" ng-click="uploadPhoto()"
+                    class="button button-stable button-cancel button-block  button-next-figma">{{'ADD_ATTACHMENT' | translate}}</button>
+            </div>
+        </div>
+        
+        </div>
+         
+        
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+</ion-view>

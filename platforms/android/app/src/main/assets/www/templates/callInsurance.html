@@ -1,0 +1,108 @@
+<ion-view hide-nav-bar="true" title="{{'CALL_INSURANCE' | translate}}" home-icon cache-view="false">
+
+  <div class="header-figma-arrow ">
+    <svg width="19" height="19" ui-sref="landingPage" viewBox="0 0 19 19" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+        fill="white" />
+    </svg>
+    <h1 ng-bind="'CALL_INSURANCE' | translate"></h1>
+  </div>
+
+
+
+  <ion-content padding="true" has-bouncing="false" class="content2-figma backgroundWhite call-insurance"
+    ng-controller="callInsuranceCtrl" style="padding:0px 5px">
+    <div style="text-align: center;">
+      <img src="img/figma/hst_logo.png">
+
+    </div>
+
+    <div ng-repeat="result in callinsuranceinfo" style="padding: 10px; color:#444; font-size: 12px;margin-top: 10px;">
+
+      <div class="detailed-info" style="margin-left:10px">
+        <b class="stable" style="font-size:16px;"> {{result.Topic}}</b>
+        <!-- <b class="stable" style="font-size:16px;">Question about your Health Plan or specific clame</b> -->
+
+      </div>
+      <div class="row">
+        <div class="col col-33"> <span ng-bind="'CONTACT' | translate"></span>: </div>
+        <!-- <div class="col"> {{result.WhoToContact ? result.WhoToContact : "-"}} </div> -->
+      </div>
+      <div class="row">
+        <div class="list list-inset transparent" style="width: 100%;pointer-events: none;">
+          <label class="item item-input">
+            <!-- <i class="ion icon ion-custom-locked placeholder-icon"></i> -->
+            <input type="text" style="color: rgba(0, 0, 0, 0.54);" placeholder="-" ng-model="result.WhoToContact">
+          </label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col col-33"> <span ng-bind="'EMAIL' | translate"></span>: </div>
+        <!-- <div class="col" ng-if="result.Email != ''">
+          <a ng-href="mailto:?to={{result.Email}}">{{result.Email}}</a>
+        </div>
+        <div class="col" ng-if="result.Email == ''">-</div> -->
+      </div>
+      <div class="row">
+        <div class="list list-inset transparent" style="width: 100%;pointer-events: none;">
+          <label class="item item-input">
+            <!-- <i class="ion icon ion-custom-locked placeholder-icon"></i> -->
+            <input type="text" style="color: rgba(0, 0, 0, 0.54);" placeholder="-" ng-model="result.Email">
+          </label>
+        </div>
+      </div>
+
+
+
+      <div class="row">
+        <div class="col col-33"> <span ng-bind="'PHONE_NUMBER' | translate"></span>: </div>
+        <!-- <div class="col" ng-if="result.Phone != ''">
+          <a ng-href="{{'tel:' + result.Phone}}">{{result.Phone | tel}} </a>
+        </div>
+        <div class="col" ng-if="result.Phone == ''">-</div> -->
+      </div>
+      <div class="row">
+        <a ng-href="{{'tel:' + result.Phone}}" class="list list-inset transparent" style="width: 100%;height: 44px;">
+          <label class="item item-input" style="height: 44px;color:#1291d4">
+            <div class="col">
+              <span ng-href="{{'tel:' + result.Phone}}">{{result.Phone | tel}} </span>
+            </div>
+            <div class="col" ng-if="result.Phone == ''">-</div>
+            <!-- <i class="ion icon ion-custom-locked placeholder-icon"></i> -->
+            <!-- <input type="text" style="color: rgba(0, 0, 0, 0.54);" placeholder="-" ng-model="result.Phone | tel"> -->
+          </label>
+        </a>
+      </div>
+
+
+
+
+
+      <div class="row">
+        <div class="col col-33"> <span ng-bind="'FAX' | translate"></span>: </div>
+        <!-- <div class="col" ng-if="result.Fax != ''">
+            <div>{{result.Fax | tel}} </div>
+          </div>
+          <div class="col" ng-if="result.Fax == ''">-</div> -->
+      </div>
+
+      <div class="row">
+        <div class="list list-inset transparent" style="width: 100%;pointer-events: none;height: 44px;">
+          <label class="item item-input" style="height: 44px;">
+            <div class="col" ng-if="result.Fax != ''">
+              <div>{{result.Fax | tel}} </div>
+            </div>
+            <div class="col" ng-if="result.Fax == ''">-</div>
+          </label>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </ion-content>
+</ion-view>

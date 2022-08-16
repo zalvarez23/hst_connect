@@ -1,0 +1,118 @@
+{
+  "_args": [
+    [
+      "autolinker",
+      "D:\\Lucho\\Trabajos\\HTS Source\\HST_Source"
+    ]
+  ],
+  "_from": "autolinker@latest",
+  "_id": "autolinker@1.6.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/autolinker",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/autolinker-1.6.0.tgz_1510022409157_0.811152937123552"
+  },
+  "_npmUser": {
+    "email": "greg@greg-jacobs.com",
+    "name": "gregjacobs"
+  },
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "autolinker",
+    "raw": "autolinker",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "https://registry.npmjs.org/autolinker/-/autolinker-1.6.0.tgz",
+  "_shasum": "bad376b7ad8e415f22f102fc0f37f640e64f1cbf",
+  "_shrinkwrap": null,
+  "_spec": "autolinker",
+  "_where": "D:\\Lucho\\Trabajos\\HTS Source\\HST_Source",
+  "author": {
+    "email": "greg@greg-jacobs.com",
+    "name": "Gregory Jacobs"
+  },
+  "bugs": {
+    "url": "https://github.com/gregjacobs/Autolinker.js/issues"
+  },
+  "dependencies": {},
+  "description": "Utility to automatically link the URLs, email addresses, phone numbers, hashtags, and mentions (Twitter, Instagram) in a given block of text/HTML",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clone": "^1.0.0",
+    "gulp-concat": "^2.6.0",
+    "gulp-connect": "^3.0.0",
+    "gulp-download": "^0.0.1",
+    "gulp-header": "^1.7.1",
+    "gulp-jasmine": "^2.3.0",
+    "gulp-jsduck": "^0.3.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-preprocess": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-transform": "^1.1.0",
+    "gulp-typescript": "^2.13.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-umd": "^0.2.0",
+    "jasmine-core": "^2.4.1",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "karma": "^0.13.21",
+    "karma-jasmine": "^0.3.7",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-spec-reporter": "0.0.24",
+    "lodash": "^4.3.0",
+    "merge-stream": "^1.0.0",
+    "phantomjs-prebuilt": "^2.1.4",
+    "punycode": "^2.1.0",
+    "requirejs": "^2.1.11",
+    "through2": "^2.0.1"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "bad376b7ad8e415f22f102fc0f37f640e64f1cbf",
+    "tarball": "https://registry.npmjs.org/autolinker/-/autolinker-1.6.0.tgz"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/gregjacobs/Autolinker.js",
+  "keywords": [
+    "anchor",
+    "auto",
+    "autolink",
+    "link",
+    "url",
+    "urls"
+  ],
+  "license": "MIT",
+  "licenseText": "The MIT License (MIT)\n\nCopyright (c) 2014 Gregory Jacobs (http://greg-jacobs.com)\n\nPermission is hereby granted, free of charge, to any person obtaining\na copy of this software and associated documentation files (the\n\"Software\"), to deal in the Software without restriction, including\nwithout limitation the rights to use, copy, modify, merge, publish,\ndistribute, sublicense, and/or sell copies of the Software, and to\npermit persons to whom the Software is furnished to do so, subject to\nthe following conditions:\n\nThe above copyright notice and this permission notice shall be\nincluded in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\nEXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF\nMERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\nNONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE\nLIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\nOF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION\nWITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.",
+  "main": "dist/Autolinker.js",
+  "maintainers": [
+    {
+      "name": "gregjacobs",
+      "email": "greg@greg-jacobs.com"
+    },
+    {
+      "name": "olafleur",
+      "email": "olivier.lafleur@gmail.com"
+    }
+  ],
+  "name": "autolinker",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gregjacobs/Autolinker.js.git"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "version": "1.6.0"
+}

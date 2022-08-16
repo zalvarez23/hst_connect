@@ -1,0 +1,84 @@
+<ion-view hide-nav-bar="true" title="{{'REGISTRATION' | translate}}" hide-back-button="true">
+    <div class="header-figma">
+        <h1>Registration</h1>
+    </div>
+    <ion-content has-bouncing="false" ng-controller="registration1Ctrl" style="margin-top: 72px;">
+
+        <div class="content-figma">
+            <div class="step-txt dark-blueRight-text">
+                <p style="line-height: 25px;">{{'STEP' | translate}} 1 of 4</p>
+            </div>
+            <form class="list form-group reg-form" name="regForm" novalidate>
+                <div class="list list-inset">
+                    <label class="item item-input"
+                        ng-class="{ 'has-error': regForm.$submitted && regForm.MemberId.$invalid }">
+                        <!-- <i class="ion icon ion-custom-person placeholder-icon"></i> -->
+                        <input type="text" placeholder="{{'MEMBERID' | translate}}" ng-model="reg.MemberId"
+                            name="MemberId" ng-required="true">
+                    </label>
+                </div>
+                <div class="list list-inset">
+                    <label class="item item-input"
+                        ng-class="{ 'has-error': regForm.$submitted && regForm.GroupId.$invalid }">
+                        <!-- <i class="ion icon ion-group placeholder-icon"></i> -->
+                        <input type="text" placeholder="{{'GROUPID' | translate}}" ng-model="reg.GroupId" name="GroupId"
+                            ng-required="true">
+                    </label>
+                </div>
+                <div class="list list-inset">
+                    <label class="item item-input"
+                        ng-class="{ 'has-error': regForm.$submitted && regForm.FirstName.$invalid }">
+                        <!-- <i class="ion icon ion-custom-person placeholder-icon"></i> -->
+                        <input type="text" placeholder="{{'FIRSTNAME' | translate}}" ng-model="reg.FirstName"
+                            name="FirstName" ng-required="true">
+                    </label>
+                </div>
+                <div class="list list-inset">
+                    <label class="item item-input"
+                        ng-class="{ 'has-error': regForm.$submitted && regForm.LastName.$invalid }">
+                        <!-- <i class="ion icon ion-custom-person placeholder-icon"></i> -->
+                        <input type="text" placeholder="{{'LASTNAME' | translate}}" ng-model="reg.LastName"
+                            name="LastName" ng-required="true">
+                    </label>
+                </div>
+                <div class="list list-inset">
+                    <label class="item item-input"
+                        ng-class="{ 'has-error': regForm.$submitted && regForm.DOB.$invalid }">
+                        <!-- <i class="ion icon ion-custom-calendar placeholder-icon"></i> -->
+                        <!-- <input type="text" placeholder="{{'BIRTH_DATE' | translate}}" ng-model="birthDate" name="DOB"
+                            ng-required="true" ng-click="selectDate()" onfocus="this.blur()"> -->
+                        <label ng-if="!birthDate"
+                            style="position: absolute; color : #757575">{{'BIRTH_DATE' | translate}}</label>
+                        <input type="date" placeholder="{{'BIRTH_DATE' | translate}}" ng-model="birthDate" name="DOB"
+                            ng-required="true">
+
+                    </label>
+                </div>
+                <!-- 
+                <div class="list list-inset" ng-show="currentPlatform !='ios' && currentPlatform !='android'">
+                    <label class="item item-input"
+                        ng-class="{ 'has-error': regForm.$submitted && regForm.DOB.$invalid }">
+                        <input type="date" placeholder="{{'BIRTH_DATE' | translate}}" ng-model="birthDate" name="DOB"
+                            ng-required="true">
+                    </label>
+                </div> -->
+
+                <div class="row">
+                    <div class="col ">
+                        <button type="button"
+                            class="button button-stable button-cancel button-block button-cancel-figma"
+                            ng-click="cancel()">{{'CANCEL' | translate}}</button>
+                    </div>
+                    <div class="col">
+                        <button type="submit" class="button button-stable button-next button-block button-next-figma"
+                            ng-click="gotoNextPage()">{{'NEXT' | translate}}</button>
+                    </div>
+                    <!-- <div class="col-10">
+                    </div> -->
+                </div>
+            </form>
+        </div>
+
+
+    </ion-content>
+</ion-view>

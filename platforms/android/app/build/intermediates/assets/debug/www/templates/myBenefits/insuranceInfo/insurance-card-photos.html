@@ -1,0 +1,49 @@
+<ion-view hide-nav-bar="true" title="{{ 'MY_INSURANCE_CARD_PHOTO' | translate }}">
+
+	<div class="header-figma-arrow">
+		<svg width="19" height="19" ui-sref="tabsController.insurance" viewBox="0 0 19 19" fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+				fill="white" />
+		</svg>
+		<h1 ng-bind="'MY_INSURANCE_CARD_PHOTO' | translate"></h1>
+	</div>
+
+	<ion-content has-bouncing="false"  padding="true" class="content2-figma backgroundWhite" style="padding-top: 20px;" ng-controller="insuranceCardPhotosCtrl">
+		<small class="light-gray-text block-text">
+			<span ng-bind="'IMAGE_ADD_UPDATE_DELETE_CARD' | translate"></span>
+		</small>
+
+		<div class="step-txt dark-green-text margin-10 top-margin">
+			<span ng-bind="'FRONT_SIDE_OF_CARD' | translate"></span>
+		</div>
+		<small class="light-gray-text block-text">
+			<span ng-bind="'TAKE_LANDSCAPEMODE_PHOTO_NOTE' | translate"></span>
+		</small>
+		<div class="profile-img-container" ng-click="takePicture('frontside')">
+			<!-- <img width="50" height="50" ng-src="{{imageSrc.frontside ? imageSrc.frontside : 'img/user_icon.png'}}" /> -->
+
+			<img ng-if="imageSrc.frontside" width="50" height="50" src="{{imageSrc.frontside}}" />
+			<img ng-if="!imageSrc.frontside" width="50" height="50" src="img/figma/photoFigma.png" />
+
+		</div>
+
+		<div class="step-txt dark-green-text margin-10 top-margin">
+			<span ng-bind="'BACK_SIDE_OF_CARD' | translate"></span>
+		</div>
+		<small class="light-gray-text block-text">
+			<span ng-bind="'TAKE_LANDSCAPEMODE_PHOTO_NOTE' | translate"></span>
+		</small>
+
+		<div class="profile-img-container" ng-click="takePicture('backside')">
+			<!-- <img width="50" height="50" ng-src="{{imageSrc.backside ? imageSrc.backside : 'img/user_icon.png'}}" /> -->
+
+			<img ng-if="imageSrc.backside" width="50" height="50" src="{{imageSrc.backside}}" />
+			<img ng-if="!imageSrc.backside" width="50" height="50" src="img/figma/photoFigma.png" />
+
+
+		</div>
+
+	</ion-content>
+</ion-view>

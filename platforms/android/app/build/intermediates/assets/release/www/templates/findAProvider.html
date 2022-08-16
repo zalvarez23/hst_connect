@@ -1,0 +1,52 @@
+<ion-view hide-nav-bar="true" title="{{ 'FIND_A_PROVIDER' | translate }}" home-icon hide-back-button="true">
+	<div class="header-figma-arrow">
+		<svg width="19" height="19" ui-sref="landingPage" viewBox="0 0 19 19" fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+				fill="white" />
+		</svg>
+		<h1 ng-bind="'FIND_A_PROVIDER' | translate"></h1>
+	</div>
+
+	<ion-content padding="true" has-bouncing="false"
+		class="content2-figma backgroundWhite  dark-blue-text my-benefit newPlanDetail"
+		ng-controller="findAProviderCtrl" >
+		<div style="text-align: center;">
+			<img src="img/figma/find_hospital.png">
+
+		</div>
+
+		<div class="list list-inset">
+			<a class="item item-icon-left item-icon-right" ui-sref="tabsController.findHospital">
+				<i class="ion icon ion-find-hospital"></i>
+				{{ 'FIND_HOSPITAL' | translate }}
+				<img src="img/figma/next.png">
+
+			</a>
+		</div>
+
+		<div style="text-align: center;">
+			<img src="img/figma/find_doctor.png">
+		</div>
+
+
+		<div class="list list-inset">
+			<a class="item item-icon-left item-icon-right" ui-sref="tabsController.findDoctor">
+				<i class="ion icon ion-find-doctor"></i>
+				{{ 'FIND_A_DOCTOR' | translate }}
+				<img src="img/figma/next.png">
+
+			</a>
+		</div>
+	
+		<!-- <div class="list list-inset">
+			<a class="item item-icon-left item-icon-right" ui-sref="tabsController.priceAProcedure">
+				<i class="ion icon ion-find-procedure"></i>
+				{{ 'PRICE_A_PROCEDURE' | translate }}
+				<img src="img/figma/next.png">
+
+			</a>
+		</div> -->
+	</ion-content>
+</ion-view>

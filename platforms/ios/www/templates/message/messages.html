@@ -1,0 +1,179 @@
+<!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- MESSAGES LIST                                 -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+<!--hide-back-button="true"-->
+<ion-view hide-nav-bar="true" title="{{ 'MESSAGES' | translate }}" home-icon ng-controller="messagesCtrl"
+  data-ng-init="init()">
+  <div class="header-figma-arrow">
+    <svg width="19" height="19" ng-click="goToBack()" viewBox="0 0 19 19" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+        fill="white" />
+    </svg>
+    <h1 ng-bind="'MESSAGES' | translate"></h1>
+    <button class="button button-icon ion-home rightIconHeaderHome" ui-sref="landingPage" menu-toggle="left"></button>
+    <button class="button button-icon ion-compose rightIconHeader" menu-toggle="left"
+      ng-click="showModalMessage();"></button>
+  </div>
+
+  <ion-content has-bouncing="false"  class="content2-figma backgroundWhite">
+
+    <div class="list">
+
+      <!--messageList length: {{messageList.length}}<br>-->
+
+
+      <!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+      <!-- THE MESSAGES (Repeat)                         -->
+      <!-- - - - - - - - - - - - - - - - - - - - - - - - -->
+
+      <div class="item contentMessageList" ui-sref="tabsController.messageDetail"
+        ng-click="updateMessageReadStatus(message.messagelist.ID,message.messagelist.ConversationId)"
+        ng-repeat="message in messageList">
+
+        <!--ID: {{message.ID}}<br>-->
+        <!--MemberId: {{message.MemberId}}<br>-->
+        <!--GroupId: {{message.GroupId}}<br>-->
+        <!--MessageText: {{message.MessageText}}<br>-->
+        <!--Created: {{message.Created}}<br>-->
+        <!--ReadDate: {{message.ReadDate}}<br>-->
+        <!--DeletedDate: {{message.DeletedDate}}<br>-->
+        <!--IsDeleted: {{message.IsDeleted}}<br>-->
+        <!--IsRead: {{message.IsRead}}<br>-->
+        <!--$$hashKey: {{message.$$hashKey}}<br>-->
+
+        <div class="row">
+          <div class="col">
+            <!-- Dot Icon -->
+            <i class="icon ion-record dot-icon" data-ng-show="!message.messagelist.IsRead"></i>
+            <!-- Date -->
+            <span class="font13"
+              style="margin-left:7px;">{{ message.messagelist.Created | date : 'MMMM dd, yyyy h:mm a' }}</span>
+          </div>
+        </div>
+
+        <div class="row item-icon-right">
+          <div class="col ellipsis message-text" ng-class="{ 'bold-text' : message.IsRead == false }">
+            <!-- Message Text -->
+            <span class="font13 dark-blue-text ">Sender : </span> <span class="font13"
+              style="font-weight: normal">{{message.messagelist.CreatedBy}}</span>
+            <br>
+            <span class="font13">{{ message.messagelist.MessageText }}</span>
+            <!-- Continue to Detail Arrow -->
+            <i class="icon ion-chevron-right" style="width: 48px;font-size: 19px;color: #abce60;"></i>
+          </div>
+        </div>
+
+      </div>
+      <div class="row" ng-class="{ 'hide' : messageList.length > 0 }">
+        <div class="col step-txt dark-green-text">
+          <p>No messages available</p>
+        </div>
+      </div>
+
+    </div>
+
+  </ion-content>
+  <script id="my-modal-message.html" type="text/ng-template">
+  <ion-modal-view >
+    <div class="header-figma-arrow">
+      <svg width="19" height="19" ng-click="closeModal();" viewBox="0 0 19 19" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+              d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+              fill="white" />
+      </svg>
+      <h1 ng-bind="'Message' | translate"></h1>
+    </div>
+    <ion-content class="content2-figma backgroundWhite" >
+      <div class="messageTextFigma" style="padding: 0px 20px;">
+      <div class="listAttachments">
+        <div class="contentFile" ng-repeat="item in listDraftAttachments">
+          <div class="circleFile">
+            <svg width="20" height="18" viewBox="0 0 20 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.98438 0.984375L10 3H18.0156C18.5469 3 19 3.20312 19.375 3.60938C19.7812 4.01562 19.9844 4.48438 19.9844 5.01562V15C19.9844 15.5312 19.7812 16 19.375 16.4062C19 16.8125 18.5469 17.0156 18.0156 17.0156H1.98438C1.45312 17.0156 0.984375 16.8125 0.578125 16.4062C0.203125 16 0.015625 15.5312 0.015625 15V3C0.015625 2.46875 0.203125 2 0.578125 1.59375C0.984375 1.1875 1.45312 0.984375 1.98438 0.984375H7.98438Z" fill="white"/>
+              </svg>
+          </div>
+          <div class="contentText">
+            <p class="textAttach">
+            {{item.FileName}}
+            </p>
+          </div>
+          <div class="contentRemove">
+            <i class="icon ion-close delete" ng-click="deleteFile(item.Id)"></i>
+          </div>
+        </div>
+      </div>    
+        
+        <label class="item item-input">
+          <textarea ng-model="params.textMessage" placeholder="{{'MESSAGETEXT' | translate}}"></textarea>
+        </label>
+
+        <div class="row">
+          <div class="col ">
+              <button type="button" ng-click="openModalattachment()"
+                  class="button button-stable button-cancel button-block  button-cancel-figma">{{'ADD_ATTACHMENT' | translate}}</button>
+          </div>
+          <div class="col">
+              <button type="submit" class="button button-stable button-next button-block  button-next-figma"
+                  ng-click="addUserMessage()">{{ 'SEND' | translate }}</button>
+          </div>
+      </div>
+  
+        
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+  <script id="my-modal-attachment.html" type="text/ng-template">
+  <ion-modal-view >
+    <div class="header-figma-arrow">
+      <svg width="19" height="19" ng-click="closeModalattachment();" viewBox="0 0 19 19" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+              d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+              fill="white" />
+      </svg>
+      <h1> Attach File</h1>
+    </div>
+
+    <ion-content class="content2-figma backgroundWhite">
+
+      <div class="messageText">
+          <br>
+          <center>
+          <img ng-if="uriImg" src="{{uriImg}}">
+          <img ng-if="!uriImg" src="img/photo.png">
+          </center>
+          
+          <!-- Delete Message -->
+          <div class="contentButton">
+
+                  
+          <div  class="contentActionsPhoto">
+            <div class="flex-center">
+              <img  src="img/figma/takePhoto.png" ng-click="takePhoto(1)">
+              <p>{{'TAKE_PHOTO' | translate}}</p>
+            </div>
+            <div class="flex-center" ng-click="takePhoto(2)">
+              <img  src="img/figma/selectPhoto.png">
+              <p>{{'SELECT_PHOTO' | translate}}</p>
+            </div>
+          </div>
+          <!-- <button class="button button-stable button-next button-block" ng-click="uploadPhoto()">{{'UPLOAD_PHOTO' | translate}}</button>            -->
+           <!-- <button class="button button-stable button-next button-block" ng-click="takePhoto(1)">{{'TAKE_PHOTO' | translate}}</button> -->
+           <button  style="    margin-top: 26px;" class="button button-stable button-next button-block button-next-figma" ng-click="uploadPhoto(2)">{{'UPLOAD_PHOTO' | translate}}</button>
+   
+          <!-- Cancel Message -->
+          </div>
+
+         
+        
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+</ion-view>

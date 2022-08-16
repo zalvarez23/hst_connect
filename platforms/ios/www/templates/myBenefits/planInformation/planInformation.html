@@ -1,0 +1,761 @@
+<ion-view hide-nav-bar="true" title="{{ 'MY_PLAN_INFO_DETAIL' | translate}}" cache-view="true">
+
+  <!-- 
+  <ion-header-bar class="bar-subheader item-input-inset ion-header-bar-custom">
+    <div class="list list-inset network-select">
+      <div class="row tab-button-border">
+        <div class="col tab-button-bg rbp-network">
+          <span ng-bind="'VBP_NETWORK' | translate"></span>
+        </div>
+      </div>
+
+      <div class="plan-select">
+        <div class="row">
+          <div class="col col-10 green-text">
+          </div>
+          <div class="col col-80">
+            <h3 class="text-center">
+              <b>
+                <span ng-bind="'MEDICAL' | translate"></span>
+              </b>
+            </h3>
+          </div>
+          <div class="col col-10 green-text">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ion-header-bar> -->
+
+  <div class="header-figma-arrow">
+    <svg width="19" height="19" ui-sref="tabsController.myBenefits" viewBox="0 0 19 19" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+        fill="white" />
+    </svg>
+    <h1 ng-bind="'MY_PLAN_INFO_DETAIL' | translate"></h1>
+  </div>
+
+  <!-- planinfo-margintop -->
+  <ion-content has-bouncing="false"  padding="true" class="content2-figma contentPlanDetails backgroundWhite" ng-controller="planInfoCtrl"
+    style="padding:0px 10px">
+
+    <img class="centerImg" src="img/figma/PlanDetails.png">
+
+
+    <!-- <div class="list list-inset wrapping-list">
+      <div class="item item-center accent-green">
+        <div class="row">
+          <h2>
+            <b>
+              <span ng-bind="view.PlanName"></span>
+            </b>
+          </h2>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="contentFlex">
+      <div style="flex: 0.1;">
+        <img src="img/figma/calendar.png">
+      </div>
+      <div style="flex:0.9">
+        <h1 ng-bind="'CALENDAR_OR_PLANYEAR' | translate"></h1>
+      </div>
+      <div>
+        <span ng-bind="view.CalendarOrPlanYear"></span>
+        <!-- <span>Calendar</span> -->
+      </div>
+    </div>
+
+    <div class="cardDetail">
+      <H3>
+        <span class="titleDetail" ng-bind="'DEDUCTIBLE' | translate"></span>
+        <span class="color-green normal-text font15"> (
+          <span ng-bind="'USED' | translate"></span>)</span>
+      </H3>
+      <div class="flexItem">
+        <div>
+          <div class="label underline">
+            <span ng-bind="'INDIVIDUAL' | translate"></span>
+          </div>
+          <div class="label">
+            <span class="color-green">{{view.DeductableIndividualUsedAmt}}</span> / {{view.DeductableIndividualMaxAmt}}
+          </div>
+        </div>
+
+        <div class="svg-wrapper">
+          <svg id="svg" width="60" height="60" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <circle r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66" stroke-dashoffset="0">
+            </circle>
+            <circle id="dInd" class="svg-bar" r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66"
+              stroke-dashoffset="{{(localStorageFactory.data.dIndDash != '') ? localStorageFactory.data.dIndDash : '0'}}">
+            </circle>
+          </svg>
+          <div class="svg-percent" ng-if="view.DeductableIndividualUsedPercentage != ''">
+            <span>{{view.DeductableIndividualUsedPercentage}}</span>
+          </div>
+          <div class="svg-percent" ng-if="view.DeductableIndividualUsedPercentage == ''">
+            <span>N/A</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flexItem">
+        <div>
+          <div class="label underline">
+            <span ng-bind="'FAMILY' | translate"></span>
+          </div>
+          <div class="label">
+            <span class="color-green">{{view.DeductableFamilyUsedAmt}}</span> / {{view.DeductableFamilyMaxAmt}}</div>
+
+        </div>
+
+        <div class="svg-wrapper">
+          <svg id="svg" width="60" height="60" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <circle r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66" stroke-dashoffset="0">
+            </circle>
+            <circle id="dFam" class="svg-bar" r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66"
+              stroke-dashoffset="{{localStorageFactory.data.dFamDash}}"></circle>
+          </svg>
+          <div class="svg-percent" ng-if="view.DeductableFamilyUsedPercentage != ''">
+            <span>{{view.DeductableFamilyUsedPercentage}}</span>
+          </div>
+          <div class="svg-percent" ng-if="view.DeductableFamilyUsedPercentage == ''">
+            <span>N/A</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- <div class="list list-inset wrapping-list">
+      <div class="item item-center">
+        <H3>
+          <span ng-bind="'DEDUCTIBLE' | translate"></span>
+          <span class="color-green normal-text font15"> (
+            <span ng-bind="'USED' | translate"></span>)</span>
+        </H3>
+        <div class="row">
+          <div class="row">
+            <div>
+              <div class="label underline">
+                <span ng-bind="'INDIVIDUAL' | translate"></span>
+              </div>
+              <div>
+                <span
+                  class="color-green">{{view.DeductableIndividualUsedAmt}}</span>/{{view.DeductableIndividualMaxAmt}}
+              </div>
+            </div>
+            <div class="svg-wrapper">
+              <svg id="svg" width="60" height="60" viewPort="0 0 100 100" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66" stroke-dashoffset="0">
+                </circle>
+                <circle id="dInd" class="svg-bar" r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66"
+                  stroke-dashoffset="{{(localStorageFactory.data.dIndDash != '') ? localStorageFactory.data.dIndDash : '0'}}">
+                </circle>
+              </svg>
+              <div class="svg-percent" ng-if="view.DeductableIndividualUsedPercentage != ''">
+                <span>{{view.DeductableIndividualUsedPercentage}}</span>
+              </div>
+              <div class="svg-percent" ng-if="view.DeductableIndividualUsedPercentage == ''">
+                <span>N/A</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <div class="label underline">
+                <span ng-bind="'FAMILY' | translate"></span>
+              </div>
+              <div>
+                <span class="color-green">{{view.DeductableFamilyUsedAmt}}</span>/{{view.DeductableFamilyMaxAmt}}</div>
+            </div>
+            <div class="svg-wrapper">
+              <svg id="svg" width="60" height="60" viewPort="0 0 100 100" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66" stroke-dashoffset="0">
+                </circle>
+                <circle id="dFam" class="svg-bar" r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66"
+                  stroke-dashoffset="{{localStorageFactory.data.dFamDash}}"></circle>
+              </svg>
+              <div class="svg-percent" ng-if="view.DeductableFamilyUsedPercentage != ''">
+                <span>{{view.DeductableFamilyUsedPercentage}}</span>
+              </div>
+              <div class="svg-percent" ng-if="view.DeductableFamilyUsedPercentage == ''">
+                <span>N/A</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+
+
+    <div class="cardDetail">
+      <H3>
+        <span class="titleDetail" ng-bind="'OUT_OF_POCKET_LIMIT' | translate"></span>
+        <span class="color-green normal-text font15"> (
+          <span ng-bind="'USED' | translate"></span>)</span>
+      </H3>
+      <div class="flexItem">
+        <div>
+          <div class="label underline">
+            <span ng-bind="'INDIVIDUAL' | translate"></span>
+          </div>
+          <div class="label">
+            <span class="color-green">{{view.OutOfPocketIndividualUsedAmt}}</span> /
+            {{view.OutOfPocketLimitIndividualAmt}}
+          </div>
+        </div>
+        <div class="svg-wrapper">
+          <svg id="svg" width="60" height="60" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <circle r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66" stroke-dashoffset="0">
+            </circle>
+            <circle id="pInd" class="svg-bar" r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66"
+              stroke-dashoffset="{{(localStorageFactory.data.pIndDash != '') ? localStorageFactory.data.pIndDash : '0'}}">
+            </circle>
+          </svg>
+          <div class="svg-percent" ng-if="view.OutOfPocketIndividualUsedPercentage != ''">
+            <span>{{view.OutOfPocketIndividualUsedPercentage}}</span>
+          </div>
+          <div class="svg-percent" ng-if="view.OutOfPocketIndividualUsedPercentage == ''">
+            <span>N/A</span>
+          </div>
+        </div>
+      </div>
+      <div class="flexItem">
+        <div>
+          <div class="label underline">
+            <span ng-bind="'FAMILY' | translate"></span>
+          </div>
+          <div class="label">
+            <span class="color-green"> {{view.OutOfPocketFamilyUsedAmt}}</span> / {{view.OutOfPocketLimitFamilyAmt}}
+          </div>
+        </div>
+
+        <div class="svg-wrapper">
+          <svg id="svg" width="60" height="60" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+            <circle r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66" stroke-dashoffset="0">
+            </circle>
+            <circle id="pFam" class="svg-bar" r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66"
+              stroke-dashoffset="{{localStorageFactory.data.pFamDash}}"></circle>
+          </svg>
+          <div class="svg-percent" ng-if="view.OutOfPocketFamilyUsedPercentage != ''">
+            <span>{{view.OutOfPocketFamilyUsedPercentage}}</span>
+          </div>
+          <div class="svg-percent" ng-if="view.OutOfPocketFamilyUsedPercentage == ''">
+            <span>N/A</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="list list-inset wrapping-list">
+      <div class="item item-center ">
+        <h3>
+          <span ng-bind="'OUT_OF_POCKET_LIMIT' | translate"></span>
+          <span class="color-green normal-text font15"> (
+            <span ng-bind="'USED' | translate"></span>)</span>
+        </h3>
+        <div class="row">
+          <div class="row">
+            <div>
+              <div class="label underline">
+                <span ng-bind="'INDIVIDUAL' | translate"></span>
+              </div>
+              <div>
+                <span class="color-green">
+                  {{view.OutOfPocketIndividualUsedAmt}}</span>/{{view.OutOfPocketLimitIndividualAmt}}</div>
+            </div>
+            <div class="svg-wrapper">
+              <svg id="svg" width="60" height="60" viewPort="0 0 100 100" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66" stroke-dashoffset="0">
+                </circle>
+                <circle id="pInd" class="svg-bar" r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66"
+                  stroke-dashoffset="{{(localStorageFactory.data.pIndDash != '') ? localStorageFactory.data.pIndDash : '0'}}">
+                </circle>
+              </svg>
+              <div class="svg-percent" ng-if="view.OutOfPocketIndividualUsedPercentage != ''">
+                <span>{{view.OutOfPocketIndividualUsedPercentage}}</span>
+              </div>
+              <div class="svg-percent" ng-if="view.OutOfPocketIndividualUsedPercentage == ''">
+                <span>N/A</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <div class="label underline">
+                <span ng-bind="'FAMILY' | translate"></span>
+              </div>
+              <div>
+                <span class="color-green"> {{view.OutOfPocketFamilyUsedAmt}}</span>/{{view.OutOfPocketLimitFamilyAmt}}
+              </div>
+            </div>
+            <div class="svg-wrapper">
+              <svg id="svg" width="60" height="60" viewPort="0 0 100 100" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <circle r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66" stroke-dashoffset="0">
+                </circle>
+                <circle id="pFam" class="svg-bar" r="20" cx="30" cy="30" fill="transparent" stroke-dasharray="125.66"
+                  stroke-dashoffset="{{localStorageFactory.data.pFamDash}}"></circle>
+              </svg>
+              <div class="svg-percent" ng-if="view.OutOfPocketFamilyUsedPercentage != ''">
+                <span>{{view.OutOfPocketFamilyUsedPercentage}}</span>
+              </div>
+              <div class="svg-percent" ng-if="view.OutOfPocketFamilyUsedPercentage == ''">
+                <span>N/A</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="list list-inset wrapping-list cardDetailTwo" ng-if="!hidePanel.hidePhysicianServices">
+      <div class="item item-center">
+        <div class="row flexContent">
+          <H3>
+            <span ng-bind="'PHYSICIAN_SERVICES' | translate"></span>
+          </H3>
+          <span class="font18 roboto-bold color-green" ng-bind="'COPAY' | translate"></span>
+        </div>
+
+        <div class="underline" ng-if="view.PhysicianServicesPreventiveCopay != 'HIDE'">
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'PREVENTIVE' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.PhysicianServicesPreventiveCopay"></div>
+                <!-- <div>Hol</div> -->
+              </span>
+            </div>
+          </div>
+          <div class="notes" ng-if="k">
+            <p ng-bind="view.PhysicianServicesPreventiveNotes" class="font12"> </p>
+            <p class="plan-notes">
+              <b>
+                <span ng-bind="'NOTES' | translate" class="plan-notes"></span>
+              </b>
+            </p>
+          </div>
+        </div>
+
+        <div class="underline" ng-if="view.PhysicianServicesPCPOfficeVisitCopay != 'HIDE'">
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'PCP_OFFICE_VISIT' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.PhysicianServicesPCPOfficeVisitCopay"></div>
+              </span>
+            </div>
+          </div>
+          <div class="notes"></div>
+        </div>
+
+        <div class="underline" ng-if="view.PhysicianServicesSpecialistCopay != 'HIDE'">
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'SPECIALIST' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.PhysicianServicesSpecialistCopay"></div>
+              </span>
+            </div>
+          </div>
+          <div class="notes" ng-if="k">
+            <p ng-bind="view.PhysicianServicesSpecialistNotes" class="font12"> </p>
+            <p class="plan-notes">
+              <b>
+                <span ng-bind="'NOTES' | translate" class="plan-notes"></span>
+              </b>
+            </p>
+          </div>
+        </div>
+
+        <div class="underline" ng-if="view.PhysicianServicesUrgentCareCopay != 'HIDE'">
+
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'URGENT_CARE' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.PhysicianServicesUrgentCareCopay"></div>
+              </span>
+            </div>
+          </div>
+          <div class="notes"></div>
+        </div>
+
+        <div class="underline" ng-if="view.PhysicianServicesChiropractorCopay != 'HIDE'">
+
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'CHIROPRACTOR' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.PhysicianServicesChiropractorCopay"></div>
+              </span>
+            </div>
+          </div>
+          <div class="notes" ng-if="k">
+            <p ng-bind="view.PhysicianServicesChiropractorNotes" class="font12"> </p>
+            <p class="plan-notes">
+              <b>
+                <span ng-bind="'NOTES' | translate" class="plan-notes"></span>
+              </b>
+            </p>
+          </div>
+        </div>
+
+        <div class="row flexContent" ng-if="view.PhysicianServicesMentalHealthCopay != 'HIDE'">
+          <div>
+            <span class="label">
+              <span ng-bind="'MENTAL_HEALTH' | translate"></span>
+            </span>
+          </div>
+          <div>
+            <span>
+              <div ng-bind-html="view.PhysicianServicesMentalHealthCopay"></div>
+            </span>
+          </div>
+        </div>
+        <div class="notes" ng-if="view.PhysicianServicesMentalHealthCopay != 'HIDE'">
+          <p ng-bind="view.PhysicianServicesMentalHealthNotes" class="font12"> </p>
+          <p class="plan-notes">
+            <b>
+              <span ng-bind="'NOTES' | translate" class="plan-notes"></span>
+            </b>
+          </p>
+        </div>
+
+      </div>
+    </div>
+    </div>
+
+    <div class="list list-inset wrapping-list cardDetailTwo" ng-if="!hidePanel.inpatientHospital">
+      <div class="item item-center" ng-if="view.Copay_InpatientHospital != 'HIDE'">
+        <div class="row flexContent">
+          <H3>
+            <span ng-bind="'INPATIENT_HOSPITAL' | translate"></span>
+          </H3>
+          <div>
+            <span>
+              <div ng-bind-html="view.Copay_InpatientHospital"></div>
+            </span>
+            <span class="font12 specialization-txt">
+              <!--<span ng-bind="'AFTER_DEDUCTIBLE' | translate"></span>-->
+            </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="list list-inset wrapping-list cardDetailTwo" ng-if="!hidePanel.outpatientSurgery">
+      <div class="item item-center" ng-if="view.Copay_OutpatientHospital != 'HIDE'">
+        <div class="row flexContent">
+          <H3>
+            <span ng-bind="'OUTPATIENT_SURGERY' | translate"></span>
+          </H3>
+          <div>
+            <span>
+              <div ng-bind-html="view.Copay_OutpatientHospital"></div>
+            </span>
+            <span class="font12 specialization-txt">
+              <!--<span ng-bind="'AFTER_DEDUCTIBLE' | translate"></span>-->
+            </span>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="list list-inset wrapping-list cardDetailTwo" ng-if="!hidePanel.emergencyRoom">
+      <div class="item item-center" ng-if="view.Copay_EmergencyRoom != 'HIDE'">
+        <div class="row flexContent">
+          <H3 style="    width: 160px;">
+            <span ng-bind="'EMERGENCY_ROOM' | translate"></span>
+          </H3>
+          <div>
+            <span>
+              <div ng-bind-html="view.Copay_EmergencyRoom"></div>
+              <!-- <div">$250 then 30% after deductible</div> -->
+
+          </span>
+          <span class="font12 specialization-txt">
+            <!--<span ng-bind="'AFTER_DEDUCTIBLE' | translate"></span>-->
+          </span>
+          </span>
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <div class="list list-inset wrapping-list cardDetailTwo" ng-if="!hidePanel.diagnosticTest">
+      <div class="item item-center">
+        <H3>
+          <span ng-bind="'DIAGNOSTIC_TESTS' | translate"></span>
+        </H3>
+
+        <div class="underline" ng-if="view.Copay_DiagnosticTestsLab != 'HIDE'">
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'LAB' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.Copay_DiagnosticTestsLab"></div>
+              </span>
+              <span class="font12 specialization-txt">
+                <!--<span ng-bind="'AFTER_DEDUCTIBLE' | translate"></span>-->
+              </span>
+              </span>
+            </div>
+          </div>
+          <div class="notes" ng-if="k">
+            <p ng-bind="view.DiagnosticTestLabNotes" class="font12"> </p>
+            <p class="plan-notes">
+              <b>
+                <span ng-bind="'NOTES' | translate" class="plan-notes"></span>
+              </b>
+            </p>
+          </div>
+        </div>
+
+        <div class="underline" ng-if="view.Copay_DiagnosticTestXRay != 'HIDE'">
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'X_RAY' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.Copay_DiagnosticTestXRay"></div>
+              </span>
+              <span class="font12">
+                <!--<span ng-bind="'AFTER_DEDUCTIBLE' | translate"></span>-->
+              </span>
+            </div>
+          </div>
+          <!-- TODO: Check the variable used here -->
+          <div ng-if="view.DiagnosticTestXrayNotes" class="notes">
+            <p ng-bind="view.DiagnosticTestXrayNotes" class="font12"> </p>
+            <p class="plan-notes">
+              <b>
+                <span ng-bind="'NOTES' | translate" class="plan-notes"></span>
+              </b>
+            </p>
+          </div>
+          <!-- End Check -->
+        </div>
+
+
+        <div class="row flexContent" ng-if="view.Copay_DiagnosticTestHighTechImg != 'HIDE'">
+          <div>
+            <span class="label">
+              <span ng-bind="'HIGH_TECH_IMAGING' | translate"></span>
+            </span>
+          </div>
+          <div>
+            <span>
+              <div ng-bind-html="view.Copay_DiagnosticTestHighTechImg"></div>
+            </span>
+            <span class="font12 specialization-txt">
+              <!--<span ng-bind="'AFTER_DEDUCTIBLE' | translate"></span>-->
+            </span>
+            </span>
+          </div>
+        </div>
+        <div ng-if="view.Copay_DiagnosticTestHighTechImg != 'HIDE'">
+          <div ng-if="view.DiagnosticTestHighTechImgNotes" class="notes">
+            <p ng-bind="view.DiagnosticTestHighTechImgNotes" class="font12"> </p>
+            <p class="plan-notes">
+              <b>
+                <span ng-bind="'NOTES' | translate" class="plan-notes"></span>
+              </b>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="list list-inset wrapping-list cardDetailTwo" ng-if="!hidePanel.rxCopayTypes">
+
+      <div class="item item-center">
+        <h3>
+          <span ng-bind="'RX_COPAY_TYPES' | translate"></span>
+        </h3>
+
+        <h3 class="roboto-bold pad-vert-10" ng-if="!hidePanel.regularRxCoverage">
+          <span class="color-green" ng-bind="'REGULAR_RX_COVERAGE' | translate"></span>
+        </h3>
+
+        <div class="underline-alt" ng-if="view.RX_Copay_RegularRXCoverage_Generic != 'HIDE'">
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'GENERIC' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.RX_Copay_RegularRXCoverage_Generic"></div>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="underline-alt" ng-if="view.RX_Copay_RegularRXCoverage_Preferred != 'HIDE'">
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'PREFERRED' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.RX_Copay_RegularRXCoverage_Preferred"></div>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="underline-alt" ng-if="view.RX_Copay_RegularRXCoverage_Brand != 'HIDE'">
+
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'BRAND' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.RX_Copay_RegularRXCoverage_Brand"></div>
+              </span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="row flexContent" ng-if="view.RX_Copay_RegularRXCoverage_Specialty != 'HIDE'">
+          <div>
+            <span class="label">
+              <span ng-bind="'SPECIALITY' | translate"></span>
+            </span>
+          </div>
+          <div>
+
+            <span>
+              <div ng-bind-html="view.RX_Copay_RegularRXCoverage_Specialty"></div>
+            </span>
+
+          </div>
+        </div>
+
+        <h3 class="roboto-bold pad-vert-10" ng-if="!hidePanel.MailOrderRxCoverage">
+          <span class="color-green" ng-bind="'MAIL_ORDER_RX_COVERAGE' | translate"></span>
+        </h3>
+
+        <div class="underline-alt" ng-if="view.RX_Copay_MailOrderRXCoverage_Generic != 'HIDE'">
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'GENERIC' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.RX_Copay_MailOrderRXCoverage_Generic"></div>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="underline-alt" ng-if="view.RX_Copay_MailOrderRXCoverage_Preferred != 'HIDE'">
+          <div class="row flexContent">
+            <div>
+              <span class="label">
+                <span ng-bind="'PREFERRED' | translate"></span>
+              </span>
+            </div>
+            <div>
+              <span>
+                <div ng-bind-html="view.RX_Copay_MailOrderRXCoverage_Preferred"></div>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="row flexContent" ng-if="view.RX_Copay_MailOrderRXCoverage_Brand != 'HIDE'">
+          <div>
+            <span class="label">
+              <span ng-bind="'BRAND' | translate"></span>
+            </span>
+          </div>
+          <div>
+            <span>
+              <div ng-bind-html="view.RX_Copay_MailOrderRXCoverage_Brand"></div>
+            </span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="list list-inset wrapping-list cardDetailTwo" style="    margin-bottom: 20px !important;">
+      <div class="item item-center ">
+        <h3>
+          <span ng-bind="'NOTE_PLAN' | translate"></span>
+
+        </h3>
+        <div class="row">
+          <div class="row">
+            <div>
+              <div class="label ">
+                <span>
+                  <div ng-bind-html="view.PlanNote"></div>
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!--<a ng-click="downloadLink()" ng-if="showVIEW_PLAN_SUMMARY" class="button button-block button-stable">-->
+      <a ng-click="downloadLink()" ng-if="k" class="button button-block button-stable">
+        <span>
+          <span ng-bind="'VIEW_PLAN_SUMMARY' | translate"></span>
+        </span>
+        <a>
+  </ion-content>
+</ion-view>

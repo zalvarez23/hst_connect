@@ -1,0 +1,18 @@
+<ion-view title="{{ 'LANGUAGE' | translate}} ">
+    <ion-content has-bouncing="false"  padding="true" class="has-header" ng-controller="changelanguageCtrl" has-bouncing="false">
+
+    	<div class="list list-inset text-center">
+    		<h1 ng-bind="'HELLO' | translate"></h1>
+    	</div>
+       	<div class="list list-inset">
+	        <ion-radio ng-model="selectedLanguage" ng-value="'English'" ng-click="languageChanged()">English</ion-radio>
+			<ion-radio ng-model="selectedLanguage" ng-value="'Español'" ng-click="languageChanged()">Español</ion-radio>
+		</div>
+
+        <div class="row">
+            <div class="col text-center">
+                <button class="button  button-stable border-radius-10" ui-sref="login">{{ 'BACK' | translate }}</button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

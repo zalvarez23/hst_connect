@@ -1,0 +1,142 @@
+<ion-view hide-nav-bar="true" title="{{ 'MY_PLAN_INFO' | translate }}" home-icon hide-back-button="true"
+  ng-controller="myBenefistCtrl">
+  <div class="header-figma-arrow">
+    <svg width="19" height="19" ui-sref="landingPage" viewBox="0 0 19 19" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+        fill="white" />
+    </svg>
+    <h1 ng-bind="'MY_PLAN_INFO' | translate"></h1>
+  </div>
+  <ion-content has-bouncing="false" class="content2-figma backgroundWhite  dark-blue-text my-benefit newPlanDetail">
+
+
+    <div class="list list-inset" ng-if="!newProject">
+      <a class="item item-icon-left item-icon-right" ui-sref="tabsController.planInformation">
+        <i class="ion icon ion-plan-info"></i>
+        <span ng-bind="'MY_PLAN_INFO' | translate"></span>
+        <img src="img/figma/next.png">
+
+      </a>
+    </div>
+
+    <div class="list list-inset">
+      <a class="item item-icon-left item-icon-right" ui-sref="tabsController.insurance">
+        <i class="ion icon ion-insurance-info"></i>
+        <span ng-bind="'MY_INSURANCE_INFO' | translate"></span>
+        <img src="img/figma/next.png">
+
+      </a>
+    </div>
+    <div class="list list-inset" ng-if="!newProject">
+      <a class="item item-icon-left item-icon-right" ng-click="showModalMessage();">
+        <i class="ion icon ion-upload"></i>
+        <span ng-bind="'BALANCE_BILL' | translate"></span>
+        <img src="img/figma/next.png">
+
+      </a>
+    </div>
+
+    <div class="list list-inset hide">
+      <a class="item item-icon-left item-icon-right">
+        <i class="ion icon ion-rx"></i>
+        Rx
+        <i class="icon ion-chevron-right grey-theme-color"></i>
+      </a>
+    </div>
+
+  </ion-content>
+  <script id="my-modal-message.html" type="text/ng-template">
+  <ion-modal-view >
+    <div class="header-figma-arrow">
+      <svg width="19" height="19" ng-click="closeModal();" viewBox="0 0 19 19" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+              d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+              fill="white" />
+      </svg>
+      <h1 ng-bind="'Message' | translate"></h1>
+    </div>
+
+    <ion-content class="content2-figma backgroundWhite" >
+      <div class="messageTextFigma">
+      <div class="listAttachments">
+        <ul ng-repeat="item in listDraftAttachments">
+          <li >
+            <i class="icon ion-paperclip"></i>
+            {{item.FileName}}
+            <i class="icon ion-close delete" ng-click="deleteFile(item.Id)"></i>
+          </li>  
+        </ul>
+        
+      </div>      
+      <label class="item item-input">
+          <textarea ng-model="params.textMessage" placeholder="{{'MESSAGETEXT' | translate}}"></textarea>
+        </label>
+      
+
+        <div class="row">
+          <div class="col ">
+              <button type="button" ng-click="openModalattachment()"
+                  class="button button-stable button-cancel button-block  button-cancel-figma">{{'ADD_ATTACHMENT' | translate}}</button>
+          </div>
+          <div class="col">
+              <button type="submit" class="button button-stable button-next button-block  button-next-figma"
+                  ng-click="addUserMessage()">{{ 'SEND' | translate }}</button>
+          </div>
+      </div>
+     
+        
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+  <script id="my-modal-attachment.html" type="text/ng-template">
+  <ion-modal-view >
+    <div class="header-figma-arrow">
+      <svg width="19" height="19" ng-click="closeModalattachment();" viewBox="0 0 19 19" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <path
+              d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+              fill="white" />
+      </svg>
+      <h1> Attach File</h1>
+    </div>
+    <ion-content class="content2-figma backgroundWhite">
+      <div class="messageText">
+          <br>
+          <center>
+          <img  id="imagePhoto" ng-src="{{uriImg}}">
+          </center>
+          
+          <!-- Delete Message -->
+          <div class="contentButton">
+
+                            
+          <div  class="contentActionsPhoto">
+            <div class="flex-center">
+              <img  src="img/figma/takePhoto.png" ng-click="takePhoto(1)">
+              <p>{{'TAKE_PHOTO' | translate}}</p>
+            </div>
+            <div class="flex-center" ng-click="takePhoto(2)">
+              <img  src="img/figma/selectPhoto.png">
+              <p>{{'SELECT_PHOTO' | translate}}</p>
+            </div>
+          </div>
+          <!-- <button class="button button-stable button-next button-block" ng-click="uploadPhoto()">{{'UPLOAD_PHOTO' | translate}}</button>            -->
+           <!-- <button class="button button-stable button-next button-block" ng-click="takePhoto(1)">{{'TAKE_PHOTO' | translate}}</button> -->
+           <button  style="    margin-top: 26px;" class="button button-stable button-next button-block button-next-figma" ng-click="uploadPhoto()">{{'UPLOAD_PHOTO' | translate}}</button>
+   
+          <!-- Cancel Message -->
+          </div>
+          </div>
+         
+        
+      </div>
+    </ion-content>
+  </ion-modal-view>
+</script>
+
+</ion-view>

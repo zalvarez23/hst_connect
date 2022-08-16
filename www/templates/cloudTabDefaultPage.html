@@ -1,0 +1,10 @@
+<ion-view title="Cloud Tab {{ 'DEFAULT' | translate }} Page" id="page4">
+    <ion-content padding="true" has-bouncing="false"  class="has-header" ng-controller="cloudTabDefaultPageCtrl as ctrl">
+		<h1>{{ 'TITLE' | translate }}</h1>
+		<p>{{ 'MESSAGE' | translate }}</p>
+
+		<ion-item>
+			<select ng-options="language | translate for language in ctrl.languages" ng-model="ctrl.language" ng-change="ctrl.updateLanguage()"></select>
+		</ion-item>
+    </ion-content>
+</ion-view>

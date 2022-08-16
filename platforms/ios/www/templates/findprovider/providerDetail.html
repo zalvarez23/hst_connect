@@ -1,0 +1,629 @@
+<ion-view hide-nav-bar="true" title="{{ 'DETAILS' | translate }}">
+
+    <div class="header-figma-arrow">
+        <svg width="19" height="19" ui-sref="tabsController.providerSearchResults" viewBox="0 0 19 19" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+                fill="white" />
+        </svg>
+        <h1 ng-bind="'DETAILS' | translate"></h1>
+    </div>
+
+
+    <ion-content class="content2-figma" has-bouncing="false" style="padding: 0px 9px;" padding="true"
+        ng-controller="providerDetailCtrl">
+        <div class="list search-details padding0" novalidate>
+            <!-- Doctor Details-->
+            <div class="doctor-detail" ng-if="providerType == 'Doctor'">
+                <div class="list">
+                    <div class="item row cardFigmaResult">
+                        <div class="col">
+                            {{ 'PRACTICENAME' | translate }}
+                        </div>
+                        <div class="col col-60 item-text-wrap">
+                            {{ ': ' + doctor.FirstName + ' ' + doctor.LastName }}
+                        </div>
+                    </div>
+                    <p></p>
+                    <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                        <div class="col">
+                            {{ 'PRACTICENAME' | translate }}
+                        </div>
+                        <div class="col col-60 item-text-wrap">
+                            {{ ': ' + doctor.PracticeName }}
+                        </div>
+                    </div>
+                    <p></p>
+
+                    <div class="item row cardFigmaResult">
+                        <div class="col" style="font-size: 12px;">
+                            {{ 'VBP_ACCEPTANCE' | translate }}
+                        </div>
+                        <div class="col col-60 item-text-wrap">
+                            <div class="row flex-start" ng-if="doctor.FacilityAcceptanceText">
+                                <span class="dark-blue-text roboto-bold">: {{
+                                    doctor.IsInNetwork ? 'In-Network' : doctor.FacilityAcceptanceText
+                                    }}</span>
+                                <img ng-if="doctor.FacilityAcceptanceID == 5" style="margin-left: 5px; width: 20px;"
+                                    src="../../img/icons/star.png">
+                                <img ng-if="doctor.FacilityAcceptanceID == 6" style="margin-left: 5px;"
+                                    src="../../img/icons/anchor.png">
+                                <div ng-if="doctor.FacilityAcceptanceID != 5 &&
+                            doctor.FacilityAcceptanceID != 6" class="acceptance acceptance-{{
+                                doctor.IsInNetwork ? 'IsInNetwork' :doctor.FacilityAcceptanceID
+                            }}"></div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <p></p>
+
+
+                    <div class="item row cardFigmaResult">
+                        <div class="col">
+                            {{ 'SPECIALIZATION' | translate }}
+                        </div>
+                        <div class="col col-60 item-text-wrap ">
+                            {{ ': ' + doctor.Specialization }}
+                        </div>
+                    </div>
+                    <p></p>
+                    <div class="item row cardFigmaResult ">
+                        <div class="col">
+                            <span ng-bind="'PHONE' | translate"></span>
+                        </div>
+                        <div class="col col-60 item-text-wrap">
+                            : <a ng-href="{{'tel:' + doctor.Phone}}">{{doctor.Phone | tel}} </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="item row cardFigmaResult">
+                        <div class="col">
+                            {{ 'ADDRESS' | translate }}
+                        </div>
+                        <div class="col col-60 item-text-wrap">
+                            : {{ doctor.formattedaddress }} <br>
+                            {{doctor.formattedaddressCity}}
+                            <span class="dark-blue-text bold-text"
+                                ng-class="{ 'hide' : !doctor.formattedaddress || doctor.formattedaddress.length == 0 }">
+                                <p class="dark-blue-text" ng-click="openGoogleDirection()">
+                                    {{ 'DIRECTIONS_TO_PROVIDER' | translate }}</p>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col flex-center">
+                        {{ 'OFFICEHOURS' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': Monday - ' + (doctorIsN.MondayOpenTime || '') + ' - ' + (doctorIsN.MondayCloseTime ||
+                        '')}} <br>
+                        {{ ': Tuesday - ' + (doctorIsN.TuesdayOpenTime || '') + ' - ' + (doctorIsN.TuesdayCloseTime ||
+                        '')}}<br>
+                        {{ ': Wednesday - ' + (doctorIsN.WednesdayOpenTime || '') + ' - ' +
+                        (doctorIsN.WednesdayCloseTime || '')}}<br>
+                        {{ ': Thursday - ' + (doctorIsN.ThursdayOpenTime || '') + ' - ' + (doctorIsN.ThursdayCloseTime
+                        || '')}}<br>
+                        {{ ': Friday - ' + (doctorIsN.FridayOpenTime || '') + ' - ' + (doctorIsN.FridayCloseTime ||
+                        '')}}<br>
+                        {{ ': Saturday - ' + (doctorIsN.SaturdayOpenTime || '') + ' - ' + (doctorIsN.SaturdayCloseTime
+                        || '')}}<br>
+                        {{ ': Sunday - ' + (doctorIsN.SundayOpenTime || '') + ' - ' + (doctorIsN.SundayCloseTime ||
+                        '')}}
+                    </div>
+                </div>
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'WAITTIME' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.WaitTime || '') }}
+                    </div>
+                </div>
+
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'LICENSE' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.LicenseNumber || '') }}
+                    </div>
+                </div>
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'EMAIL' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.PracticeEmail || '') }}
+                    </div>
+                </div>
+                <p></p>
+
+                <div class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'CREDENTIAL' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctor.IsInNetwork ? (doctorIsN.PrimaryDegree || '') : (doctor.PrimaryDegree || ''))
+                        }}
+                    </div>
+                </div>
+                <p></p>
+
+                <div class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'GENDER' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctor.IsInNetwork ? (doctorIsN.Gender || '') : (doctor.Gender || '')) }}
+                    </div>
+                </div>
+                <p></p>
+
+                <div class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'MEDICAL_SCHOOL' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctor.IsInNetwork ? (doctorIsN.MedicalSchoolList || '') : (doctor.MedicalSchoolList
+                        || '')) }}
+                    </div>
+                </div>
+                <p></p>
+
+                <div class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'GRADUATION_YEAR' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctor.IsInNetwork ? (doctorIsN.GraduationYear || '') : (doctor.GraduationYear ||
+                        '')) }}
+                    </div>
+                </div>
+
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'ADA Proc' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.ADAProc || '') }}
+                    </div>
+                </div>
+
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'ADA Fac' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.ADAFac || '') }}
+                    </div>
+                </div>
+
+                <p></p>
+
+                <div class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'HOSPITAL_AFFILIATIONS' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap" ng-if='doctor.HospitalAffiliations && !doctor.IsInNetwork'>
+                        <p ng-repeat='item in doctor.HospitalAffiliations'>
+                            {{ ': ' + item}}
+                        </p>
+                    </div>
+                    <div class="col col-60 item-text-wrap" ng-if='doctorIsN.HospitalAffiliations && doctor.IsInNetwork'>
+                        <p ng-repeat='item in doctorIsN.HospitalAffiliations'>
+                            {{ ': ' + item}}
+                        </p>
+                    </div>
+                </div>
+                <p></p>
+
+
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'HOSPITALACREDITATION' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' }}
+                    </div>
+                </div>
+                <p></p>
+
+
+                <!-- 
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'ADA Fac' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + doctor.ADAFac }}
+                    </div>
+                </div> -->
+
+
+
+                <!-- last change ng-if="!newProject" -->
+                <!-- <div class="item row cardFigmaResult">
+                    <div class="col col-40" style="white-space: normal">
+                        {{ 'VBP_ACCEPTANCE_RATING' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + doctor.FacilityAcceptanceText }}
+                    </div>
+                </div> -->
+                <p></p>
+
+                <div class="item row cardFigmaResult">
+                    <div class="col col-40" style="white-space: normal">
+                        {{ 'REPORTED_QUALITY_MEASURES' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctor.IsInNetwork ? (doctorIsN.ReportedQualityMeasures || '') :
+                        (doctor.ReportedQualityMeasures || '')) }}
+                    </div>
+                </div>
+                <p></p>
+
+                <div class="item row cardFigmaResult">
+                    <div class="col col-40" style="white-space: normal">
+                        {{ 'ACCEPTS_MEDICARE_ASSIGNNMENT' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctor.IsInNetwork ? (doctorIsN.AcceptsMedicareAssignment || '') :
+                        (doctor.AcceptsMedicareAssignment || '')) }}
+                    </div>
+                </div>
+                <p></p>
+
+
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'AcceptsNewPatients' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.AcceptsNewPatients || '') }}
+                    </div>
+                </div>
+                <p></p>
+
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'BoardCertification' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.BoardCertifications || '')}}
+                    </div>
+                </div>
+                <p></p>
+
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'DateofLastUpdate' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.DateOfLastUpdate || '')}}
+                    </div>
+                </div>
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'ECPFacility' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.ECPFacility || '')}}
+                    </div>
+                </div>
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'ECPPractitioner' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.ECPPracticioner || '')}}
+                    </div>
+                </div>
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'LanguagesSpoken' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.LanguagesSpokenList || '')}}
+                    </div>
+                </div>
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'LanguagesSpokenStaff' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.LanguagesSpokenList_Staff || '')}}
+                    </div>
+                </div>
+                <p></p>
+                <div ng-if="doctor.IsInNetwork" class="item row cardFigmaResult">
+                    <div class="col">
+                        {{ 'ProceduresPerformed' | translate }}
+                    </div>
+                    <div class="col col-60 item-text-wrap">
+                        {{ ': ' + (doctorIsN.ProceduresPerformedList || '')}}
+                    </div>
+                </div>
+                <p></p>
+
+                <button class="button button-block button-stable button-next-figma" ng-click="setPCP()">
+                    {{ 'SET_PCP' | translate }}</button>
+            </div>
+
+            <!-- Hospital Info-->
+            <div class="hospital-detail" ng-if="providerType == 'Hospital'">
+                <div class="knee-replace">
+                    <b class="green-color" style="font-size: 17px"> <span ng-bind="hospital.Medical_GroupName"></span>
+                    </b>
+                    <i style="text-align: right" ng-click="showInfo()"
+                        class="icon ion-information-circled stable price-range-info"></i>
+
+                    <!-- last change ng-if="!newProject" -->
+                    <div class="row">
+                        <span>VBP Acceptance Rate: </span>
+                        <div class="acceptance acceptance-{{hospital.FacilityAcceptanceID}}"></div>
+                        <span class="padded-left roboto-bold dark-blue-text"
+                            ng-bind="hospital.FacilityAcceptanceText"></span>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="item item-text-wrap cardFigmaResult">
+                        <div class="row search-detail-hint">
+                            <div class="col col-25"> <b> {{ 'ADDRESS' | translate }}: </b> </div>
+                            <div class="col col-75 detailed-info">
+                                <span> {{ hospital.formattedaddress }} </span>
+                                <div class="font12"> <a ng-click="openGoogleDirection()">{{ 'GET_DIRECTIONS' | translate
+                                        }}</a>
+                                    <span class="float-right"
+                                        ng-if="hospital.DistanceFromBase">{{hospital.DistanceFromBase.toFixed(2) + " " + ('MILES_2'
+                                        | translate )}}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="item item-text-wrap cardFigmaResult">
+                        <div class="row search-detail-hint">
+                            <div class="col col-25"> <b> {{ 'PHONE' | translate }}: </b> </div>
+                            <div class="col col-75 detailed-info stable text-right">
+                                <a ng-href="{{'tel:' + hospital.Phone}}">{{hospital.Phone | tel}} </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="item item-text-wrap cardFigmaResult">
+                        <div class="row search-detail-hint">
+                            <div class="col col-50"> <b> {{ 'QUALITY_RATING' | translate }}: </b> </div>
+                            <div class="col col-50 detailed-info stable text-right">
+                                <div class="" ng-init="quality_ratings_data = getRating(hospital.QualityRating)">
+                                    <div class="" ng-if="hospital.QualityRating">
+                                        <ionic-ratings ratingsobj='quality_ratings_data'></ionic-ratings>
+                                    </div>
+                                    <div class="col" ng-if="!hospital.QualityRating">
+                                        <div class="step-txt dark-green-text font12">
+                                            {{ 'NO_QUALITY_RATINGS' | translate }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list">
+                    <div class="item item-text-wrap cardFigmaResult">
+                        <div class="row detailed-info">
+                            <div class="col col-50"> <b> {{hospital.Specialization}}: </b> </div>
+                            <div class="col col-50 green-color text-right"> {{hospital.AverageCharge | currency:"$":0}}
+                            </div>
+                        </div>
+                        <div class="row detailed-info">
+                            <div class="col col-75"> {{ 'PATIENTS_TREATED' | translate }}: </div>
+                            <div class="col col-25 text-right"> <span ng-bind="hospital.NumberOfCases"></span> </div>
+                        </div>
+                        <div class="row detailed-info">
+                            <div class="col col-75"> {{ 'AVERAGE_LENGTH_OF_STAY' | translate }} : </div>
+                            <div class="col col-25 text-right"> <span
+                                    ng-if="hospital.AverageLengthOfStay">{{hospital.AverageLengthOfStay + " "}}
+                                    {{ 'DAYS' | translate }}</span> </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list list-inset hide">
+                    <div class="item item-text-wrap cardFigmaResult">
+                        <b class="green-color price-range"> {{ 'AVERAGE_COST_AT_THIS_FACILITY' | translate }} </b>
+                        <div class="range-indicatior">
+                            <div class="arrow-indicator"> <span
+                                    ng-style="getAverageRang(hospital.MinCharge,hospital.MaxCharge)"
+                                    class="arrow-down"></span></div>
+                            <div class="prograss-wrapper"><span class="green"></span><span class="yellow"></span><span
+                                    class="red"></span></div>
+                            <div class="price-range-value"><span class="min">{{hospital.MinCharge |
+                                    currency:"$":0}}</span> <span class="max">{{hospital.MaxCharge |
+                                    currency:"$":0}}</span></div>
+                        </div>
+                    </div>
+                    <div class="item item-text-wrap hide cardFigmaResult">
+                        <div class="row search-detail-hint">
+                            <div class="col col-90"> <b> {{ 'TOTAL_OUT_OF_POCKET_COSTS' | translate }} : </b> </div>
+                        </div>
+                        <div class="row detailed-info">
+                            <div class="col col-75"> {{ 'CO_PAY' | translate }} : </div>
+                            <div class="col col-25 text-right"> <span> {{hospital.CoPay | currency:"$":0}}</span> </div>
+                        </div>
+                        <div class="row detailed-info">
+                            <div class="col col-75"> {{ 'DEDUCTIBLE' | translate }} <span class="font12">{{
+                                    'IF_NOT_MET_YET' | translate }}</span> : </div>
+                            <div class="col col-25 text-right"> <span>{{hospital.Deductible | currency:"$":0}}</span>
+                            </div>
+                        </div>
+                        <div class="row detailed-info">
+                            <div class="col col-75"> {{ 'CO_INSURANCE' | translate }} <span class="font12">{{
+                                    'YOUR_ESTIMATED_SHARE_OF_COSTS' | translate }}</span> : </div>
+                            <div class="col col-25 text-right">
+                                <span>{{hospital.CoInsurance ? (hospital.CoInsurance | currency:"$":0 ):
+                                    ('NOT_AVAILABLE' | translate)}}</span>
+                            </div>
+                        </div>
+                        <div class="row detailed-info up-strip">
+                            <div class="col col-75"> <b> {{ 'YOUR_COST' | translate }} </b> </div>
+                            <div class="col col-25 green-color text-right">
+                                {{hospital.MemberTotalCost ? (hospital.MemberTotalCost | currency:"$":0) : 'Not
+                                Provided' }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Modal For More Information-->
+            <script id="more-info.html" type="text/ng-template">
+            <ion-modal-view class="border-radius-10 filter-color">
+                <ion-header-bar class="modal-title-bg" style="flex-flow: row-reverse;">
+                    <div class="title">Info</div>
+                    <i ng-click="closeInfo()" class="icon ion-close flex-end closeInfo"></i> 
+                </ion-header-bar>
+                <ion-content style= "margin-right: 8px; margin-left: 8px">
+                    <div>
+                        <h4><span ng-bind="'QUALITY' | translate"></span></h4>     
+                        <div style="color: rgb(233,203,60)">                       
+                        <i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i><i class="icon ion-ios-star"></i>
+                        </div>
+                        <p>
+                            The hospital's overall rating shows the quality of care based on 60 measures reported to Centers for Medicare &
+                            Medicaid (CMS) for hospital provided services. The average rating for hospitals is a three-star rating. Rating updated on {{ (providerType ==='Doctor' ? doctor.QualityRatingUpdatedOn : hospital.QualityRatingUpdatedOn) | date :  "MM/dd/y" }}.                             
+                        </p>
+                    </div>
+                    <br>
+                    <div>
+                        <h4>Cost</h4>   
+                        <div style="color: rgb(233,203,60)">                           
+                            <i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i><i class="icon ion-social-usd"></i>
+                        </div>
+                        <p>
+                            Price rating is based on the hospital's average charge for a specified procedure. 
+                            If no procedure is identified the price rating is based on the hospitals overall cost-of-charge.                                
+                        </p>
+                    </div>
+                    <br>
+                    <!-- last change ng-if="!newProject" -->
+
+
+                    <!-- <div ng-if="providerType != 'Doctor'"> -->
+                    <div>
+                        <h4><span ng-bind="'VBP_ACCEPTANCE' | translate"></span></h4>
+                        <div>
+                            <div class="inline-deep flex-center" style="margin-bottom : 5px">
+                                <img  src="../../img/icons/anchor.png" style="margin-right: 2px;">
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text">HST Anchor</span>
+                                <!-- - Facility has accepted VBP. -->
+                            </div>
+                        </div>
+                        <div>
+                            <div class="inline-deep flex-center" style="margin-bottom : 5px">
+                                <img  src="../../img/icons/star.png" style="margin-right: 8px;">
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Contracted</span>
+                                <!-- - Facility has accepted VBP. -->
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-1"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> >90% VBP Acceptance</span>
+                                 <!-- - Facility has accepted VBP. -->
+                            </div>
+                        </div>
+                     
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-3"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> 75-90% VBP Acceptance </span>
+                                <!-- - Facility has experience with VBP and has given pushback on certain procedures.                                 -->
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-2"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text">Below 75% or Above 250% of Medicare
+                                    Allowed</span>
+                                <!-- - Facility has not accepted VBP and has given pushback.                                                          -->
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-4"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Limited Experience</span>
+                                - Not enough experience with VBP to determine acceptance rate.                             
+                            </div>
+                        </div>
+                    </div>
+
+<!-- 
+                    <div  ng-if="providerType == 'Doctor'">
+                        <h4><span ng-bind="'VBP_ACCEPTANCE' | translate"></span></h4>
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-1"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> VBP Accepted</span>
+                                 - Facility has accepted VBP.
+                            </div>
+                        </div>
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-3"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Partial Acceptance</span>
+                                - Facility has experience with VBP and has given pushback on certain procedures.                                
+                            </div>
+                        </div>
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-2"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text">Emergency Use Only</span>
+                                - Facility has not accepted VBP and has given pushback.                                                         
+                            </div>
+                        </div>
+                    
+                        <div>
+                            <div class="inline-deep">
+                                <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-4"></div>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Limited Experience</span>
+                                - Not enough experience with VBP to determine acceptance rate.                             
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                    <br>
+                    <div ng-if="!newProject">
+                        <h4><span ng-bind="'YOUR_EST_COST' | translate"></span></h4>
+                        <p>
+                            This amount combines your copay, deductible and coinsurance and estimates 
+                            what your out-pocket expense might be for a specified procedure.
+                        </p>    
+                    </div>
+                    <br>
+                </ion-content>
+            </ion-modal-view>
+        </script>
+    </ion-content>
+</ion-view>

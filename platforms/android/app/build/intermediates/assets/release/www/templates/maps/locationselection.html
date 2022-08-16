@@ -1,0 +1,18 @@
+<ion-view hide-nav-bar="true" title="{{ 'SELECT_LOCATION' | translate }}">
+
+	<div class="header-figma-arrow">
+		<svg width="19" height="19" onclick="history.back()" viewBox="0 0 19 19" fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+				fill="white" />
+		</svg>
+		<h1 ng-bind="'SELECT_LOCATION' | translate"></h1>
+
+	</div>
+
+	<ion-content has-bouncing="false"  class="has-header map-content content2-figma-map">
+		<map-location-selector width="100%" height="100%"></map-location-selector>
+		<div id="map"></div>
+	</ion-content>
+</ion-view>

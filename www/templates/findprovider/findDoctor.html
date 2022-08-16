@@ -1,0 +1,104 @@
+<ion-view hide-nav-bar="true" title="{{ 'FIND_DOCTOR' | translate }}">
+
+    <div class="header-figma-arrow">
+        <svg width="19" height="19" ui-sref="tabsController.findAProvider" viewBox="0 0 19 19" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+                fill="white" />
+        </svg>
+        <h1 ng-bind="'FIND_DOCTOR' | translate"></h1>
+        <button class="button button-icon ion-home rightIconHeaderHome" style="right: 6px;" ui-sref="landingPage"
+            menu-toggle="left"></button>
+    </div>
+
+
+
+    <ion-content has-bouncing="false" padding="true" class="has-header price-procedure content2-figma backgroundWhite"
+        ng-controller="findDoctorCtrl">
+        <form class="list form-group reg-form" name="searchForm">
+            <div class="list">
+                <label class="item item-input item-select-figma"
+                    ng-class="{ 'has-error': searchForm.$submitted && searchForm.name.$invalid }">
+                    <input type="text" class="text-figma-gray" placeholder="{{ 'FIND_BY_NAME' | translate }}"
+                        ng-model="name" name="name" ng-required="true">
+                </label>
+            </div>
+            <!-- NUEVO SELECT               -->
+            <div class="list" ng-click="modalMillas()">
+                <label class="item item-input item-select item-select-figma">
+                    <div ng-init="aroundDistance = distanceList[0]" class="input-label procedure-text labelSelect">
+                        {{ 'WITHIN' | translate }} {{ aroundDistance }} {{ 'MILES' | translate }}</div>
+
+                </label>
+            </div>
+            <!-- FIN NUEVO SELEC -->
+            <!-- ANTIGUO SELECT -->
+            <div class="list" ng-show="ok">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        &nbsp;
+                    </div>
+                    <select ng-model="aroundDistance" ng-init="aroundDistance = distanceList[0]">
+                        <option ng-repeat="distance in distanceList" value="{{ distance }}">{{ 'WITHIN' | translate }}
+                            {{ distance }} {{ 'MILES' | translate }}</option>
+                    </select>
+                </label>
+            </div>
+            <!-- FIN ANTIGUO SELECT -->
+            <div class="list list-inset location-option location-option-figma">
+                <label class="item item-icon-right">
+                    <input type="radio" ng-model="loc_choice" value="currentlocation" required />{{
+                    'MY_CURRENT_LOCATION' | translate }}
+                    <i ng-if="loc_choice == 'currentlocation'" class="icon ion-checkmark custom-tick"></i>
+                </label>
+                <label class="item item-icon-right user-input">
+                    <input type="radio" ng-model="loc_choice" value="inputlocation" required />
+                    <input class="user-input-location" type="text" ng-model="inputaddress"
+                        placeholder="{{ 'INPUT_LOCATION' | translate }}" />
+                    <i ng-if="loc_choice == 'inputlocation'" class="icon ion-checkmark custom-tick"></i>
+                </label>
+                <label class="item item-icon-right" ng-click="openMap()">
+                    <input type="radio" ng-model="loc_choice" value="maplocation" required /><span
+                        ng-bind="'SET_MAP_LOCATION' | translate"></span>
+                    <i ng-if="loc_choice == 'maplocation'" class="icon ion-checkmark custom-tick"></i>
+                </label>
+            </div>
+
+            <small class="light-gray-text block-text">
+                <b>{{ 'PROVIDER_DONOT_PARTICIPATE_TITLE' | translate}}</b>
+                <br>
+                {{ 'PROVIDER_DONOT_PARTICIPATE2' | translate }}
+                <br>
+                {{ 'PROVIDER_DONOT_PARTICIPATE3' | translate }}
+                <br>
+                {{ 'PROVIDER_DONOT_PARTICIPATE4' | translate }}
+
+            </small>
+            <br />
+            <label class="item item-input item-select item-select-figma" ng-click="modalSelect();"
+                ng-class="{'has-error': searchForm.procedure.$invalid && searchForm.$submitted}">
+                <div class="input-label procedure-text" style="font-size:13px;">{{ 'SPECIALIZATION' | translate }} :
+                </div>
+                <p class="newnameselect">{{nameProc}}</p>
+            </label>
+            <div class="list" ng-show="ok">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        &nbsp;
+                    </div>
+                    <select ng-model="specialization" name="specialization" ng-required="true">
+                        <option value="">{{ 'SPECIALIZATION' | translate }} : {{ 'PLEASE_SELECT' | translate }}</option>
+                        <option ng-repeat="spe in specializationList" value="{{ spe.ID }}">{{ spe.Name }}</option>
+                    </select>
+                </label>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="button button-stable button-cancel button-block button-next-figma"
+                        ng-click="searchProvider()">{{ 'SEARCH' | translate }}</button>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

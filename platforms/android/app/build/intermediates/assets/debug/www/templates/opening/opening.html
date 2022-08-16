@@ -1,0 +1,35 @@
+<ion-view hide-nav-bar=true nav-transition="none">
+	<ion-content has-bouncing="false" padding="true" class="opening-screen" ng-controller="openingScreenCtrl"
+		ng-init="executeGetDeviceRegistered();">
+		<div class="title_hst">
+			<h1>HST</h1>
+			<h1>Connect</h1>
+		</div>
+		<div ng-if="showButtons" style="    margin-top: 70px;
+		text-align: center;">
+			<button ng-if="(!firstTimeAux)" class="button button-opening login-custom-button"
+				ui-sref="login">{{'LOGIN_CAPS' | translate}}</button>
+			<button ng-if="(firstTimeAux)" class="button button-opening login-custom-button"
+				ui-sref="registration">{{'REGISTER_CAPS' | translate}}</button>
+		</div>
+		<div class="opening-custom-element">
+
+			<!-- <img style="margin-bottom:30px;" src="img/HST_connect.png" class="hst-connect-img"> -->
+
+			<div class="row hide">
+				<div class="col">
+					<ion-toggle class="transparent no-border" ion-toggle-text ng-true-value="'English'"
+						ng-false-value="'Spanish'" ng-model="selectedLanguage" ng-change="stateChanged()">
+						{{ 'LANGUAGE' | translate }}
+					</ion-toggle>
+				</div>
+			</div>
+
+			<footer>
+				<small><b>{{'OPENING_SCREEN_FOOTER_EMERGENCY' | translate}}:</b></small><br />
+				<small>{{'OPENING_SCREEN_FOOTER_CALL' | translate}}</small>
+				<small>version: {{version}}</small>
+			</footer>
+		</div>
+	</ion-content>
+</ion-view>

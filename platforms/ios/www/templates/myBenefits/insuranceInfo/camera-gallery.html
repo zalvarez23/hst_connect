@@ -1,0 +1,53 @@
+<ion-view hide-nav-bar="true" title="{{ 'EDIT_PHOTO' | translate }}">
+
+    <div class="header-figma-arrow">
+        <svg width="19" height="19" ui-sref="tabsController.insuranceCardPhotos" viewBox="0 0 19 19" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+                fill="white" />
+        </svg>
+        <h1 ng-bind="'EDIT_PHOTO' | translate"></h1>
+    </div>
+    <ion-content has-bouncing="false"  padding="true" class="has-header insurance-card content2-figma backgroundWhite"
+        ng-controller="PhotoCtrl">
+        <small class="light-gray-text block-text" ng-if="imageType == 'profilePicture'">
+            <span ng-bind="'TAKE_LANDSCAPE_IMAGE_NOTES' | translate"></span>
+        </small>
+        <div class="profile-img-container">
+            <!-- <img width="50" height="50" src="{{ image ? image : 'img/user_icon.png'}}" /> -->
+            <img ng-if="image" width="50" height="50" src="{{image}}" />
+            <img ng-if="!image" width="50" height="50" src="img/user_icon.png" />
+        </div>
+
+
+
+        <div style="padding: 0px 20px">
+            <br/>
+
+            <div class="contentActionsPhoto">
+                <div class="flex-center">
+                    <img src="img/figma/takePhoto.png" ng-click="takePhoto(1)">
+                    <p>Take a Photo</p>
+                </div>
+                <div class="flex-center" ng-click="takePhoto(2)">
+                    <img src="img/figma/selectPhoto.png">
+                    <p>Select Photo</p>
+                </div>
+            </div>
+            <br/>
+
+            <button class="button button-stable button-next button-block button-next-figma"
+                ng-click="removePhoto();">{{'REMOVE_PHOTO' | translate}}</button>
+
+        </div>
+
+        <!-- 
+        <button ng-click="takePhoto(1)" class="button button-block button-positive"> <span
+                ng-bind="'TAKE_PHOTO' | translate"></span></button>
+        <button ng-click="takePhoto(2)" class="button button-block button-positive"> <span
+                ng-bind="'SELECT_PHOTO' | translate"></span></button> -->
+        <!-- <button class="button button-block button-positive" ng-click="removePhoto()"><span
+                ng-bind="'REMOVE_PHOTO' | translate"></span></button> -->
+    </ion-content>
+</ion-view>

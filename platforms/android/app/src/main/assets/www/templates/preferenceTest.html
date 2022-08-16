@@ -1,0 +1,34 @@
+<ion-view title="App Preference">
+	<ion-content padding="true" has-bouncing="false"  class="has-header" ng-controller="prefCtrl as ctrl">
+		<form class="list" name="loginForm" novalidate>           
+			<div class="list list-inset">
+				<label class="item item-input">
+					<i class="icon ion-person placeholder-icon"></i>
+					<input type="text" name="key" placeholder="Key" ng-model="ctrl.key">
+				</label>
+			</div>
+			<div class="list list-inset">
+				<label class="item item-input">
+					<i class="icon ion-person placeholder-icon"></i>
+					<input type="text" name="value" placeholder="Value" ng-model="ctrl.value">
+				</label>
+			</div>
+			
+			<div class="spacer" style="height: 40px;"></div>
+
+			<div class="row"> 
+                <div class="col col-33 col-offset-33">
+                    <button class="button button-balanced button-block" ng-click="ctrl.store()">Store</button>
+                </div>
+            </div>
+			<div class="row"> 
+                <div class="col col-33 col-offset-33">
+                    <button class="button button-dark button-block" ng-click="ctrl.read()">Read</button>
+                </div>     
+            </div>
+
+            <span> The Value for the Key is : {{ ctrl.value }}</span>
+
+		</form>
+	</ion-content>
+</ion-view>

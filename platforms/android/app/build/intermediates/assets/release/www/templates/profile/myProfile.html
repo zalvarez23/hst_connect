@@ -1,0 +1,130 @@
+<ion-view hide-nav-bar="true" hide-back-button="true" title="{{ 'MY_PROFILE' | translate }}" home-icon>
+
+	<ion-content has-bouncing="false" class="contentLandingFigma backgroundWhite" ng-controller="myProfileCtrl" data-ng-init="init()">
+		<div class="rightGreen">
+
+		</div>
+		<svg class="borderRightFigma" width="91" height="640" viewBox="0 0 91 640" fill="none"
+			xmlns="http://www.w3.org/2000/svg">
+			<path
+				d="M72.9969 -69C80.5982 -65.4719 85.199 -59.7263 88.4996 -52.5694C90.1999 -48.8397 91 -45.11 91 -40.9772C91 188.145 90.9 417.367 91 646.489C91 651.832 88.6996 656.267 86.0992 660.601C83.0986 665.642 78.8979 669.573 73.3969 673C73.3969 669.774 73.2969 666.851 73.3969 664.029C73.3969 662.718 73.897 661.408 73.897 660.097C73.897 652.336 74.0971 644.473 73.897 636.711C73.797 630.663 73.897 624.515 72.7968 618.668C70.1964 605.665 64.6954 594.173 52.2933 587.823C47.5925 585.404 42.5916 583.589 37.0907 583.69C26.0887 583.891 17.2872 579.154 9.98596 571.493C5.98527 567.259 3.38482 562.118 1.5845 556.373C-0.315824 550.325 -0.315824 544.176 0.584332 538.228C1.78454 530.164 5.5852 522.806 11.8863 517.362C15.0868 514.641 18.4874 512.121 22.2881 510.306C25.7887 508.694 29.7894 507.887 33.6901 507.182C41.1914 505.871 49.1928 506.274 55.6939 501.234C59.7946 498.009 63.0952 494.178 65.3956 489.44C66.8958 486.416 68.4961 483.292 69.4963 480.066C70.8965 475.53 72.2968 470.893 72.6968 466.256C73.2969 457.587 73.2969 448.817 73.2969 440.149C73.2969 424.927 72.9969 409.606 72.9969 394.385C72.9969 247.92 72.9969 101.455 72.8969 -45.11C72.9969 -52.8718 72.9969 -60.7343 72.9969 -69ZM38.791 572.098C40.8913 571.695 43.9919 571.392 46.7923 570.384C52.8934 568.368 57.5942 564.336 60.5947 558.49C61.7949 556.171 62.195 553.449 63.2952 551.03C65.5956 546.091 64.0953 541.353 62.4951 536.918C59.7946 529.257 54.5937 524.015 46.8924 521.193C42.3916 519.58 37.7908 518.975 33.19 520.084C27.689 521.294 22.9882 524.015 18.9875 528.249C12.9865 534.801 11.0862 542.664 12.6864 551.03C14.4867 560.304 20.5878 566.654 28.8892 571.09C31.7897 572.703 34.7903 571.19 38.791 572.098Z"
+				fill="#AFC95F" />
+		</svg>
+
+
+		<div class="header headerIos" >
+			<div class="circleButton" ng-click="goBack()">
+				<svg class="svgStyle" width="12" height="12" viewBox="0 0 12 12" fill="none"
+					xmlns="http://www.w3.org/2000/svg">
+					<path
+						d="M10.4479 11.8555L6.15833 7.56591L1.86874 11.8555L0.461225 10.448L4.75081 6.1584L0.461225 1.86881L1.86874 0.461296L6.15833 4.75088L10.4479 0.461296L11.8554 1.86881L7.56584 6.1584L11.8554 10.448L10.4479 11.8555Z"
+						fill="white" />
+				</svg>
+			</div>
+			<div class="img-profile" ng-click="takePicture('profilePicture')">
+				<img ng-if="imageSrc.profilePicture" src="{{imageSrc.profilePicture}}">
+				<img ng-if="!imageSrc.profilePicture" src="img/user_icon.png">
+			</div>
+			<div class="title-profile">
+				<h1>{{ 'HELLO' | translate }},</h1>
+				<h1>{{ profile.FirstName + " " + profile.LastName }}</h1>
+				<p>{{ profile.DOB | date : 'MMMM dd, yyyy' }}</p>
+				<button ui-sref="tabsController.yourdoctor">{{ 'YOUR_DOCTOR' | translate }}</button>
+			</div>
+		</div>
+
+		<div class="content">
+			<svg class="borderRec" width="22" height="42" viewBox="0 0 22 42" fill="none"
+				xmlns="http://www.w3.org/2000/svg">
+				<path stroke="#aeca5f"
+					d="M19.6171 37.715C15.3013 21.2923 4.74079 17.5048 0 17.664L19.6171 0C21.4153 19.4145 23.9328 54.1378 19.6171 37.715Z"
+					fill="#AFC95F" />
+			</svg>
+
+			<div class="messageIcon" ng-click="downloadMessages()">
+				<img src="img/figma/message.png">
+				<span style="position: absolute;" class="badge badge-assertive badge-small"
+					ng-if="messageCount > 0">{{ messageCount }}</span>
+			</div>
+
+			<div class="first listItemProfile">
+				<div class="list list-inset">
+
+					<a class="item item-icon-left item-icon-right" ui-sref="tabsController.changeEmail">
+						<div class="contentImg">
+							<img src="img/figma/message.png">
+						</div>
+						{{ profile.Email }}
+						<i class="icon ion-chevron-right small-arrow"></i>
+					</a>
+
+					<a class="item item-icon-left item-icon-right" ui-sref="tabsController.changePassword">
+						<div class="contentImg">
+							<img src="img/figma/lock.png">
+
+						</div>
+						{{ 'CHANGE_PASSWORD' | translate }}
+						<i class="icon ion-chevron-right small-arrow"></i>
+					</a>
+
+					<a class="item item-icon-left item-icon-right" ui-sref="tabsController.updateMemberId">
+						<div class="contentImg">
+							<img src="img/figma/contact.png">
+
+						</div>
+						{{ 'UPDATE_MEMBER_INFO' | translate }}
+						<i class="icon ion-chevron-right small-arrow"></i>
+					</a>
+					<a class="item item-icon-left item-icon-right" ui-sref="tabsController.termsOfUse">
+						<div class="contentImg">
+							<img src="img/figma/visibility.png">
+						</div>
+						{{ 'VIEW_TERMS_USE' | translate }}
+						<i class="icon ion-chevron-right small-arrow"></i>
+					</a>
+				</div>
+
+				<div class="list list-inset" ng-click="modalLanguage()">
+					<label class="item item-input item-select">
+						<div class="input-label dark-blue-text">{{ 'LANGUAGE' | translate }} : <label
+								style="margin-left:20px;">{{selectedLanguage}}</label></div>
+					</label>
+				</div>
+				<div class="list list-inset" ng-show="ok">
+					<label class="item item-input item-select">
+						<div class="input-label dark-blue-text">{{ 'LANGUAGE' | translate }} :</div>
+						<select class="language-selection ellipsis dark-blue-text" ng-model="selectedLanguage"
+							ng-change="languageChanged()">
+							<option ng-repeat="lang in appLanguages" value="{{ lang }}">{{ lang }}</option>
+						</select>
+					</label>
+				</div>
+
+				<br>
+				<div class="list list-inset singUp">
+
+					<a class="item item-icon-left item-icon-right" ng-click="signOut()">
+						<div class="contentImg">
+							<img src="img/figma/singup.png">
+
+						</div>
+						{{ 'SIGNOUT' | translate }}
+					</a>
+
+				</div>
+
+				<footer style="    text-align: center;
+					position: absolute;
+					bottom: 7%;
+					width: 100%;
+					">
+					<small style="color: #6695b1;
+					font-family: 'Roboto Regular';
+					font-weight: bold;">{{'VERSION_REAL' | translate}}</small>
+				</footer>
+
+			</div>
+
+		</div>
+	</ion-content>
+</ion-view>

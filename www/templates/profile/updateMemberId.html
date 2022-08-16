@@ -1,0 +1,128 @@
+<!--- - - - - - - - - - - - - - - - - - - - - - - - -->
+<!-- UPDATE MEMBER INFO                             -->
+<!--- - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<ion-view hide-nav-bar="true" title="{{ 'UPDATE_MEMBER_INFO' | translate }}">
+  <div class="header-figma-arrow">
+    <svg width="19" height="19" ui-sref="tabsController.myProfile" viewBox="0 0 19 19" fill="none"
+      xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+        fill="white" />
+    </svg>
+    <h1 ng-bind="'UPDATE_MEMBER_INFO' | translate"></h1>
+  </div>
+  <ion-content has-bouncing="false" class="content2-figma backgroundWhite" ng-controller="updateMmberIdCtrl">
+
+    <h3 class="dark-blue-text list list-inset transparent titlePageProfiles" style="margin: 23px;"><span
+        ng-bind="'UPDATE_MEMBER_INFO' | translate"></span></h3>
+
+    <form class="list light-gray-text reg-form" name="memberInfo" novalidate>
+
+      <!-- Address 1 -->
+      <div class="list list-inset transparent">
+        <span class="dark-gray-text-bold">{{'ADDRESS_1' | translate}}:</span>
+      </div>
+
+      <div class="list list-inset transparent">
+        <label class="item item-input">
+          <i class="icon ion-shield placeholder-icon"></i>
+          <input type="text" name="Address1" placeholder="{{'ADDRESS_1' | translate}}" ng-model="profile.Address1">
+        </label>
+      </div>
+
+
+      <!-- Address 2 -->
+      <div class="list list-inset transparent">
+        <span class="dark-gray-text-bold">{{'ADDRESS_2' | translate}}:</span>
+      </div>
+
+      <div class="list list-inset transparent">
+        <label class="item item-input">
+          <i class="icon ion-shield placeholder-icon"></i>
+          <input type="text" name="Address2" placeholder="{{'ADDRESS_2' | translate}}" ng-model="profile.Address2">
+        </label>
+      </div>
+
+
+      <!-- City -->
+      <div class="list list-inset transparent">
+        <span class="dark-gray-text-bold">{{'CITY' | translate}}:</span>
+      </div>
+
+      <div class="list list-inset transparent">
+        <label class="item item-input">
+          <i class="icon ion-shield placeholder-icon"></i>
+          <input type="text" name="City" placeholder="{{'CITY' | translate}}" ng-model="profile.City">
+        </label>
+      </div>
+
+
+      <!-- State -->
+      <div class="list list-inset transparent">
+        <span class="dark-gray-text-bold">{{'STATE' | translate}}:</span>
+      </div>
+
+      <div class="list list-inset transparent">
+        <label class="item item-input">
+          <i class="icon ion-shield placeholder-icon"></i>
+          <input type="text" name="State" placeholder="{{'STATE' | translate}}" ng-model="profile.State">
+        </label>
+      </div>
+
+
+      <!-- Zip -->
+      <div class="list list-inset transparent">
+        <span class="dark-gray-text-bold">{{'ZIP' | translate}}:</span>
+      </div>
+
+      <div class="list list-inset transparent">
+        <label class="item item-input">
+          <i class="icon ion-shield placeholder-icon"></i>
+          <input type="number" name="Zip" placeholder="{{'ZIP' | translate}}" ng-model="profile.Zip">
+        </label>
+      </div>
+
+
+      <!-- Phone Number -->
+      <div class="list list-inset transparent">
+        <span class="dark-gray-text-bold">{{'PHONE_NUMBER' | translate}}:</span>
+      </div>
+
+      <div class="list list-inset transparent">
+        <label class="item item-input">
+          <i class="icon ion-shield placeholder-icon"></i>
+          <input type="text" name="CellPhone" placeholder="{{'PHONE_NUMBER' | translate}}" ng-model="profile.CellPhone">
+        </label>
+      </div>
+
+
+      <!-- Action Buttons -->
+      <div class="row">
+
+        <div class="col">
+
+          <!-- Cancel -->
+          <button type="button" ui-sref="tabsController.myProfile"
+            class="button button-stable button-cancel button-block button-cancel-figma">
+            {{'CANCEL' | translate}}
+          </button>
+
+        </div>
+
+        <div class="col">
+
+          <!-- Save -->
+          <button type="submit" class="button button-stable button-next button-block button-next-figma" ng-click="saveMemberId()">
+            {{ 'SAVE' | translate }}
+          </button>
+
+        </div>
+
+      </div>
+
+    </form>
+
+  </ion-content>
+
+</ion-view>

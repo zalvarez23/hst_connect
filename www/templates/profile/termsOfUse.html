@@ -1,0 +1,19 @@
+<ion-view hide-nav-bar="true" title="{{ 'VIEW_TERMS_USE' | translate }}">
+    <div class="header-figma-arrow">
+        <svg width="19" height="19" ui-sref="tabsController.myProfile" viewBox="0 0 19 19" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+                fill="white" />
+        </svg>
+        <h1 ng-bind="'VIEW_TERMS_USE' | translate"></h1>
+    </div>
+    <ion-content has-bouncing="false" class="content2-figma backgroundWhite" ng-controller="termsOfUseCtrl" data-ng-init="termsInit()">
+        <h3 class="dark-blue-text list list-inset transparent titlePageProfiles" style="margin: 23px;"><span
+            ng-bind="'VIEW_TERMS_USE' | translate"></span></h3>
+    
+        <div>
+            <div ng-bind-html="termsOfUseText" class="padding-horizontal"></div>
+        </div>
+    </ion-content>
+</ion-view>
