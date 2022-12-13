@@ -317,14 +317,13 @@ angular.module('app.controllers')
 				// postData["GroupId"]=22
 				// postData["CategoryId"]=1
 				// postData["ProcedureIndicator"]= 236
-				// postData["BuildVersion"]='3.4.4'
+				// postData["BuildVersion"]='3.5.0'
 				// postData["Device_Type"]='android'
 				// postData["DeviceId"]='8fb51648e636d0e4'
-				// postData["distance"]='50'
-				// postData["Latitude"]='36.778261'
-				// postData["Longitude"]='-119.41793240000001'
-
-				//
+				// postData["distance"]=50
+				// postData["Latitude"]=36.778261
+				// postData["Longitude"]=-119.41793240000001
+			//
 				console.log("callsearchapi")
 				console.log("postdata", postData)
 				localStorageFactory.data.searchDetailObj = { srcLat: postData["Latitude"], srcLong: postData["Longitude"] };

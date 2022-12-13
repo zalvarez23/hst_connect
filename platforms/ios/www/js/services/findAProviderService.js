@@ -26,6 +26,9 @@ angular.module('app.services')
 		var getAuthorizedFacilities = baseUrl + "/GetAuthorizedFacilities";
 		var getAuthorizedProvidersUrl = baseUrl + "/GetAuthorizedProviders";
 
+		var getClaimsByUser = baseUrl + "/ViewClaims";
+
+
 		/**
 		 * @name  providersCatefory
 		 * @description 
@@ -192,6 +195,16 @@ angular.module('app.services')
 		});	
 
 		this.authorizedFacilities = $resource(getAuthorizedFacilities, {}, {
+			get : {
+				method : "POST",
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded'
+				},
+				transformRequest: utilFactory.encodePostBody
+			}
+		});	
+
+		this.userClaims = $resource(getClaimsByUser, {}, {
 			get : {
 				method : "POST",
 				headers: {

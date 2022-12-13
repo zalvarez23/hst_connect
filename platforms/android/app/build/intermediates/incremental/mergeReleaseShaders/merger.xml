@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="/Users/kevin/Desktop/IonicProject/hst_test/hst_source_bak/platforms/android/app/src/main/shaders"/></dataSet><dataSet config="release"><source path="/Users/kevin/Desktop/IonicProject/hst_test/hst_source_bak/platforms/android/app/src/release/shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="/Users/kevin/Desktop/IonicProject/hst_connect/hst_connect/platforms/android/app/src/main/shaders"/></dataSet><dataSet config="release"><source path="/Users/kevin/Desktop/IonicProject/hst_connect/hst_connect/platforms/android/app/src/release/shaders"/></dataSet></merger>

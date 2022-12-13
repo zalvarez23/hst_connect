@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hst.hstmobile2"
     android:hardwareAccelerated="true"
-    android:versionCode="102084"
-    android:versionName="3.4.7" >
+    android:versionCode="102087"
+    android:versionName="3.5.3" >
 
     <uses-sdk
         android:minSdkVersion="19"

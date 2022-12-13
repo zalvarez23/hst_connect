@@ -39,8 +39,8 @@
 
       <div class="messageIcon" ng-click="downloadMessages()">
         <img src="img/figma/message.png">
-        <span style="position: absolute;" class="badge badge-assertive badge-small"
-          ng-if="messageCount > 0">{{ messageCount }}</span>
+        <span style="position: absolute;" class="badge badge-assertive badge-small" ng-if="messageCount > 0">{{
+          messageCount }}</span>
       </div>
 
       <div class="first">
@@ -94,6 +94,20 @@
             </div>
           </div>
         </div>
+        <!-- <div class="row">
+          <div class="col">
+            <div class="list list-inset landing-list" ui-sref="tabsController.findClaims">
+              <div class="item item-text-wrap text-center border-none">
+                <div>
+                  <img src="img/figma/claims.png">
+                </div>
+                <br />
+                <span class="text-landing"><b><span ng-bind="'MY_CLAIMS' | translate"></b></span>
+              </div>
+            </div>
+          </div>
+          <div class="col"></div>
+        </div> -->
         <div class="row" ng-if="!showFamilyWize">
           <div class="col">
             <div class="list list-inset landing-list" ng-click="goToPrescription()">

@@ -1,4 +1,4 @@
-#Wed Aug 10 18:53:10 PET 2022
-base.0=/Users/kevin/Desktop/IonicProject/hst_test/hst_source_bak/platforms/android/app/build/intermediates/transforms/dex/release/0
+#Tue Oct 18 15:43:35 PET 2022
+base.0=/Users/kevin/Desktop/IonicProject/hst_connect/hst_connect/platforms/android/app/build/intermediates/transforms/dex/release/0
 path.0=classes.dex
 renamed.0=classes.dex

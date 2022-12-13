@@ -165,7 +165,45 @@ angular.module('app.routes')
 					}
 				}
 			})
-
+			.state('tabsController.findClaims', {
+				url: '/find-claims',
+				views: {
+					'tab2': {
+						templateUrl: 'templates/findclaims/findClaims.html',
+						resolve: {
+							profilePageCtrl: function ($ocLazyLoad) {
+								return $ocLazyLoad.load({
+									name: 'findClaimsPage',
+									files: [
+										'js/services/findAProviderService.js',
+										'js/controllers/findclaims/find-claims-controller.js'
+									]
+								})
+							}
+						}
+					}
+				}
+			})
+			.state('tabsController.claimsSearchResults', {
+				url: '/claims-search-results',
+				views: {
+					'tab2': {
+						templateUrl: 'templates/findclaims/claimsSearchResults.html',
+						resolve: {
+							profilePageCtrl: function ($ocLazyLoad) {
+								return $ocLazyLoad.load({
+									name: 'findClaimsPage',
+									files: [
+										'js/services/findAProviderService.js',
+										'js/controllers/findclaims/claims-search-results.js'
+									]
+								})
+							}
+						}
+					}
+				},
+				cache: false
+			})
 			.state('tabsController.providerSearchResults', {
 				url: '/provider-search-results',
 				views: {

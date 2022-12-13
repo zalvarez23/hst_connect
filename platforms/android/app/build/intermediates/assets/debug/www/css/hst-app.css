@@ -874,6 +874,18 @@ p.dark-blue-text {
   border-radius: 50px;
   background: #afc95f;
 }
+.ml-2{
+  margin-left: 2px;
+}
+.mt-12{
+  margin-top: 12px;
+}
+.mt-4{
+  margin-top: 4px;
+}
+.border-top-gray{
+  border-top: 1px solid #ccc !important;
+}
 .location-option .noCheckTik {
   background: white;
 }
@@ -1965,6 +1977,14 @@ i {
   line-height: 14px;
   color: #2b4c6e;
 }
+.text-title-radio{
+  font-family: "Roboto Regular";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 14px;
+  color: #2b4c6e;
+}
 .borderRec {
   position: absolute;
   right: 17px;
@@ -2137,7 +2157,7 @@ i {
 /* COMENTAR PARA ANDROID ALVA*/
 
 /* Just IOS */
-
+/* 
 .searchNew {
   margin-bottom: 95%;
 }
@@ -2166,7 +2186,7 @@ i {
 }
 .header-figma-arrow {
   margin-top: -1px !important;
-}
+} */
 
 /* */
 

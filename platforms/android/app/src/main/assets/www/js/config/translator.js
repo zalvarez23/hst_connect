@@ -25,6 +25,7 @@ hstApp.config(function ($translateProvider) {
       CONFIRM: "Confirmation",
       FORGOT_USERNAME: "Forgot Username",
       FORGOT_PASSWORD: "Forgot Password",
+      NO_ACCCOUNT: "DON'T HAVE AN ACCOUNT? SING UP HERE",
       OK: "Ok",
       LOADING_DELETE_FILE: "Deleting File . .",
       ERROR: "Invalid Input",
@@ -72,7 +73,7 @@ hstApp.config(function ($translateProvider) {
       MESSAGES_BODY:
         "You are important to us and it is important to us to address your concern. Your message will be sent directly to our Patient Advocate Center.",
       MESSAGES_BILL: "Submit your balance bill.",
-      MESSAGES_CONCERN: "Send us a message about other concern.",
+      MESSAGES_CONCERN: "Send us a general message.",
       MESSAGES_HISTORY: "View all message history.",
       MESSAGES_STARTED: "Get Started",
       TERMS_USE: `<b>HSTECHNOLOGY SOLUTIONS, INC. HST CONNECT APPLICATION
@@ -227,8 +228,8 @@ You agree that this Agreement and all incorporated agreements between you and us
 All notices to you relating to this Agreement shall be posted on the Application or sent to you at the e-mail or physical address, if any, that you provided to us.  All notices to us relating to this Agreement shall be in writing and sent to the following:
 
 HSTechnology Solutions, Inc.
-9551 Irvine Center Drive
-Irvine, CA 92618
+23382 Mill Creek Drive Suite 200
+Laguna Hills, CA 92653
 
 support@hstechnology.com.
 
@@ -377,7 +378,7 @@ Last updated: November 2017`,
       DAYS: "Days",
       AVERAGE_COST_AT_THIS_FACILITY: "Your Estimated Cost at this Facility",
       TOTAL_OUT_OF_POCKET_COSTS: "Estimated Out of Pocket Costs",
-      CO_PAY: "CoPay",
+      CO_PAY: "Copay",
       IF_NOT_MET_YET: "(if not met yet)",
       CO_INSURANCE: "Coinsurance",
       YOUR_ESTIMATED_SHARE_OF_COSTS: "(estimated share of costs)",
@@ -385,7 +386,7 @@ Last updated: November 2017`,
       CALL_NOW: "Call now",
       ESTIMATED_PLAN_PAYMENT: "Estimated Plan Payment",
       YOUR_OUT_OF_POSCKET_COST_RANGE: "Your out of pocket cost range",
-      VBP_ACCEPTANCE: "VBP Acceptance Rate",
+      VBP_ACCEPTANCE: "VDHP Acceptance Rate",
       HCBB_PROCEDURE_RATING: "HCBB Procedure Rating",
       HCBB_QUALITY_RATING: "HCBB Quality Rating",
       GET_DIRECTION: "Get Direction",
@@ -494,7 +495,7 @@ Last updated: November 2017`,
       MEDICAL_SCHOOL: "Medical School",
       GRADUATION_YEAR: "Graduation Year",
       HOSPITAL_AFFILIATIONS: "Hospital Affiliations",
-      VBP_ACCEPTANCE_RATING: "VBP Acceptance Rating",
+      VBP_ACCEPTANCE_RATING: "VDHP Acceptance Rating",
       REPORTED_QUALITY_MEASURES: "Reported Quality Measures",
       ACCEPTS_MEDICARE_ASSIGNNMENT: "Accepts Medicare Assignment",
       CONFIRM_PASSWORD: "Confirm Password",
@@ -601,12 +602,19 @@ Last updated: November 2017`,
       DO_YOU_WANT_TO_SET: "Do you want to set ",
       PRIMARY_CARE_PHYSICIAN: " as Primary Care Physician?",
 
-      FACILITY_ACCEPTANCE: "VBP Acceptance",
+      SEARCH_BY_KEYWORD: "Search by keyword",
+      BY_CLAIM_TYPE : 'By Claim Type',
+      BY_MEMBER : 'By Member',
+      BY_YEAR : 'By Year',
+      FIND_CLAIMS : 'Find Claims',
+      FACILITY_ACCEPTANCE: "VDHP Acceptance",
+      PROCESSED_DATE : "Processed Date - Newestto Oldest",
       TITLE_BACKGROUND_MODE: "Working in background...",
       DESC_BACKGROUNND_MODE: "Don't close the app please.",
       PRESCRIPTION_PRICING: "Prescription Pricing",
+      MY_CLAIMS: "View Claims",
       VERSION: "Version",
-      VERSION_REAL: "Version - 2.9.9",
+      VERSION_REAL: "Version - 3.0.0",
       DISCLAIMER: `Provider information contained in this Directory was last updated Date and therefore may have changed. Before scheduling your appointment or receiving services, check with the provider to confirm participation in the network, location and if the provider is accepting new patients.`,
       PRACTICENAME: "Practice name",
       BANER_TEXT:
@@ -617,7 +625,7 @@ Last updated: November 2017`,
 
     // Spanish Text
     .translations("es", {
-      VERSION_REAL: "Version - 2.9.9",
+      VERSION_REAL: "Version - 3.0.0",
       TITLE: "HST",
       MESSAGETEXT: "Escribir un mensaje. .",
       HELLO: "Hola",
@@ -632,6 +640,7 @@ Last updated: November 2017`,
       PASSWORD: "Contraseña",
       FORGOT_USERNAME: "¿Olvidó su nombre de usuario",
       FORGOT_PASSWORD: "¿Olvidó su clave",
+      NO_ACCCOUNT: "¿NO TIENES UNA CUENTA? REGÍSTRESE AQUÍ",
       OK: "De acuerdo",
       ERROR: "Entrada inválida",
       NOT_EMPTY_MSG: "Nombre de usuario y la contraseña no debe estar vacío",
@@ -799,7 +808,7 @@ Last updated: November 2017`,
       MESSAGES_BODY:
         "Usted es importante para nosotros y es importante para nosotros abordar su preocupación. Su mensaje será enviado directamente a nuestro Centro de Defensa del Paciente.",
       MESSAGES_BILL: "Envíe su factura de saldo.",
-      MESSAGES_CONCERN: "Envíenos un mensaje sobre otra preocupación.",
+      MESSAGES_CONCERN: "Envíanos un mensaje general.",
       MESSAGES_HISTORY: "Ver todo el historial de mensajes.",
       MESSAGES_STARTED: "Empezar",
       TERMS_USE: `<b>HSTECHNOLOGY SOLUTIONS, INC. APLICACIÓN HST CONNECT
@@ -950,8 +959,8 @@ Usted está de acuerdo en que este Acuerdo y todos los acuerdos incorporados ent
 Todos los avisos dirigidos a usted relacionados con este Acuerdo se publicarán en la Aplicación o se enviarán a su dirección de correo electrónico o postal, si es que nos la proporcionó. Todos los avisos dirigidos a nosotros relacionados con este Acuerdo deberán enviarse por escrito a la siguiente dirección:
 
 HSTechnology Solutions, Inc.
-9551 Irvine Center Drive
-Irvine, CA 92618
+23382 Mill Creek Drive Suite 200
+Laguna Hills, CA 92653
 
 support@hstechnology.com.
 
@@ -1215,12 +1224,14 @@ Se considerará como recibido el aviso una vez que este sea publicado en la Apli
       DO_YOU_WANT_TO_SET: "¿Quieres establecer ",
       PRIMARY_CARE_PHYSICIAN: " como médico de atención primaria?",
 
-      FACILITY_ACCEPTANCE: "Aceptación VBP",
+      FACILITY_ACCEPTANCE: "Aceptación VDHP",
+      PROCESSED_DATE : "Processed Date - Newestto Oldest",
 
       TITLE_BACKGROUND_MODE: "Trabajando en segundo plano ...",
       DESC_BACKGROUNND_MODE: "No cierre la aplicaci\u00f3n por favor.",
       VERSION: "Versión",
       PRESCRIPTION_PRICING: "Precio de los medicamentos recetados",
+      MY_CLAIMS: "Ver reclamaciones",
       DISCLAIMER: `La información del proveedor contenida en este Directorio fue actualizada por última vez Date y por lo tanto puede tener
 			cambiado. Antes de programar su cita o recibir servicios, consulte con el proveedor para confirmar
 			la participación en la red, la ubicación y si el proveedor está aceptando nuevos pacientes`,
