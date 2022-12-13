@@ -1,0 +1,95 @@
+<ion-view hide-nav-bar="true" title="{{ 'FIND_CLAIMS' | translate }}">
+
+    <div class="header-figma-arrow">
+        <svg width="19" height="19" ui-sref="landingPage" viewBox="0 0 19 19" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M14.8025 7.67752V9.23611H5.15408L9.5701 13.6892L8.45682 14.8025L2.11111 8.45682L8.45682 2.11111L9.5701 3.2244L5.15408 7.67752H14.8025Z"
+                fill="white" />
+        </svg>
+        <h1 ng-bind="'FIND_CLAIMS' | translate"></h1>
+        <button class="button button-icon ion-home rightIconHeaderHome" style="right: 6px;" ui-sref="landingPage"
+            menu-toggle="left"></button>
+    </div>
+
+
+    <ion-content padding="true" has-bouncing="false" class="has-header price-procedure content2-figma backgroundWhite"
+        ng-controller="findClaimsCtrl">
+
+        <form class="list reg-form form-group" name="searchForm">
+            <div class="list">
+                <label class="item item-input  item-select-figma"
+                    ng-class="{ 'has-error': searchForm.$submitted && searchForm.name.$invalid }">
+                    <input type="text" placeholder="{{ 'SEARCH_BY_KEYWORD' | translate }}" ng-model="name" name="name"
+                        ng-required="true">
+                </label>
+            </div>
+            <div class="list list-inset">
+                <label class="item item-input" ng-class="{ 'has-error': regForm.$submitted && regForm.DOB.$invalid }">
+                    <!-- <i class="ion icon ion-custom-calendar placeholder-icon"></i> -->
+                    <!-- <input type="text" placeholder="{{'BIRTH_DATE' | translate}}" ng-model="birthDate" name="DOB"
+                        ng-required="true" ng-click="selectDate()" onfocus="this.blur()"> -->
+                    <label ng-if="!dateFrom" style="position: absolute; color : #757575">Date from</label>
+                    <input type="date" placeholder="Date from" ng-model="dateFrom" name="DOB"
+                        ng-required="true">
+
+                </label>
+            </div>
+            <div class="list list-inset">
+                <label class="item item-input" ng-class="{ 'has-error': regForm.$submitted && regForm.DOB.$invalid }">
+                    <!-- <i class="ion icon ion-custom-calendar placeholder-icon"></i> -->
+                    <!-- <input type="text" placeholder="{{'BIRTH_DATE' | translate}}" ng-model="birthDate" name="DOB"
+                        ng-required="true" ng-click="selectDate()" onfocus="this.blur()"> -->
+                    <label ng-if="!dateTo" style="position: absolute; color : #757575">Date to</label>
+                    <input type="date" placeholder="Date to" ng-model="dateTo" name="DOB"
+                        ng-required="true">
+
+                </label>
+            </div>
+            <span class="text-title-radio ml-2"><b><span ng-bind="'BY_CLAIM_TYPE' | translate"></b></span>
+
+            <div class="list list-inset location-option location-option-figma mt-12">
+                <label class="item item-icon-right">
+                    <input type="radio" ng-model="type" value="Facility" required />
+                    Facility
+                    <i ng-if="type == 'Facility'" class="icon ion-checkmark custom-tick"></i>
+                </label>
+                <label class="item item-icon-right border-top-gray">
+                    <input type="radio" ng-model="type" value="Physician" required />
+                    Physician
+                    <i ng-if="type == 'Physician'" class="icon ion-checkmark custom-tick"></i>
+                </label>
+            </div>
+
+            <span class="text-title-radio ml-2"><b><span ng-bind="'BY_MEMBER' | translate"></b></span>
+            <div class="list list-inset location-option location-option-figma mt-12">
+                <label class="item item-icon-right">
+                    <input type="radio" ng-model="type" value="Facility" required />
+                    Jane Doe
+                    <i ng-if="type == 'Facility'" class="icon ion-checkmark custom-tick"></i>
+                </label>
+            </div>
+
+            <span class="text-title-radio ml-2"><b><span ng-bind="'BY_YEAR' | translate"></b></span>
+            <div class="list list-inset location-option location-option-figma mt-12">
+                <label class="item item-icon-right">
+                    <input type="radio" ng-model="year" value="2022" required />
+                    2022
+                    <i ng-if="year == '2022'" class="icon ion-checkmark custom-tick"></i>
+                </label>
+                <label class="item item-icon-right border-top-gray">
+                    <input type="radio" ng-model="year" value="2021" required />
+                    2021
+                    <i ng-if="year == '2021'" class="icon ion-checkmark custom-tick"></i>
+                </label>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <button type="button" class="button button-stable button-cancel button-block button-next-figma"
+                        ng-click="searchClaims()">{{ 'SEARCH' | translate }}</button>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

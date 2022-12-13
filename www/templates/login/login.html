@@ -2,16 +2,16 @@
 	<div class='bannerTop' id='bannerTop'>
 		{{'BANER_TEXT' | translate}}
 	</div>
-	<div class='bannerTop' id='bannerTopPrice'>
+	<!-- <div class='bannerTop' id='bannerTopPrice'>
 		{{'BANER_TEXT_PRICE' | translate}}
-	</div>
+	</div> -->
 	<div class="header-figma-arrow">
 		<h1 ng-bind="'LOGIN' | translate"></h1>
 	</div>
 	<ion-content style="padding:0px 9px" padding="true" class="has-header content2-figma"
 		ng-controller="loginCtrl as ctrl" has-bouncing="false">
 		<div class="list list-inset text-center">
-			<span ng-bind="selectedLanguage"></span>
+			<span ng-bind="selectedLanguage || 'English'"></span>
 			<span class="dark-blue-text " ui-sref="changeLanguage">{{ " > " + ('CHANGE' | translate) }}</span>
 		</div>
 		<form class="list" name="loginForm" novalidate>
@@ -43,11 +43,14 @@
 					<button type="submit" class="button button-block button-stable border-radius-10 button-next-figma"
 						ng-click="ctrl.validateAndLogin()">{{'LOGIN_CAPS' | translate}}</button>
 				</div>
-				<div ng-if="(firstTime)" class="col col-offset-5" ng-if="canShowRegisterButton == 'true'">
-					<button ui-sref="registration"
-						class="button button-block button-calm register-custom-button border-radius-10 button-next-figma">{{'REGISTER_CAPS'
-						| translate}}</button>
+			</div>
+			<div class="row">
+				<div class="col">
+					<button ui-sref="registration" style="margin-top:-5px"
+						class="button button-block button-stable border-radius-10 button-next-figma">{{'NO_ACCCOUNT' |
+						translate}}</button>
 				</div>
+			</div>
 			</div>
 		</form>
 		<center>

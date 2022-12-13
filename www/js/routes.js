@@ -221,7 +221,7 @@ angular.module('app.routes', [])
 				controller: 'hSTCtrl'
 			})
 
-		$urlRouterProvider.otherwise('/opening')
+		$urlRouterProvider.otherwise('/login')
 		// $urlRouterProvider.otherwise('/landingPage')
 	})
 

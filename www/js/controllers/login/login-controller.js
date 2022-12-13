@@ -118,7 +118,7 @@ angular
                 storeInLocalStorage("userLoggedIn", "true");
                 storeInLocalStorage("MemberId", data["MemberID"]);
                 localStorageFactory.data["MemberID"] = data["MemberID"];
-
+                localStorage.setItem("userName", $scope.username);
                 $ionicHistory.nextViewOptions({
                   disableBack: true,
                 });

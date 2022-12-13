@@ -376,7 +376,7 @@
 
                     <!-- last change ng-if="!newProject" -->
                     <div class="row">
-                        <span>VBP Acceptance Rate: </span>
+                        <span>{{'VBP_ACCEPTANCE' | translate}}: </span>                        
                         <div class="acceptance acceptance-{{hospital.FacilityAcceptanceID}}"></div>
                         <span class="padded-left roboto-bold dark-blue-text"
                             ng-bind="hospital.FacilityAcceptanceText"></span>
@@ -546,7 +546,7 @@
                         <div>
                             <div class="inline-deep">
                                 <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-1"></div>
-                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> >90% VBP Acceptance</span>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> >90% {{'FACILITY_ACCEPTANCE' | translate}}</span>
                                  <!-- - Facility has accepted VBP. -->
                             </div>
                         </div>
@@ -554,7 +554,7 @@
                         <div>
                             <div class="inline-deep">
                                 <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-3"></div>
-                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> 75-90% VBP Acceptance </span>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> 75-90% {{'FACILITY_ACCEPTANCE' | translate}} </span>
                                 <!-- - Facility has experience with VBP and has given pushback on certain procedures.                                 -->
                             </div>
                         </div>
@@ -573,7 +573,7 @@
                             <div class="inline-deep">
                                 <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-4"></div>
                                 <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Limited Experience</span>
-                                - Not enough experience with VBP to determine acceptance rate.                             
+                                - Not enough experience with VDHP to determine acceptance rate.                             
                             </div>
                         </div>
                     </div>

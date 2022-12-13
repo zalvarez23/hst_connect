@@ -384,13 +384,13 @@
                         <div class="row hor-center-align">
                             <div class="col">
                                 <button class="button button-outline button-small button-stable btn-filter button-next-figma" ng-click="setAcceptanceFilter('ANY')" ng-class="{ 'button-balanced' : (filter.Acceptance === 'ANY') }"  ><span ng-bind="'ANY' | translate"></span></button>
-                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setAcceptanceFilter('1')" ng-class="{ 'button-balanced' : (filter.Acceptance === '1') }" style="font-size: 11px !important;max-width: 100px;line-height: 12px;"> >90% VBP Acceptance</button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setAcceptanceFilter('1')" ng-class="{ 'button-balanced' : (filter.Acceptance === '1') }" style="font-size: 11px !important;max-width: 100px;line-height: 12px;"> >90% VDHP Acceptance</button>
                                 <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setAcceptanceFilter('2')" ng-class="{ 'button-balanced' : (filter.Acceptance === '2') }" style="max-width: 100px;line-height: 10px;font-size: 8px !important;">Below 75% or Above 250% of Medicare Allowed</button>
                             </div>
                         </div>
                         <div class="row hor-center-align">
                             <div class="col colPad">
-                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setAcceptanceFilter('3')" ng-class="{ 'button-balanced' : (filter.Acceptance === '3') }" style="font-size: 11px !important;max-width: 100px;line-height: 10px;">75-90% VBP Acceptance</button>
+                                <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setAcceptanceFilter('3')" ng-class="{ 'button-balanced' : (filter.Acceptance === '3') }" style="font-size: 11px !important;max-width: 100px;line-height: 10px;">75-90% VDHP Acceptance</button>
                                 <button class="button button-outline button-small button-stable btn-filter button-cancel-figma" ng-click="setAcceptanceFilter('4')" ng-class="{ 'button-balanced' : (filter.Acceptance === '4') }" style="font-size: 11px !important; max-width: 100px; line-height:12px" >Limited Experience</button>
                             </div>
                         </div>
@@ -501,14 +501,14 @@
                         <div>
                             <div class="inline-deep">
                                 <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-1"></div>
-                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> >90% VBP Acceptance</span>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> >90% {{'FACILITY_ACCEPTANCE' | translate}}</span>
                                  <!-- - Facility has accepted VBP. -->
                             </div>
                         </div>
                         <div>
                             <div class="inline-deep">
                                 <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-3"></div>
-                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> 75-90% VBP Acceptance </span>
+                                <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> 75-90% {{'FACILITY_ACCEPTANCE' | translate}} </span>
                                 <!-- - Facility has experience with VBP and has given pushback on certain procedures.                                 -->
                             </div>
                         </div>
@@ -525,7 +525,7 @@
                             <div class="inline-deep">
                                 <div style="margin-bottom: -3px; margin-left: 0px" class="acceptance acceptance-4"></div>
                                 <span style="margin-left: 2px" class="dark-blue-text roboto-bold info-modal-text"> Limited Experience</span>
-                                - Not enough experience with VBP to determine acceptance rate.                             
+                                - Not enough experience with VDHP to determine acceptance rate.                             
                             </div>
                         </div>
                     </div>

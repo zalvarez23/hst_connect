@@ -1,145 +1,143 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-  <dict>
-    <key>ADEUM_Settings</key>
-    <dict>
-      <key>ForceWebviewInstrumentation</key>
-      <true/>
-      <key>ForceAjaxInstrumentation</key>
-      <true/>
-      <key>ADRUMExtUrlHttp</key>
-      <string>http://cdn.appdynamics.com</string>
-      <key>ADRUMExtUrlHttps</key>
-      <string>https://cdn.appdynamics.com</string>
-      <key>ADEUM_APP_KEY</key>
-      <string>EUM-AAB-BAW</string>
-      <key>ADEUM_COLLECTOR_URL</key>
-      <string>https://appd-prod-eum.multiplan.com</string>
-      <key>ADEUM_SCREENSHOT_URL</key>
-      <string>https://image.eum-appdynamics.com</string>
-      <key>ADEUM_SCREENSHOTS_ENABLED</key>
-      <string>false</string>
-      <key>ADEUM_LOGGING_LEVEL</key>
-      <string>1</string>
-      <key>ADEUM_REACHABILITY_HOST</key>
-      <string>www.google.com</string>
-      <key>ADEUM_INTERACTION_CAPTURE_MODE</key>
-      <string>0</string>
-    </dict>
-    <key>CFBundleDevelopmentRegion</key>
-    <string>English</string>
-    <key>CFBundleDisplayName</key>
-    <string>HST</string>
-    <key>CFBundleExecutable</key>
-    <string>${EXECUTABLE_NAME}</string>
-    <key>CFBundleIcons</key>
-    <dict/>
-    <key>CFBundleIcons~ipad</key>
-    <dict/>
-    <key>CFBundleIdentifier</key>
-    <string>com.hst.hstmobile</string>
-    <key>CFBundleInfoDictionaryVersion</key>
-    <string>6.0</string>
-    <key>CFBundleName</key>
-    <string>${PRODUCT_NAME}</string>
-    <key>CFBundlePackageType</key>
-    <string>APPL</string>
-    <key>CFBundleShortVersionString</key>
-    <string>3.5.6</string>
-    <key>CFBundleSignature</key>
-    <string>????</string>
-    <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLName</key>
-        <string>com.hst.hstmobile</string>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>com.hst.hstmobile</string>
-        </array>
-      </dict>
-    </array>
-    <key>CFBundleVersion</key>
-    <string>3.5.6</string>
-    <key>LSApplicationQueriesSchemes</key>
-    <array>
-      <string>googlechromes</string>
-      <string>comgooglemaps</string>
-      <string>citymapper</string>
-      <string>navigon</string>
-      <string>transit</string>
-      <string>waze</string>
-      <string>yandexnavi</string>
-      <string>uber</string>
-      <string>tomtomhome</string>
-      <string>com.sygic.aura</string>
-      <string>here-route</string>
-      <string>moovit</string>
-      <string>lyft</string>
-      <string>mapsme</string>
-      <string>cabify</string>
-      <string>baidumap</string>
-      <string>taxis99</string>
-      <string>iosamap</string>
-    </array>
-    <key>LSRequiresIPhoneOS</key>
-    <true/>
-    <key>NSAppTransportSecurity</key>
-    <dict>
-      <key>NSAllowsArbitraryLoads</key>
-      <true/>
-    </dict>
-    <key>NSBluetoothAlwaysUsageDescription</key>
-    <string>This app requires constant Bluetooth access to function properly.</string>
-    <key>NSBluetoothPeripheralUsageDescription</key>
-    <string>This app requires Bluetooth access to function properly.</string>
-    <key>NSCalendarsUsageDescription</key>
-    <string>This app requires calendar access to function properly.</string>
-    <key>NSCameraUsageDescription</key>
-    <string>This app requires camera access to function properly.</string>
-    <key>NSContactsUsageDescription</key>
-    <string>This app requires contacts access to function properly.</string>
-    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-    <string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>This app requires constant access to your location in order to track your position, even when the screen is off or the app is in the background.</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>This app requires access to your location for navigation purposes</string>
-    <key>NSMainNibFile</key>
-    <string/>
-    <key>NSMainNibFile~ipad</key>
-    <string/>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>This app requires microphone access to function properly.</string>
-    <key>NSMotionUsageDescription</key>
-    <string>This app requires motion detection access to function properly.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>This app requires photo library access to function properly.</string>
-    <key>NSRemindersUsageDescription</key>
-    <string>This app requires reminders access to function properly.</string>
-    <key>UIBackgroundModes</key>
-    <array>
-      <string>audio</string>
-    </array>
-    <key>UILaunchStoryboardName</key>
-    <string>CDVLaunchScreen</string>
-    <key>UIRequiresFullScreen</key>
-    <true/>
-    <key>UISupportedInterfaceOrientations</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-    <key>UISupportedInterfaceOrientations~ipad</key>
-    <array>
-      <string>UIInterfaceOrientationPortrait</string>
-      <string>UIInterfaceOrientationLandscapeLeft</string>
-      <string>UIInterfaceOrientationPortraitUpsideDown</string>
-      <string>UIInterfaceOrientationLandscapeRight</string>
-    </array>
-  </dict>
+<dict>
+	<key>ADEUM_Settings</key>
+	<dict>
+		<key>ADEUM_APP_KEY</key>
+		<string>EUM-AAB-BAW</string>
+		<key>ADEUM_COLLECTOR_URL</key>
+		<string>https://appd-prod-eum.multiplan.com</string>
+		<key>ADEUM_INTERACTION_CAPTURE_MODE</key>
+		<string>0</string>
+		<key>ADEUM_LOGGING_LEVEL</key>
+		<string>1</string>
+		<key>ADEUM_REACHABILITY_HOST</key>
+		<string>www.google.com</string>
+		<key>ADEUM_SCREENSHOTS_ENABLED</key>
+		<string>false</string>
+		<key>ADEUM_SCREENSHOT_URL</key>
+		<string>https://image.eum-appdynamics.com</string>
+		<key>ADRUMExtUrlHttp</key>
+		<string>http://cdn.appdynamics.com</string>
+		<key>ADRUMExtUrlHttps</key>
+		<string>https://cdn.appdynamics.com</string>
+		<key>ForceAjaxInstrumentation</key>
+		<true/>
+		<key>ForceWebviewInstrumentation</key>
+		<true/>
+	</dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>English</string>
+	<key>CFBundleDisplayName</key>
+	<string>HST</string>
+	<key>CFBundleExecutable</key>
+	<string>${EXECUTABLE_NAME}</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
+	<key>CFBundleIdentifier</key>
+	<string>com.hst.hstmobile</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>${PRODUCT_NAME}</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>3.5.6</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.hst.hstmobile</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.hst.hstmobile</string>
+			</array>
+		</dict>
+	</array>
+	<key>CFBundleVersion</key>
+	<string>3.5.6</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
+		<string>citymapper</string>
+		<string>navigon</string>
+		<string>transit</string>
+		<string>waze</string>
+		<string>yandexnavi</string>
+		<string>uber</string>
+		<string>tomtomhome</string>
+		<string>com.sygic.aura</string>
+		<string>here-route</string>
+		<string>moovit</string>
+		<string>lyft</string>
+		<string>mapsme</string>
+		<string>cabify</string>
+		<string>baidumap</string>
+		<string>taxis99</string>
+		<string>iosamap</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>This app requires constant Bluetooth access to function properly.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>This app requires Bluetooth access to function properly.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app requires calendar access to function properly.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>The application requires permission from the camera to take work observation photos and send them to our database for better detail.</string>
+	<key>NSContactsUsageDescription</key>
+	<string>This app requires contacts access to function properly.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This allows us to use your location constantly, even when the screen is off, to provide you with certain features such as more accurate tracking of your runs, keeping you updated on our new services and benefits, and allowing you to tag your location.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This allows us to use your location constantly, even when the screen is off, to provide you with certain features such as more accurate tracking of your runs, keeping you updated on our new services and benefits, and allowing you to tag your location.This allows us to use your location constantly, even when the screen is off, to provide you with certain features such as more accurate tracking of your runs, keeping you updated on our new services and benefits, and allowing you to tag your location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This allows us to use your location constantly, even when the screen is off, to provide you with certain features such as more accurate tracking of your runs, keeping you updated on our new services and benefits, and allowing you to tag your location.This allows us to use your location constantly, even when the screen is off, to provide you with certain features such as more accurate tracking of your runs, keeping you updated on our new services and benefits, and allowing you to tag your location.</string>
+	<key>NSMainNibFile</key>
+	<string></string>
+	<key>NSMainNibFile~ipad</key>
+	<string></string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This app requires microphone access to function properly.</string>
+	<key>NSMotionUsageDescription</key>
+	<string>This app requires motion detection access to function properly.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This application requires access to the library to attach photos of the work in order to send them to our database.</string>
+	<key>NSRemindersUsageDescription</key>
+	<string>This app requires reminders access to function properly.</string>
+	<key>UIBackgroundModes</key>
+	<array/>
+	<key>UILaunchStoryboardName</key>
+	<string>CDVLaunchScreen</string>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+</dict>
 </plist>

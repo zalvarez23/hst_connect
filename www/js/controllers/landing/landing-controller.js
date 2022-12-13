@@ -322,7 +322,7 @@ angular.module('app.controllers')
       }
 
       $scope.goToPrescription = function () {
-        // COMENTAR PARA ANDROID
+        // COMENTAR PARA ANDROID alva revisar
         window.open("https://api.familywize.org/widget/Savings?display=0", "_blank", "location=yes");
         return;
         // $state.go("tabsController.prescription");
